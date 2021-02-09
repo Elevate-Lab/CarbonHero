@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "784158497484",
+    "project_id": "carbon-emission-eef6d",
+    "storage_bucket": "carbon-emission-eef6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784158497484:android:e213c2f4814d23dfa04069",
+        "android_client_info": {
+          "package_name": "com.example.carbon_emission"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784158497484-p50ki1va5ej4akd9b9jqea4l52o1ilmn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.carbon_emission",
+            "certificate_hash": "f12c40af3f3890cef0e9fc0119e076ee36faddf0"
+          }
+        },
+        {
+          "client_id": "784158497484-qpohup924k8f935sug0hmnt4dq5jhd3o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6Mh5K_JyZL3-9CgE0iOz-K4fGv0-Zmg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784158497484-qpohup924k8f935sug0hmnt4dq5jhd3o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

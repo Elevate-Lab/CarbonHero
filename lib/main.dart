@@ -19,7 +19,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  bool loggedIN = false;
+  // bool loggedIN = false;
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xff281627),
         accentColor: const Color(0xffFEBB46),
       ),
-      home: loggedIN == true ? HomeScreen() : MainScreen(),
+      // home: loggedIN == true ? HomeScreen() : MainScreen(),
+      initialRoute: SplashScreen_1.routeName,
       routes: {
         HomeScreen.routeName: (ctx) => HomeScreen(),
         SplashScreen_1.routeName: (ctx) => SplashScreen_1(),

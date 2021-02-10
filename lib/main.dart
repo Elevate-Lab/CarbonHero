@@ -12,6 +12,9 @@ import './screens/splashScreen_1.dart';
 import 'package:flutter/services.dart';
 import 'package:carbon_emission/screens/newuser.dart';
 
+import 'screens/MainScreen.dart';
+import 'screens/MainScreen.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -44,6 +47,7 @@ class MyApp extends StatelessWidget {
         SplashScreen_2.routeName: (ctx) => SplashScreen_2(),
         LogIn.routeName: (ctx) => LogIn(),
         NewUser.routeName: (ctx) => NewUser(),
+        MainScreen.routeName: (ctx) => MainScreen()
       },
     );
   }

@@ -1,13 +1,16 @@
 import 'package:carbon_emission/screens/MainScreen.dart';
 import 'package:carbon_emission/screens/login.dart';
 
-import 'package:carbon_emission/screens/splashScreen_2.dart';
+
+import 'package:carbon_emission/screens/splashScreen2.dart';
+
+import 'package:carbon_emission/screens/splashScreen1.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import './screens/homeScreen.dart';
 
-import './screens/splashScreen_1.dart';
+
 
 import 'package:flutter/services.dart';
 import 'package:carbon_emission/screens/newuser.dart';
@@ -40,8 +43,8 @@ class MyApp extends StatelessWidget {
       initialRoute: SplashScreen_1.routeName,
       routes: {
         HomeScreen.routeName: (ctx) => HomeScreen(),
-        SplashScreen_1.routeName: (ctx) => SplashScreen_1(),
-        SplashScreen_2.routeName: (ctx) => SplashScreen_2(),
+        SplashScreen1.routeName: (ctx) => SplashScreen1(),
+        SplashScreen2.routeName: (ctx) => SplashScreen2(),
         LogIn.routeName: (ctx) => LogIn(),
         NewUser.routeName: (ctx) => NewUser(),
       },

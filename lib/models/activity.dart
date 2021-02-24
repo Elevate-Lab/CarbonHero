@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Activity {
-  String nameAct;
-  String categoryAct;
+  String nameOfActivity;
+  String categoryOfActivity;
   Map<String, double> inputParameters;
   double approximationFactor;
   double averageConsumptionYearly;
@@ -12,14 +12,13 @@ class Activity {
   DateTime lastCheckedAt;
   Map<String, dynamic> previouslyRecordedEmission;
 
-  Activity({
-      @required this.nameAct,
-      @required this.categoryAct,
+  Activity(
+      {@required this.nameOfActivity,
+      @required this.categoryOfActivity,
       @required this.inputParameters,
       @required this.approximationFactor,
       @required this.averageConsumptionYearly,
       @required this.lastDayPercentageChange,
       @required this.lastCheckedAt,
-      @required this.previouslyRecordedEmission
-  });
+      @required this.previouslyRecordedEmission});
 }

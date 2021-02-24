@@ -6,23 +6,20 @@ class User {
   String username;
   String emailId;
   String imgUrl;
-  bool isFirstTimeUser;
   double savedCarbonEmission;
   List<Activity> userActivities;
   List<String> batchesEarned;
   int leaderBoardRank;
   int pointsEarned;
 
-  User({
-      @required this.userId,
+  User(
+      {@required this.userId,
       @required this.username,
       @required this.emailId,
       @required this.imgUrl,
-      @required this.isFirstTimeUser,
       @required this.savedCarbonEmission,
       @required this.userActivities,
       @required this.batchesEarned,
       @required this.leaderBoardRank,
-      @required this.pointsEarned
-  });
+      @required this.pointsEarned});
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class MainScreen extends StatefulWidget {
+  static const routeName = '/MainScreen';
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -18,7 +19,6 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: const Color(0xff281627),
       body: DashBoard(),
@@ -31,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
             icon: Icon(
               Icons.home,
             ),
-            label: 'Home',
+            title: Text('Home'),
           ),
           BottomNavigationBarItem(
             icon: Icon(

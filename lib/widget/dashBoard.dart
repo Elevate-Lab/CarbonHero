@@ -75,7 +75,12 @@ class DashBoard extends StatelessWidget {
                                 color: const Color(0xffFEBB46), fontSize: 39),
                           ),
                           Text(
-                              "of CO2 has been emitted this\n               emitted ",
+                              "of CO2 has been emitted this",
+                              style: TextStyle(
+                                  color: const Color(0xffFEBB46),
+                                  fontSize: 14)),
+                          Text(
+                              "emitted ",
                               style: TextStyle(
                                   color: const Color(0xffFEBB46),
                                   fontSize: 14)),
@@ -107,7 +112,14 @@ class DashBoard extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "CO2 this\n month",
+                      "CO2 this",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "month",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -136,7 +148,14 @@ class DashBoard extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "CO2 from\nyesterday",
+                      "CO2 from",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    ),
+                      Text(
+                      "yesterday",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,

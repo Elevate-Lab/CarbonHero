@@ -31,6 +31,7 @@ dependencies:
   google_sign_in: ^4.5.9
   cloud_firestore: ^0.11.0+2
   syncfusion_flutter_gauges: ^18.2.44
+  sleek_circular_slider: ^1.2.0+web
   
   google_fonts: ^1.1.2
 
@@ -54,6 +55,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/splash_1.jpg
+    - assets/tv.png
 
   # To add assets to your application, add an assets section, like this:
   #assets:

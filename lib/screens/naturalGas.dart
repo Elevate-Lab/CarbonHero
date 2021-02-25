@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
-class Television extends StatefulWidget {
+class NaturalGas extends StatefulWidget {
   @override
-  _TelevisionState createState() => _TelevisionState();
+  _NaturalGasState createState() => _NaturalGasState();
 }
 
-class _TelevisionState extends State<Television> {
+class _NaturalGasState extends State<NaturalGas> {
+  @override
   @override
   Widget build(BuildContext context) {
     double _height = MediaQuery.of(context).size.height;
@@ -43,7 +44,7 @@ class _TelevisionState extends State<Television> {
             margin: EdgeInsets.only(left: 14, bottom: 10),
             child: RichText(
                 text: TextSpan(
-                    text: "Television",
+                    text: "Natural Gas",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 25
@@ -96,9 +97,9 @@ class _TelevisionState extends State<Television> {
                   ),
                 ),
                 Image(
-                  width: _width*0.26,
+                  width: _width*0.29,
                   height: _height*0.12,
-                  image: AssetImage('assets/tv.png'),
+                  image: AssetImage('assets/Natural gas.png'),
                 ),
               ],
             ),
@@ -114,10 +115,10 @@ class _TelevisionState extends State<Television> {
               child: Column(
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.fromLTRB(_width*0.075, _height*0.06, 0, _height*0.02),
+                      margin: EdgeInsets.fromLTRB(_width*0.07, _height*0.06, _width*0.07, _height*0.02),
                       child: RichText(
                           text: TextSpan(
-                            text: "Number of hours television watched per day",
+                            text: "Number of gas cylinders used in a month",
                             style: TextStyle(
                               fontSize: 22,
                               color: Color(0xff281627),
@@ -144,7 +145,7 @@ class _TelevisionState extends State<Television> {
                           ),
                         ),
                         min: 0,
-                        max: 24,
+                        max: 12,
                         initialValue: 5,
                         onChange: (double value) {
                           print(value);

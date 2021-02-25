@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' as JSON;
 import 'dart:async';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'MainScreen.dart';
@@ -44,7 +45,7 @@ class _LogInState extends State<LogIn> {
     _googleSignIn.signInSilently();
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(double height, double width) {
     if (_currentUser != null) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -66,30 +67,134 @@ class _LogInState extends State<LogIn> {
         ],
       );
     } else {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          const Text("You are not currently signed in."),
-          ElevatedButton(
-            child: const Text('SIGN IN'),
-            onPressed: () {
-              auth.handleSignIn(_googleSignIn);
-            },
-          ),
-        ],
+      return Container(
+        color: Color(0xff281627),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(
+              height: height * 0.05,
+            ),
+            Container(
+              height: height * 0.35,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/login_screen.png'),
+                      fit: BoxFit.contain)),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Text("Welcome",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 40)),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5),
+              child: Text("""Sign In to continue""",
+                  style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      color: Colors.white38,
+                      fontSize: 20)),
+            ),
+            SizedBox(
+              height: height * 0.1,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 90, right: 90),
+              child: RaisedButton(
+                elevation: 0.0,
+                color: Color(0xff281627),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(1.0),
+                    side: BorderSide(color: Colors.white)),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.login,
+                      color: Colors.amber,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Container(
+                      width: 1,
+                      height: 20,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 6,
+                    ),
+                    Text(
+                      """Sign In with Google""",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
+                ),
+                onPressed: () {
+                  auth.handleSignIn(_googleSignIn);
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 90, right: 90, top: 10),
+              child: RaisedButton(
+                elevation: 0.0,
+                color: Color(0xff281627),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(1.0),
+                    side: BorderSide(color: Colors.white)),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.login,
+                      color: Colors.amber,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Container(
+                      width: 1,
+                      height: 20,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 6,
+                    ),
+                    Text(
+                      """Sign In with Facebook""",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
+                ),
+                onPressed: () {
+                  print("Not Functional");
+                },
+              ),
+            ),
+          ],
+        ),
       );
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
           title: const Text('Google Sign In'),
         ),
         body: ConstrainedBox(
-          constraints: const BoxConstraints.expand(),
-          child: _buildBody(),
-        ));
+            constraints: const BoxConstraints.expand(),
+            child: _buildBody(height, width)));
   }
 }

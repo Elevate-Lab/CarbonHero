@@ -116,9 +116,12 @@ class _WasteState extends State<Waste> {
               itemCount: 5,
               itemBuilder: (context, ind){
                 return Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xffF6EEE3),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                       padding: EdgeInsets.symmetric(vertical: _height*0.02, horizontal: _width*0.024),
-                      margin: EdgeInsets.symmetric(vertical: _height*0.011, horizontal: _width*0.03),
-                      color: const Color(0xffF6EEE3),
+                      margin: EdgeInsets.fromLTRB(_width*0.03, _height*0.005, _width*0.03, _height*0.011),
                       height: _height*0.15,
                       // A fixed-height child.
                       child: Column(

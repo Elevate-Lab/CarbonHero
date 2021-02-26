@@ -32,7 +32,7 @@ dependencies:
   cloud_firestore: ^0.11.0+2
   syncfusion_flutter_gauges: ^18.2.44
   sleek_circular_slider: ^1.2.0+web
-  
+  material_design_icons_flutter: ^4.0.5855
   google_fonts: ^1.1.2
 
 
@@ -59,7 +59,7 @@ flutter:
     - assets/splash_1.jpg
     - assets/tv.png
     - assets/Natural gas.png
-    - assets/waste.png
+    - assets/login_screen.png
 
   # To add assets to your application, add an assets section, like this:
   #assets:

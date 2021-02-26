@@ -1,8 +1,6 @@
 import 'package:carbon_emission/screens/MainScreen.dart';
-import 'package:carbon_emission/screens/Waste.dart';
 import 'package:carbon_emission/screens/login.dart';
 import 'package:carbon_emission/screens/naturalGas.dart';
-
 
 import 'package:carbon_emission/screens/splashScreen2.dart';
 
@@ -12,8 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import './screens/homeScreen.dart';
-
-
 
 import 'package:flutter/services.dart';
 import 'package:carbon_emission/screens/newuser.dart';
@@ -45,8 +41,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xff281627),
         accentColor: const Color(0xffFEBB46),
       ),
-      home: Waste(),
-      //initialRoute: SplashScreen1.routeName,
+      initialRoute: SplashScreen1.routeName,
       routes: {
         HomeScreen.routeName: (ctx) => HomeScreen(),
         SplashScreen1.routeName: (ctx) => SplashScreen1(),

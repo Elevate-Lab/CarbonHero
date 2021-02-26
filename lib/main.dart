@@ -1,4 +1,5 @@
 import 'package:carbon_emission/screens/MainScreen.dart';
+import 'package:carbon_emission/screens/Waste.dart';
 import 'package:carbon_emission/screens/login.dart';
 import 'package:carbon_emission/screens/naturalGas.dart';
 
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xff281627),
         accentColor: const Color(0xffFEBB46),
       ),
-      home: NaturalGas(),
+      home: Waste(),
       //initialRoute: SplashScreen1.routeName,
       routes: {
         HomeScreen.routeName: (ctx) => HomeScreen(),

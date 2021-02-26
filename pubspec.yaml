@@ -59,6 +59,7 @@ flutter:
     - assets/splash_1.jpg
     - assets/tv.png
     - assets/Natural gas.png
+    - assets/waste.png
 
   # To add assets to your application, add an assets section, like this:
   #assets:

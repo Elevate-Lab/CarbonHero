@@ -12,10 +12,11 @@ import 'package:google_fonts/google_fonts.dart';
 import './screens/homeScreen.dart';
 
 import 'package:flutter/services.dart';
-import 'package:carbon_emission/screens/newuser.dart';
+import 'package:carbon_emission/screens/chooseNewActivity.dart';
 
 import 'screens/MainScreen.dart';
 import 'screens/MainScreen.dart';
+import 'screens/chooseNewActivity.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,13 +42,13 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xff281627),
         accentColor: const Color(0xffFEBB46),
       ),
-      initialRoute: SplashScreen1.routeName,
+      initialRoute: chooseNewActivity.routeName,
       routes: {
         HomeScreen.routeName: (ctx) => HomeScreen(),
         SplashScreen1.routeName: (ctx) => SplashScreen1(),
         SplashScreen2.routeName: (ctx) => SplashScreen2(),
         LogIn.routeName: (ctx) => LogIn(),
-        NewUser.routeName: (ctx) => NewUser(),
+        chooseNewActivity.routeName: (ctx) => chooseNewActivity(),
         MainScreen.routeName: (ctx) => MainScreen()
       },
     );

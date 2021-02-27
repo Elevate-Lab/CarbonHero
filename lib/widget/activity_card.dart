@@ -7,34 +7,60 @@ class ActivityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          Container(
-            height: 100,
-            decoration: BoxDecoration(
-                color: Colors.white,
+      height: 50,
+     // color: Colors.orange,
+      child: Stack(children: [
+        Column(
+          children: [
+            Container(
+              height: 100,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft:  Radius.circular(10),
+                      topRight: Radius.circular(10))),
+            ),
+            Container(
+              height: 5,
+              color: Colors.purple[200],
+            ),
+            Container(
+              height: 50,
+              padding: EdgeInsets.only(top: 5),
+              decoration: BoxDecoration(
+                color: Colors.purple[100],
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10))),
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                ),
+              ),
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Text(
+                  nameOfActivity,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                ),
+              ),
+            )
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top:8.0),
+          child: Align(
+              alignment: Alignment.bottomCenter,
+                    child: ClipOval(
+              child: Material(
+                color: Colors.black,
+                child: InkWell(
+                  splashColor: Colors.purple[100], // inkwell color
+                  child: SizedBox(width: 50, height: 50, child: Icon(Icons.add,color: Colors.purple,size: 40,)),
+                  onTap: () {},
+                ),
+              ),
+            ),
           ),
-          Container(
-            height: 50,
-            decoration: BoxDecoration(
-              color: Color(0xffA663C6),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10),
-              ),
-            ),
-            child: Center(
-              child: Text(
-                nameOfActivity,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-          )
-        ],
-      ),
+        )
+      ]),
     );
   }
 }

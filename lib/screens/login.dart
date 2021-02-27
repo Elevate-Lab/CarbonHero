@@ -1,4 +1,4 @@
-import 'package:carbon_emission/screens/newuser.dart';
+import 'package:carbon_emission/screens/chooseNewActivity.dart';
 import 'package:carbon_emission/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';

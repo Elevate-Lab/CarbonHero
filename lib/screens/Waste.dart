@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
-class NaturalGas extends StatefulWidget {
+class Waste extends StatefulWidget {
   @override
-  _NaturalGasState createState() => _NaturalGasState();
+  _WasteState createState() => _WasteState();
 }
 
-class _NaturalGasState extends State<NaturalGas> {
+class _WasteState extends State<Waste> {
+
+  var titles = ["Waste generated this month (kg)", "Paper recycled this month (kg)", "Plastic recycled this month (kg)", "Glass recycled this month (kg)", "Metal recycled this month (kg)"];
+
   @override
   Widget build(BuildContext context) {
     double _height = MediaQuery.of(context).size.height;
@@ -43,7 +45,7 @@ class _NaturalGasState extends State<NaturalGas> {
             margin: EdgeInsets.only(left: 14, bottom: 10),
             child: RichText(
                 text: TextSpan(
-                    text: "Natural Gas",
+                    text: "Waste Generated",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 25
@@ -56,7 +58,7 @@ class _NaturalGasState extends State<NaturalGas> {
           ),
           Container(
             padding: EdgeInsets.fromLTRB(_width*0.01495, _height*0.01495, _width*0.01495, _height*0.01495),
-            margin: EdgeInsets.fromLTRB(_width*0.02, 0, _width*0.02, 0),
+            margin: EdgeInsets.fromLTRB(_width*0.02, 0, _width*0.02, _height*0.045),
             decoration: BoxDecoration(
                 borderRadius: new BorderRadius.circular(10),
                 color: Colors.white
@@ -84,7 +86,7 @@ class _NaturalGasState extends State<NaturalGas> {
                       ),
                       RichText(
                           text: TextSpan(
-                              text: "241 Kg",
+                              text: "15 Kg",
                               style: TextStyle(
                                   fontSize: 30,
                                   color: Color(0xff281627),
@@ -98,89 +100,73 @@ class _NaturalGasState extends State<NaturalGas> {
                 Image(
                   width: _width*0.29,
                   height: _height*0.12,
-                  image: AssetImage('assets/Natural gas.png'),
+                  image: AssetImage('assets/waste.png'),
                 ),
               ],
             ),
           ),
           Container(
-              width: _width,
-              height: _height*0.53,
-              decoration: BoxDecoration(
-                  borderRadius: new BorderRadius.only(topRight: Radius.circular(10), topLeft: Radius.circular(10)),
-                  color: Colors.white
-              ),
-              margin: EdgeInsets.fromLTRB(0, _height*0.04, 0, 0),
-              child: Column(
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.fromLTRB(_width*0.07, _height*0.06, _width*0.07, _height*0.02),
-                      child: RichText(
-                          text: TextSpan(
-                            text: "Number of gas cylinders used in a month",
-                            style: TextStyle(
-                              fontSize: 22,
-                              color: Color(0xff281627),
-                              fontWeight: FontWeight.w800,
-                            ),
-                          )
+            width: _width,
+            height: _height*0.525,
+            decoration: BoxDecoration(
+                borderRadius: new BorderRadius.only(topRight: Radius.circular(10), topLeft: Radius.circular(10)),
+                color: Colors.white
+            ),
+            child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, ind){
+                return Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xffF6EEE3),
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      child: SleekCircularSlider(
-                        appearance: CircularSliderAppearance(
-                          startAngle: 165,
-                          angleRange: 210,
-                          size: 230,
-                          customWidths: CustomSliderWidths(
-                              progressBarWidth: 30
+                      padding: EdgeInsets.symmetric(vertical: _height*0.02, horizontal: _width*0.024),
+                      margin: EdgeInsets.fromLTRB(_width*0.03, _height*0.005, _width*0.03, _height*0.011),
+                      height: _height*0.15,
+                      // A fixed-height child.
+                      child: Column(
+                        children: <Widget>[
+                          RichText(
+                            text: TextSpan(
+                                text: titles[ind],
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    color: Color(0xff281627),
+                                )
+                            )
                           ),
-                          customColors: CustomSliderColors(
-                              trackColor: Colors.white,
-                              shadowColor: Colors.white,
-                              dotColor: Colors.white,
-                              progressBarColor: Color(0xff281627)
+                          SizedBox(
+                            height: _height*0.025,
                           ),
-                        ),
-                        min: 0,
-                        max: 12,
-                        initialValue: 5,
-                        onChange: (double value) {
-                          print(value);
-                        },
-                        innerWidget: (double value){
-                          String percentageModifier(double value) {
-                            final roundedValue = value.ceil().toInt().toString();
-                            return '$roundedValue';
-                          }
-                          return Container(
-                            margin: EdgeInsets.fromLTRB(_width*0.25, _height*0.1, 0, 0),
-                            // child: Text(
-                            //     percentageModifier(value),
-                            //     style: TextStyle(
-                            //       color: Color(0xff281627),
-                            //         fontSize: 45,
-                            //         fontWeight: FontWeight.w800
-                            //     )
-                            // )
-                            child: RichText(
-                              text: TextSpan(
-                                  text: percentageModifier(value),
-                                  style: TextStyle(
-                                      color: Color(0xff281627),
-                                      fontSize: 45,
-                                      fontWeight: FontWeight.w800
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Icon(
+                                Icons.remove_circle_outlined,
+                                size: 30,
+                              ),
+                              RichText(
+                                  text: TextSpan(
+                                      text: "15",
+                                      style: TextStyle(
+                                        fontSize: 35,
+                                        color: Color(0xff281627),
+                                        fontWeight: FontWeight.bold,
+                                      )
                                   )
                               ),
-                            ),
-                          );
-                        },
+                              Icon(
+                                Icons.add_circle_outlined,
+                                size: 30,
+                              ),
+                            ],
+                          ),
+                        ]
                       ),
-                    ),
-                  ]
-              )
-          ),
+                    );
+                },
+            ),
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

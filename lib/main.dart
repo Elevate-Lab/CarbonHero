@@ -1,4 +1,5 @@
 import 'package:carbon_emission/screens/MainScreen.dart';
+import 'package:carbon_emission/screens/Waste.dart';
 import 'package:carbon_emission/screens/login.dart';
 import 'package:carbon_emission/screens/naturalGas.dart';
 

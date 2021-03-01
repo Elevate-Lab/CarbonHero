@@ -254,7 +254,7 @@ class _TransportState extends State<Transport> {
                   ),
                     SizedBox(height: _height * 0.02),
                   Text(
-                    'Kilometer,travelled this week(km)',
+                    'Average mileage of your vehicle (km/L) ',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(

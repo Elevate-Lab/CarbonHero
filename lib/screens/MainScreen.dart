@@ -1,6 +1,8 @@
+import 'package:carbon_emission/screens/transportScreen.dart';
 import 'package:carbon_emission/widget/badge.dart';
 import 'package:carbon_emission/widget/dashBoard.dart';
 import 'package:flutter/material.dart';
+import 'package:carbon_emission/screens/electricityScreen.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class MainScreen extends StatefulWidget {

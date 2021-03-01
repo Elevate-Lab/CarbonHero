@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class Television extends StatefulWidget {
+  static var routeName='/televisionScreen';
+
   @override
   _TelevisionState createState() => _TelevisionState();
 }
 
 class _TelevisionState extends State<Television> {
+ 
   @override
   Widget build(BuildContext context) {
     double _height = MediaQuery.of(context).size.height;

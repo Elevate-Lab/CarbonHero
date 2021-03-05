@@ -1,3 +1,4 @@
+import 'package:carbon_emission/models/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
@@ -15,7 +16,7 @@ class _TelevisionState extends State<Television> {
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor:  Color(0xff281627),
+      backgroundColor: primary_color,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,7 +91,7 @@ class _TelevisionState extends State<Television> {
                               text: "241 Kg",
                               style: TextStyle(
                                   fontSize: 30,
-                                  color: Color(0xff281627),
+                                  color: primary_color,
                                   fontWeight: FontWeight.w900
                               )
                           )
@@ -123,7 +124,7 @@ class _TelevisionState extends State<Television> {
                             text: "Number of hours television watched per day",
                             style: TextStyle(
                               fontSize: 22,
-                              color: Color(0xff281627),
+                              color: primary_color,
                               fontWeight: FontWeight.w800,
                             ),
                           )

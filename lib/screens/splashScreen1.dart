@@ -10,7 +10,7 @@ class SplashScreen1 extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xff281627),
       body: Padding(
         padding:
             const EdgeInsets.only(top: 40, left: 35, right: 35, bottom: 40),
@@ -21,24 +21,28 @@ class SplashScreen1 extends StatelessWidget {
                 Spacer(),
                 GestureDetector(
                   onTap: () {
+                    Navigator.pop(context);
                     Navigator.of(context).pushNamed(LogIn.routeName);
                   },
                   child: Text(
                     "Skip",
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: Colors.white,
                       fontSize: 22,
                     ),
                   ),
                 )
               ],
             ),
+            SizedBox(
+              height: height * 0.05,
+            ),
             Container(
               height: height * 0.35,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("assets/splash_1.jpg"),
-                      fit: BoxFit.cover)),
+                      image: AssetImage("assets/splash_1.png"),
+                      fit: BoxFit.fitHeight)),
             ),
             SizedBox(
               height: height * 0.08,
@@ -48,7 +52,7 @@ class SplashScreen1 extends StatelessWidget {
               child: Text(
                 "Track",
                 style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 34,
                     fontWeight: FontWeight.bold),
               ),
@@ -59,9 +63,9 @@ class SplashScreen1 extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Text(
-'''Track your carbon emission
+                '''Track your carbon emission
 easily with and automatically with our simple tracker.''',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20, color: Colors.white),
               ),
             ),
             Spacer(),
@@ -71,9 +75,9 @@ easily with and automatically with our simple tracker.''',
                   height: height * 0.01,
                   width: width * 0.08,
                   decoration: BoxDecoration(
-                      color: Color(0xff4FAB8A),
+                      color: Color(0xffA663C6),
                       border: Border.all(
-                        color: Color(0xff4FAB8A),
+                        color: Color(0xffA663C6),
                       ),
                       borderRadius: BorderRadius.all(Radius.circular(20))),
                 ),
@@ -93,12 +97,13 @@ easily with and automatically with our simple tracker.''',
                 Spacer(),
                 GestureDetector(
                   onTap: () {
+                    Navigator.pop(context);
                     Navigator.of(context).pushNamed(SplashScreen2.routeName);
                   },
                   child: Text(
                     "Next",
                     style: TextStyle(
-                        color: Colors.black,
+                        color: Color(0xffFEBB46),
                         fontSize: 26,
                         fontWeight: FontWeight.bold),
                   ),

@@ -1,4 +1,3 @@
-
 import 'package:carbon_emission/screens/login.dart';
 import 'package:carbon_emission/screens/homeScreen.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,7 @@ class SplashScreen2 extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xff281627),
       body: Padding(
         padding:
             const EdgeInsets.only(top: 40, left: 35, right: 35, bottom: 40),
@@ -21,24 +20,28 @@ class SplashScreen2 extends StatelessWidget {
                 Spacer(),
                 GestureDetector(
                   onTap: () {
+                    Navigator.pop(context);
                     Navigator.of(context).pushNamed(LogIn.routeName);
                   },
                   child: Text(
                     "Skip",
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: Colors.white,
                       fontSize: 22,
                     ),
                   ),
                 )
               ],
             ),
+            SizedBox(
+              height: height * 0.05,
+            ),
             Container(
               height: height * 0.35,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("assets/splash_2.jpg"),
-                      fit: BoxFit.cover)),
+                      image: AssetImage("assets/splash_2.png"),
+                      fit: BoxFit.fitHeight)),
             ),
             SizedBox(
               height: height * 0.08,
@@ -48,7 +51,7 @@ class SplashScreen2 extends StatelessWidget {
               child: Text(
                 "Reduce",
                 style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 34,
                     fontWeight: FontWeight.bold),
               ),
@@ -59,10 +62,10 @@ class SplashScreen2 extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Text(
-'''Reduce your carbon emission
+                '''Reduce your carbon emission
 and help us create a healthy
 environment''',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20, color: Colors.white),
               ),
             ),
             Spacer(),
@@ -85,21 +88,22 @@ environment''',
                   height: height * 0.01,
                   width: width * 0.08,
                   decoration: BoxDecoration(
-                      color: Color(0xff4FAB8A),
+                      color: Color(0xffA663C6),
                       border: Border.all(
-                        color: Color(0xff4FAB8A),
+                        color: Color(0xffA663C6),
                       ),
                       borderRadius: BorderRadius.all(Radius.circular(20))),
                 ),
                 Spacer(),
                 GestureDetector(
-                   onTap: () {
+                  onTap: () {
+                    Navigator.pop(context);
                     Navigator.of(context).pushNamed(LogIn.routeName);
                   },
                   child: Text(
                     "Sign In",
                     style: TextStyle(
-                        color: Colors.black,
+                        color: Color(0xffFEBB46),
                         fontSize: 26,
                         fontWeight: FontWeight.bold),
                   ),

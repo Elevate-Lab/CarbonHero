@@ -59,6 +59,8 @@ flutter:
     - assets/splash_1.png
     - assets/splash_2.png
     - assets/tv.png
+    - assets/transport.png
+    - assets/electricity.png
     - assets/Natural gas.png
     - assets/login_screen.png
 

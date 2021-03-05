@@ -50,7 +50,8 @@ class MyApp extends StatelessWidget {
         SplashScreen2.routeName: (ctx) => SplashScreen2(),
         LogIn.routeName: (ctx) => LogIn(),
         chooseNewActivity.routeName: (ctx) => chooseNewActivity(),
-        MainScreen.routeName: (ctx) => MainScreen()
+        MainScreen.routeName: (ctx) => MainScreen(),
+        Television.routeName: (ctx) => Television(),
       },
     );
   }

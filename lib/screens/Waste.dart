@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Waste extends StatefulWidget {
+    static const routeName = '/WasteScreen';
   @override
   _WasteState createState() => _WasteState();
 }

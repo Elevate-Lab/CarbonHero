@@ -49,6 +49,7 @@ class _LogInState extends State<LogIn> {
     if (_currentUser != null) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           ListTile(
             leading: GoogleUserCircleAvatar(
@@ -70,7 +71,8 @@ class _LogInState extends State<LogIn> {
       return Container(
         color: Color(0xff281627),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             SizedBox(
               height: height * 0.05,
@@ -99,84 +101,93 @@ class _LogInState extends State<LogIn> {
                       fontSize: 20)),
             ),
             SizedBox(
-              height: height * 0.1,
+              height: height * 0.05,
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 90, right: 90),
-              child: RaisedButton(
-                elevation: 0.0,
-                color: Color(0xff281627),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(1.0),
-                    side: BorderSide(color: Colors.white)),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.login,
-                      color: Colors.amber,
-                    ),
-                    SizedBox(
-                      width: 4,
-                    ),
-                    Container(
-                      width: 1,
-                      height: 20,
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      width: 6,
-                    ),
-                    Text(
-                      """Sign In with Google""",
-                      style: TextStyle(
-                        fontSize: 20,
+              Material(
+              color: Color(0xff281627),
+                          child: InkWell(
+                splashColor: Colors.purple[100], 
+                onTap: (){
+                    auth.handleSignIn(_googleSignIn);
+                },
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  width: width * 0.7,
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.white)),
+                  //color: Colors.green,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.login,
+                        color: Colors.amber,
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Container(
+                        width: 1,
+                        height: 20,
                         color: Colors.white,
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text(
+                        """Sign In with Google""",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                onPressed: () {
-                  auth.handleSignIn(_googleSignIn);
-                },
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 90, right: 90, top: 10),
-              child: RaisedButton(
-                elevation: 0.0,
-                color: Color(0xff281627),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(1.0),
-                    side: BorderSide(color: Colors.white)),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.login,
-                      color: Colors.amber,
-                    ),
-                    SizedBox(
-                      width: 4,
-                    ),
-                    Container(
-                      width: 1,
-                      height: 20,
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      width: 6,
-                    ),
-                    Text(
-                      """Sign In with Facebook""",
-                      style: TextStyle(
-                        fontSize: 20,
+               SizedBox(
+              height: height * 0.02,
+            ),
+            Material(
+              color: Color(0xff281627),
+                          child: InkWell(
+                splashColor: Colors.purple[100], 
+                onTap: (){},
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  width: width * 0.7,
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.white)),
+                  //color: Colors.green,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.login,
+                        color: Colors.amber,
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Container(
+                        width: 1,
+                        height: 20,
                         color: Colors.white,
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text(
+                        """Sign In with Facebook""",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                onPressed: () {
-                  print("Not Functional");
-                },
               ),
             ),
           ],

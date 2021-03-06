@@ -1,3 +1,5 @@
+import 'package:carbon_emission/screens/naturalGas.dart';
+import 'package:carbon_emission/screens/televisionScreen.dart';
 import 'package:carbon_emission/screens/transportScreen.dart';
 import 'package:carbon_emission/widget/badge.dart';
 import 'package:carbon_emission/widget/dashBoard.dart';
@@ -23,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff281627),
-      body: DashBoard(),
+      body:NaturalGas(),
       bottomNavigationBar: BottomNavigationBar(
         fixedColor: Colors.black,
         currentIndex: _currentIndex,

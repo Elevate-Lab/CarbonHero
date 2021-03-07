@@ -2,23 +2,20 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Activity {
-  String nameOfActivity;
-  String categoryOfActivity;
-  Map<String, double> inputParameters;
-  double approximationFactor;
-  double averageConsumptionYearly;
-  double lastDayEmissionCount;
-  double lastDayPercentageChange;
+  String activityName;
   DateTime lastCheckedAt;
-  Map<String, dynamic> previouslyRecordedEmission;
+  int continuousStreak;
+  double totalCarbonEmissionToday;
+  double totalCarbonEmissionYesterday;
+  double totalCarbonEmissionThisMonth;
+  double totalCarbonEmissionLastMonth;
 
   Activity(
-      {@required this.nameOfActivity,
-      @required this.categoryOfActivity,
-      @required this.inputParameters,
-      @required this.approximationFactor,
-      @required this.averageConsumptionYearly,
-      @required this.lastDayPercentageChange,
+      {@required this.activityName,
       @required this.lastCheckedAt,
-      @required this.previouslyRecordedEmission});
+      @required this.continuousStreak,
+      @required this.totalCarbonEmissionToday,
+      @required this.totalCarbonEmissionYesterday,
+      @required this.totalCarbonEmissionThisMonth,
+      @required this.totalCarbonEmissionLastMonth});
 }

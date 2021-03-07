@@ -3,23 +3,31 @@ import 'package:flutter/material.dart';
 
 class User {
   String userId;
-  String username;
+  String userName;
   String emailId;
   String imgUrl;
   double savedCarbonEmission;
-  List<Activity> userActivities;
+  double totalCarbonEmissionThisMonth;
+  double totalCarbonEmissionLastMonth;
+  double totalCarbonEmissionYesterday;
+  double totalCarbonEmissionToday;
   List<String> batchesEarned;
-  int leaderBoardRank;
   int pointsEarned;
+  List<String> userFriends;
+  List<Activity> userActivities;
 
   User(
       {@required this.userId,
-      @required this.username,
+      @required this.userName,
       @required this.emailId,
       @required this.imgUrl,
       @required this.savedCarbonEmission,
-      @required this.userActivities,
+      @required this.totalCarbonEmissionThisMonth,
+      @required this.totalCarbonEmissionLastMonth,
+      @required this.totalCarbonEmissionYesterday,
+      @required this.totalCarbonEmissionToday,
       @required this.batchesEarned,
-      @required this.leaderBoardRank,
-      @required this.pointsEarned});
+      @required this.pointsEarned,
+      @required this.userFriends,
+      @required this.userActivities});
 }

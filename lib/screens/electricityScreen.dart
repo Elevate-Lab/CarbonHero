@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 class Electricity extends StatefulWidget {
   @override
   _ElectricityState createState() => _ElectricityState();
+  static const routeName = '/ElectricityScreen';
 }
 
 class _ElectricityState extends State<Electricity> {
   var consumption = 0.00;
-    var billAmount = 0.00;
+  var billAmount = 0.00;
   @override
   Widget build(BuildContext context) {
     double _height = MediaQuery.of(context).size.height;
@@ -37,7 +38,7 @@ class _ElectricityState extends State<Electricity> {
           ),
         ),
         Container(
-          padding: EdgeInsets.only(left: _width*0.05),
+          padding: EdgeInsets.only(left: _width * 0.05),
           margin: EdgeInsets.only(left: 14, bottom: 10),
           child: Align(
             alignment: Alignment.topLeft,
@@ -206,7 +207,7 @@ class _ElectricityState extends State<Electricity> {
                             //  activeTrackColor: Colors.red[700],
                             inactiveTrackColor: const Color(0xff281627),
                             trackShape: RoundedRectSliderTrackShape(),
-                            trackHeight: _height*0.01,
+                            trackHeight: _height * 0.01,
                             thumbShape:
                                 RoundSliderThumbShape(enabledThumbRadius: 12.0),
                             thumbColor: const Color(0xffFEBB46),
@@ -218,7 +219,7 @@ class _ElectricityState extends State<Electricity> {
                             inactiveTickMarkColor: Colors.white,
                             valueIndicatorShape:
                                 PaddleSliderValueIndicatorShape(),
-                       //     valueIndicatorColor: Colors.redAccent,
+                            //     valueIndicatorColor: Colors.redAccent,
                             valueIndicatorTextStyle: TextStyle(
                               color: Colors.white,
                             ),
@@ -229,7 +230,6 @@ class _ElectricityState extends State<Electricity> {
                             min: 0,
                             max: 6000,
                             divisions: 10,
-                            
                             activeColor: const Color(0xffFEBB46),
                             onChanged: (double value) {
                               setState(() {

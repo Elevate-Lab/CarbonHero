@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:carbon_emission/screens/chooseNewActivity.dart';
 import 'package:carbon_emission/widget/badge.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -74,13 +75,11 @@ class DashBoard extends StatelessWidget {
                             style: TextStyle(
                                 color: const Color(0xffFEBB46), fontSize: 39),
                           ),
-                          Text(
-                              "of CO2 has been emitted this",
+                          Text("of CO2 has been emitted this",
                               style: TextStyle(
                                   color: const Color(0xffFEBB46),
                                   fontSize: 14)),
-                          Text(
-                              "emitted ",
+                          Text("emitted ",
                               style: TextStyle(
                                   color: const Color(0xffFEBB46),
                                   fontSize: 14)),
@@ -154,7 +153,7 @@ class DashBoard extends StatelessWidget {
                           fontSize: 16,
                           fontWeight: FontWeight.bold),
                     ),
-                      Text(
+                    Text(
                       "yesterday",
                       style: TextStyle(
                           color: Colors.white,
@@ -204,7 +203,9 @@ class DashBoard extends StatelessWidget {
                   ],
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(chooseNewActivity.routeName);
+              },
               shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0),
               ),

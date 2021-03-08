@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Transport extends StatefulWidget {
   @override
   _TransportState createState() => _TransportState();
+  static const routeName = '/TransportScreen';
 }
 
 class _TransportState extends State<Transport> {
@@ -108,7 +109,7 @@ class _TransportState extends State<Transport> {
             margin: EdgeInsets.fromLTRB(0, _height * 0.04, 0, 0),
 
             child: SingleChildScrollView(
-                          child: Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
@@ -139,8 +140,8 @@ class _TransportState extends State<Transport> {
                               inactiveTrackColor: const Color(0xff281627),
                               trackShape: RoundedRectSliderTrackShape(),
                               trackHeight: 10.0,
-                              thumbShape:
-                                  RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                              thumbShape: RoundSliderThumbShape(
+                                  enabledThumbRadius: 12.0),
                               thumbColor: const Color(0xffFEBB46),
                               overlayColor: Colors.black,
                               overlayShape:
@@ -210,8 +211,8 @@ class _TransportState extends State<Transport> {
                               inactiveTrackColor: const Color(0xff281627),
                               trackShape: RoundedRectSliderTrackShape(),
                               trackHeight: _height * 0.01,
-                              thumbShape:
-                                  RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                              thumbShape: RoundSliderThumbShape(
+                                  enabledThumbRadius: 12.0),
                               thumbColor: const Color(0xffFEBB46),
                               overlayColor: Colors.black,
                               overlayShape:
@@ -252,7 +253,7 @@ class _TransportState extends State<Transport> {
                   new Divider(
                     color: Colors.grey,
                   ),
-                    SizedBox(height: _height * 0.02),
+                  SizedBox(height: _height * 0.02),
                   Text(
                     'Average mileage of your vehicle (km/L) ',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -281,8 +282,8 @@ class _TransportState extends State<Transport> {
                               inactiveTrackColor: const Color(0xff281627),
                               trackShape: RoundedRectSliderTrackShape(),
                               trackHeight: _height * 0.01,
-                              thumbShape:
-                                  RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                              thumbShape: RoundSliderThumbShape(
+                                  enabledThumbRadius: 12.0),
                               thumbColor: const Color(0xffFEBB46),
                               overlayColor: Colors.black,
                               overlayShape:

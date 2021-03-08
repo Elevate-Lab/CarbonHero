@@ -1,8 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
-import '../screens/MainScreen.dart';
 
 class Auth {
   final databaseReference = Firestore.instance;
@@ -28,8 +25,20 @@ class Auth {
     await databaseReference
         .collection("users")
         .document(_currentUser.email)
-        .setData(
-            {'email': _currentUser.email, 'name': _currentUser.displayName});
+        .setData({
+      'emailId': _currentUser.email,
+      'userName': _currentUser.displayName,
+      'userId': _currentUser.id,
+      'imgUrl': _currentUser.photoUrl,
+      'savedCarbonEmission': 0.0,
+      'totalCarbonEmissionThisMonth': 0.0,
+      'totalCarbonEmissionLastMonth': 0.0,
+      'totalCarbonEmissionYesterday': 0.0,
+      'totalCarbonEmissionToday': 0.0,
+      'batchesEarned': [],
+      'pointsEarned': 10,
+      'userFriends': [],
+    });
     return;
   }
 }

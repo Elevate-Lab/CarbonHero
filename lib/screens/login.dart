@@ -1,4 +1,3 @@
-import 'package:carbon_emission/screens/chooseNewActivity.dart';
 import 'package:carbon_emission/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
@@ -7,7 +6,6 @@ import 'dart:convert' as JSON;
 import 'dart:async';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'MainScreen.dart';
 
@@ -103,12 +101,12 @@ class _LogInState extends State<LogIn> {
             SizedBox(
               height: height * 0.05,
             ),
-              Material(
+            Material(
               color: Color(0xff281627),
-                          child: InkWell(
-                splashColor: Colors.purple[100], 
-                onTap: (){
-                    auth.handleSignIn(_googleSignIn);
+              child: InkWell(
+                splashColor: Colors.purple[100],
+                onTap: () {
+                  auth.handleSignIn(_googleSignIn);
                 },
                 child: Container(
                   padding: EdgeInsets.all(10),
@@ -146,14 +144,14 @@ class _LogInState extends State<LogIn> {
                 ),
               ),
             ),
-               SizedBox(
+            SizedBox(
               height: height * 0.02,
             ),
             Material(
               color: Color(0xff281627),
-                          child: InkWell(
-                splashColor: Colors.purple[100], 
-                onTap: (){},
+              child: InkWell(
+                splashColor: Colors.purple[100],
+                onTap: () {},
                 child: Container(
                   padding: EdgeInsets.all(10),
                   width: width * 0.7,

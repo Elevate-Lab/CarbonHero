@@ -1,4 +1,3 @@
-import 'package:carbon_emission/models/activity.dart';
 import 'package:flutter/material.dart';
 
 class User {
@@ -14,20 +13,19 @@ class User {
   List<String> batchesEarned;
   int pointsEarned;
   List<String> userFriends;
-  List<Activity> userActivities;
 
-  User(
-      {@required this.userId,
-      @required this.userName,
-      @required this.emailId,
-      @required this.imgUrl,
-      @required this.savedCarbonEmission,
-      @required this.totalCarbonEmissionThisMonth,
-      @required this.totalCarbonEmissionLastMonth,
-      @required this.totalCarbonEmissionYesterday,
-      @required this.totalCarbonEmissionToday,
-      @required this.batchesEarned,
-      @required this.pointsEarned,
-      @required this.userFriends,
-      @required this.userActivities});
+  User({
+    @required this.userId,
+    @required this.userName,
+    @required this.emailId,
+    @required this.imgUrl,
+    @required this.savedCarbonEmission,
+    @required this.totalCarbonEmissionThisMonth,
+    @required this.totalCarbonEmissionLastMonth,
+    @required this.totalCarbonEmissionYesterday,
+    @required this.totalCarbonEmissionToday,
+    @required this.batchesEarned,
+    @required this.pointsEarned,
+    @required this.userFriends,
+  });
 }

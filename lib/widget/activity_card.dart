@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 class ActivityCard extends StatelessWidget {
   dynamic nameOfActivity;
-  ActivityCard({this.nameOfActivity});
+  dynamic routeOfActivity;
+  ActivityCard({this.nameOfActivity, this.routeOfActivity});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-     // color: Colors.orange,
+      // color: Colors.orange,
       child: Stack(children: [
         Column(
           children: [
@@ -17,7 +18,7 @@ class ActivityCard extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft:  Radius.circular(10),
+                      topLeft: Radius.circular(10),
                       topRight: Radius.circular(10))),
             ),
             Container(
@@ -45,16 +46,26 @@ class ActivityCard extends StatelessWidget {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.only(top:8.0),
+          padding: const EdgeInsets.only(top: 8.0),
           child: Align(
-              alignment: Alignment.bottomCenter,
-                    child: ClipOval(
+            alignment: Alignment.bottomCenter,
+            child: ClipOval(
               child: Material(
                 color: Colors.black,
                 child: InkWell(
                   splashColor: Colors.purple[100], // inkwell color
-                  child: SizedBox(width: 50, height: 50, child: Icon(Icons.add,color: Colors.purple,size: 40,)),
-                  onTap: () {},
+                  child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.purple,
+                        size: 40,
+                      )),
+                  onTap: () {
+                    if (routeOfActivity != "NA")
+                      Navigator.of(context).pushNamed(routeOfActivity);
+                  },
                 ),
               ),
             ),

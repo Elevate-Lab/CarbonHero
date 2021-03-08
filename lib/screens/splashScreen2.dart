@@ -1,5 +1,4 @@
 import 'package:carbon_emission/screens/login.dart';
-import 'package:carbon_emission/screens/homeScreen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen2 extends StatelessWidget {

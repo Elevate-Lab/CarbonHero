@@ -1,13 +1,18 @@
 import 'dart:ui';
 
+import 'package:carbon_emission/models/user.dart';
 import 'package:carbon_emission/screens/chooseNewActivity.dart';
 import 'package:carbon_emission/widget/badge.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class DashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final data = Provider.of<User>(context);
+    print(Provider.of<User>(context).name);
+    print(data.name);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Padding(
@@ -21,7 +26,7 @@ class DashBoard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "Hello, Ryan",
+                  data.name,
                   style: TextStyle(color: Colors.white, fontSize: 40),
                 ),
                 Spacer(),

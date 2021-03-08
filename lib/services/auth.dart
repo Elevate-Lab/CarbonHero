@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class Auth {
+class Auth{
   final databaseReference = Firestore.instance;
   Future<void> handleSignIn(GoogleSignIn _googleSignIn) async {
     try {

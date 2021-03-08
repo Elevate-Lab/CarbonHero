@@ -1,4 +1,6 @@
+import 'package:carbon_emission/models/user.dart';
 import 'package:carbon_emission/services/auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:http/http.dart' as http;
@@ -6,6 +8,7 @@ import 'dart:convert' as JSON;
 import 'dart:async';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
+import 'package:provider/provider.dart';
 
 import 'MainScreen.dart';
 
@@ -23,12 +26,22 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
-  // final databaseReference = Firestore.instance;
+  final databaseReference = Firestore.instance;
   GoogleSignInAccount _currentUser;
   //String _contactText;
+  var data;
   bool _newUser = true;
   Auth auth = new Auth();
-
+  var doc;
+  Future<void> getDetails() async {
+    doc = await databaseReference.collection("users").document(_currentUser.email).get();
+    print("aa");
+    data.f = doc['userName'];
+    Navigator.of(context).pushNamed(MainScreen.routeName);
+    // print("ac");
+    print(doc['emailId']);
+  }
+  
   @override
   Future<void> initState() {
     super.initState();
@@ -36,8 +49,16 @@ class _LogInState extends State<LogIn> {
       setState(() {
         _currentUser = account;
         auth.createUser(_currentUser);
-        if (_currentUser != null)
-          Navigator.of(context).pushNamed(MainScreen.routeName);
+        if(_currentUser != null)
+          print(55555);
+          getDetails();
+          // User newUser = new User(userId: doc['userId'], userName: doc['userName'], emailId: doc['emailId'],
+          //   imgUrl: doc['imgUrl'], savedCarbonEmission: doc['savedCarbonEmission'], totalCarbonEmissionThisMonth: doc['totalCarbonEmissionThisMonth'],
+          //   totalCarbonEmissionLastMonth: doc['totalCarbonEmissionLastMonth'], totalCarbonEmissionYesterday: doc['totalCarbonEmissionYesterday'],
+          //   totalCarbonEmissionToday: doc['totalCarbonEmissionToday'], batchesEarned: doc['batchesEarned'],
+          //   pointsEarned: doc['pointsEarned'], userFriends: doc['userFriends']);
+          //
+          print(777);
       });
     });
     _googleSignIn.signInSilently();
@@ -196,6 +217,7 @@ class _LogInState extends State<LogIn> {
 
   @override
   Widget build(BuildContext context) {
+    data = Provider.of<User>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(

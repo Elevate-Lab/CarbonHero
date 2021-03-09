@@ -60,7 +60,7 @@ class User with ChangeNotifier {
   }
 
   set total_carbon_emission_last_month(double _totalcarbonemissionlastmonth) {
-    this.totalCarbonEmissionThisMonth = _totalcarbonemissionlastmonth;
+    this.totalCarbonEmissionLastMonth = _totalcarbonemissionlastmonth;
     notifyListeners();
   }
 

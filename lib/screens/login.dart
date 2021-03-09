@@ -35,11 +35,13 @@ class _LogInState extends State<LogIn> {
   var doc;
   Future<void> getDetails() async {
     doc = await databaseReference.collection("users").document(_currentUser.email).get();
-    print("aa");
-    data.f = doc['userName'];
+    data.name = doc['userName'];
+    data.total_carbon_emission_this_month = doc['totalCarbonEmissionThisMonth'];
+    data.batches_earned = doc['batchesEarned'];
+    data.total_carbon_emission_last_month = doc['totalCarbonEmissionLastMonth'];
+    data.total_carbon_emission_today = doc['totalCarbonEmissionToday'];
+    data.total_carbon_emission_yesterday = doc['totalCarbonEmissionYesterday'];
     Navigator.of(context).pushNamed(MainScreen.routeName);
-    // print("ac");
-    print(doc['emailId']);
   }
   
   @override
@@ -50,15 +52,7 @@ class _LogInState extends State<LogIn> {
         _currentUser = account;
         auth.createUser(_currentUser);
         if(_currentUser != null)
-          print(55555);
           getDetails();
-          // User newUser = new User(userId: doc['userId'], userName: doc['userName'], emailId: doc['emailId'],
-          //   imgUrl: doc['imgUrl'], savedCarbonEmission: doc['savedCarbonEmission'], totalCarbonEmissionThisMonth: doc['totalCarbonEmissionThisMonth'],
-          //   totalCarbonEmissionLastMonth: doc['totalCarbonEmissionLastMonth'], totalCarbonEmissionYesterday: doc['totalCarbonEmissionYesterday'],
-          //   totalCarbonEmissionToday: doc['totalCarbonEmissionToday'], batchesEarned: doc['batchesEarned'],
-          //   pointsEarned: doc['pointsEarned'], userFriends: doc['userFriends']);
-          //
-          print(777);
       });
     });
     _googleSignIn.signInSilently();

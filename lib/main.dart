@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
           primaryColor: const Color(0xff281627),
           accentColor: const Color(0xffFEBB46),
         ),
-        initialRoute: SplashScreen1.routeName,
+        initialRoute: LogIn.routeName,
         routes: {
           HomeScreen.routeName: (ctx) => HomeScreen(),
           SplashScreen1.routeName: (ctx) => SplashScreen1(),

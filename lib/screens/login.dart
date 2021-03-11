@@ -52,7 +52,15 @@ class _LogInState extends State<LogIn> {
         _currentUser = account;
         auth.createUser(_currentUser);
         if(_currentUser != null)
-          getDetails();
+          print(55555);
+         // getDetails();
+          // User newUser = new User(userId: doc['userId'], userName: doc['userName'], emailId: doc['emailId'],
+          //   imgUrl: doc['imgUrl'], savedCarbonEmission: doc['savedCarbonEmission'], totalCarbonEmissionThisMonth: doc['totalCarbonEmissionThisMonth'],
+          //   totalCarbonEmissionLastMonth: doc['totalCarbonEmissionLastMonth'], totalCarbonEmissionYesterday: doc['totalCarbonEmissionYesterday'],
+          //   totalCarbonEmissionToday: doc['totalCarbonEmissionToday'], batchesEarned: doc['batchesEarned'],
+          //   pointsEarned: doc['pointsEarned'], userFriends: doc['userFriends']);
+          //
+          print(777);
       });
     });
     _googleSignIn.signInSilently();
@@ -124,8 +132,8 @@ class _LogInState extends State<LogIn> {
                   auth.handleSignIn(_googleSignIn);
                 },
                 child: Container(
-                  padding: EdgeInsets.all(10),
-                  width: width * 0.7,
+                  padding: EdgeInsets.all(width*0.02),
+                  width: width * 0.75,
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.white)),
                   //color: Colors.green,
@@ -150,7 +158,7 @@ class _LogInState extends State<LogIn> {
                       Text(
                         """Sign In with Google""",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: width*0.05,
                           color: Colors.white,
                         ),
                       ),
@@ -168,8 +176,8 @@ class _LogInState extends State<LogIn> {
                 splashColor: Colors.purple[100],
                 onTap: () {},
                 child: Container(
-                  padding: EdgeInsets.all(10),
-                  width: width * 0.7,
+                  padding: EdgeInsets.all(width*0.02),
+                width: width * 0.75,
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.white)),
                   //color: Colors.green,
@@ -194,7 +202,7 @@ class _LogInState extends State<LogIn> {
                       Text(
                         """Sign In with Facebook""",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: width*0.05,
                           color: Colors.white,
                         ),
                       ),

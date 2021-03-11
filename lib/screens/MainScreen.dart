@@ -1,4 +1,10 @@
+import 'package:carbon_emission/screens/Waste.dart';
 import 'package:carbon_emission/screens/chooseNewActivity.dart';
+import 'package:carbon_emission/screens/electricityScreen.dart';
+import 'package:carbon_emission/screens/homeAppliances.dart';
+import 'package:carbon_emission/screens/homeScreen.dart';
+import 'package:carbon_emission/screens/naturalGas.dart';
+import 'package:carbon_emission/screens/transportScreen.dart';
 import 'package:carbon_emission/widget/dashBoard.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +26,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff281627),
-      body: DashBoard(),
+      body:DashBoard(),
       bottomNavigationBar: BottomNavigationBar(
         fixedColor: Colors.black,
         currentIndex: _currentIndex,

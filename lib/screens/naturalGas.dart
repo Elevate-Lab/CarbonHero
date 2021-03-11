@@ -106,72 +106,74 @@ class _NaturalGasState extends State<NaturalGas> {
                 color: Colors.white),
             margin: EdgeInsets.fromLTRB(0, _height * 0.04, 0, 0),
 
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  margin: EdgeInsets.fromLTRB(
-                      _width * 0.075, _height * 0.06, 0, _height * 0.02),
-                  child: RichText(
-                      text: TextSpan(
-                    text: "Number of gas cylinders used in a month",
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: primary_color,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  )),
-                ),
-                Container(
-                  padding: EdgeInsets.all(20),
-                  child: SleekCircularSlider(
-                    appearance: CircularSliderAppearance(
-                      startAngle: 165,
-                      angleRange: 210,
-                      size: 230,
-                      customWidths: CustomSliderWidths(progressBarWidth: 30),
-                      customColors: CustomSliderColors(
-                          trackColor: Colors.white,
-                          shadowColor: Colors.white,
-                          dotColor: Colors.white,
-                          progressBarColor: Color(0xff281627)),
-                    ),
-                    min: 0,
-                    max: 12,
-                    initialValue: 5,
-                    onChange: (double value) {
-                      print(value);
-                    },
-                    innerWidget: (double value) {
-                      String percentageModifier(double value) {
-                        final roundedValue = value.ceil().toInt().toString();
-                        return '$roundedValue';
-                      }
-
-                      return Container(
-                        margin: EdgeInsets.fromLTRB(
-                            _width * 0.25, _height * 0.1, 0, 0),
-                        // child: Text(
-                        //     percentageModifier(value),
-                        //     style: TextStyle(
-                        //       color: Color(0xff281627),
-                        //         fontSize: 45,
-                        //         fontWeight: FontWeight.w800
-                        //     )
-                        // )
-                        child: RichText(
-                          text: TextSpan(
-                              text: percentageModifier(value),
-                              style: TextStyle(
-                                  color: Color(0xff281627),
-                                  fontSize: 45,
-                                  fontWeight: FontWeight.w800)),
-                        ),
-                      );
-                    },
+            child: SingleChildScrollView(
+                          child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(
+                        _width * 0.075, _height * 0.06, 0, _height * 0.02),
+                    child: RichText(
+                        text: TextSpan(
+                      text: "Number of gas cylinders used in a month",
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: primary_color,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    )),
                   ),
-                ),
-              ],
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    child: SleekCircularSlider(
+                      appearance: CircularSliderAppearance(
+                        startAngle: 165,
+                        angleRange: 210,
+                        size: 230,
+                        customWidths: CustomSliderWidths(progressBarWidth: 30),
+                        customColors: CustomSliderColors(
+                            trackColor: Colors.white,
+                            shadowColor: Colors.white,
+                            dotColor: Colors.white,
+                            progressBarColor: Color(0xff281627)),
+                      ),
+                      min: 0,
+                      max: 12,
+                      initialValue: 5,
+                      onChange: (double value) {
+                        print(value);
+                      },
+                      innerWidget: (double value) {
+                        String percentageModifier(double value) {
+                          final roundedValue = value.ceil().toInt().toString();
+                          return '$roundedValue';
+                        }
+
+                        return Container(
+                          margin: EdgeInsets.fromLTRB(
+                              _width * 0.25, _height * 0.1, 0, 0),
+                          // child: Text(
+                          //     percentageModifier(value),
+                          //     style: TextStyle(
+                          //       color: Color(0xff281627),
+                          //         fontSize: 45,
+                          //         fontWeight: FontWeight.w800
+                          //     )
+                          // )
+                          child: RichText(
+                            text: TextSpan(
+                                text: percentageModifier(value),
+                                style: TextStyle(
+                                    color: Color(0xff281627),
+                                    fontSize: 45,
+                                    fontWeight: FontWeight.w800)),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

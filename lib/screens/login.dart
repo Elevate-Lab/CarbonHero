@@ -130,7 +130,7 @@ class _LogInState extends State<LogIn> {
                   auth.handleSignIn(_googleSignIn);
                 },
                 child: Container(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(width*0.02),
                   width: width * 0.7,
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.white)),
@@ -174,7 +174,7 @@ class _LogInState extends State<LogIn> {
                 splashColor: Colors.purple[100],
                 onTap: () {},
                 child: Container(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(width*0.02),
                   width: width * 0.7,
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.white)),

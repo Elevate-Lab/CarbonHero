@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 
-class Waste extends StatefulWidget {
+class HomeAppliances extends StatefulWidget {
   @override
-  _WasteState createState() => _WasteState();
-  static const routeName = '/WasteScreen';
+  _HomeAppliancesState createState() => _HomeAppliancesState();
+  static const routeName = '/HomeAppliancesScreen';
 }
 
-class _WasteState extends State<Waste> {
-  var totalWaste = 0.00;
-  var paperRecycled = 0.00;
-  var plasticRecycled = 0.00;
-  var glassRecycled=0.00;
-  var metalRecycled=0.00;
+class _HomeAppliancesState extends State<HomeAppliances> {
+  var acUsed = 0.00;
+  var geyserUsed = 0.00;
+  var refUsed = 0.00;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+
+   {
     double _height = MediaQuery.of(context).size.height;
-    double _width = MediaQuery.of(context).size.width;
+    double _width  = MediaQuery.of(context).size.width;
     return Column(
+
       children: <Widget>[
         SizedBox(
           height: _height * 0.04,
@@ -47,7 +48,7 @@ class _WasteState extends State<Waste> {
             alignment: Alignment.topLeft,
             child: RichText(
                 text: TextSpan(
-                    text: "Waste",
+                    text: "Home Appliances",
                     style: TextStyle(color: Colors.white, fontSize: 25))),
           ),
         ),
@@ -91,7 +92,7 @@ class _WasteState extends State<Waste> {
               Image(
                 width: _width * 0.26,
                 height: _height * 0.12,
-                image: AssetImage('assets/waste.png'),
+                image: AssetImage('assets/electricity.png'),
               ),
               SizedBox(width: _width * 0.02)
             ],
@@ -115,7 +116,7 @@ class _WasteState extends State<Waste> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Waste generated this month (kg)',
+                    'Air Conditioner(AC) used (hours/day)',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -159,22 +160,22 @@ class _WasteState extends State<Waste> {
                               ),
                             ),
                             child: Slider(
-                              label: "$totalWaste",
-                              value: totalWaste,
+                              label: "${acUsed.floor()}",
+                              value: acUsed,
                               min: 0,
-                              max: 50,
+                              max: 24,
                               divisions: 10,
                               activeColor: const Color(0xffFEBB46),
                               onChanged: (double value) {
                                 setState(() {
-                                  totalWaste = value;
+                                  acUsed = value;
                                 });
                               },
                             ),
                           ),
                         ),
                         Text(
-                          "50",
+                          "24",
                           style: TextStyle(color: Colors.white),
                         ),
                       ]),
@@ -186,7 +187,7 @@ class _WasteState extends State<Waste> {
                   ),
                   SizedBox(height: _height * 0.02),
                   Text(
-                    'Paper recycled this month (kg)',
+                    'Geyser used (hours/day)',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -230,22 +231,22 @@ class _WasteState extends State<Waste> {
                               ),
                             ),
                             child: Slider(
-                              label: "$paperRecycled",
-                              value: paperRecycled,
+                              label: "${geyserUsed.floor()}",
+                              value: geyserUsed,
                               min: 0,
-                              max: 100,
+                              max: 24,
                               divisions: 10,
                               activeColor: const Color(0xffFEBB46),
                               onChanged: (double value) {
                                 setState(() {
-                                  paperRecycled = value;
+                                  geyserUsed = value;
                                 });
                               },
                             ),
                           ),
                         ),
                         Text(
-                          "100",
+                          "24",
                           style: TextStyle(color: Colors.white),
                         ),
                       ]),
@@ -257,7 +258,7 @@ class _WasteState extends State<Waste> {
                   ),
                   SizedBox(height: _height * 0.02),
                   Text(
-                    'Plastic recycled this month (kg) ',
+                    'Refrigerator used (hours/day) ',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -301,176 +302,27 @@ class _WasteState extends State<Waste> {
                               ),
                             ),
                             child: Slider(
-                              label: "$plasticRecycled",
-                              value: plasticRecycled,
+                              label: "${refUsed.floor()}",
+                              value: refUsed,
                               min: 0,
-                              max: 100,
+                              max: 24,
                               divisions: 10,
                               activeColor: const Color(0xffFEBB46),
                               onChanged: (double value) {
                                 setState(() {
-                                  plasticRecycled = value;
+                                  refUsed = value;
                                 });
                               },
                             ),
                           ),
                         ),
                         Text(
-                          "100",
+                          "24",
                           style: TextStyle(color: Colors.white),
                         ),
-                        
-
                       ]),
                     ),
                   ),
-                    SizedBox(height: _height * 0.02),
-                  new Divider(
-                    color: Colors.grey,
-                  ),
-                  SizedBox(height: _height * 0.02),
-                  Text(
-                    'Glass recycled this month (kg) ',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: _height * 0.04,
-                  ),
-                  Container(
-                    width: _width * 0.8,
-                    height: _height * 0.06,
-                    decoration: BoxDecoration(
-                      borderRadius: new BorderRadius.circular(10),
-                      color: const Color(0xff281627),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                      child: Row(children: [
-                        Text(
-                          "0",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        Expanded(
-                          child: SliderTheme(
-                            data: SliderThemeData(
-                              //  activeTrackColor: Colors.red[700],
-                              inactiveTrackColor: const Color(0xff281627),
-                              trackShape: RoundedRectSliderTrackShape(),
-                              trackHeight: _height * 0.01,
-                              thumbShape: RoundSliderThumbShape(
-                                  enabledThumbRadius: 12.0),
-                              thumbColor: const Color(0xffFEBB46),
-                              overlayColor: Colors.black,
-                              overlayShape:
-                                  RoundSliderOverlayShape(overlayRadius: 28.0),
-                              tickMarkShape: RoundSliderTickMarkShape(),
-                              activeTickMarkColor: Colors.white,
-                              inactiveTickMarkColor: Colors.white,
-                              valueIndicatorShape:
-                                  PaddleSliderValueIndicatorShape(),
-                              //     valueIndicatorColor: Colors.redAccent,
-                              valueIndicatorTextStyle: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                            child: Slider(
-                              label: "$glassRecycled",
-                              value: glassRecycled,
-                              min: 0,
-                              max: 100,
-                              divisions: 10,
-                              activeColor: const Color(0xffFEBB46),
-                              onChanged: (double value) {
-                                setState(() {
-                                  glassRecycled = value;
-                                });
-                              },
-                            ),
-                          ),
-                        ),
-                        Text(
-                          "100",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        
-
-                      ]),
-                    ),
-                  ),
-                        SizedBox(height: _height * 0.02),
-                  new Divider(
-                    color: Colors.grey,
-                  ),
-                  SizedBox(height: _height * 0.02),
-                  Text(
-                    'Metal recycled this month (kg) ',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: _height * 0.04,
-                  ),
-                  Container(
-                    width: _width * 0.8,
-                    height: _height * 0.06,
-                    decoration: BoxDecoration(
-                      borderRadius: new BorderRadius.circular(10),
-                      color: const Color(0xff281627),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                      child: Row(children: [
-                        Text(
-                          "0",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        Expanded(
-                          child: SliderTheme(
-                            data: SliderThemeData(
-                              //  activeTrackColor: Colors.red[700],
-                              inactiveTrackColor: const Color(0xff281627),
-                              trackShape: RoundedRectSliderTrackShape(),
-                              trackHeight: _height * 0.01,
-                              thumbShape: RoundSliderThumbShape(
-                                  enabledThumbRadius: 12.0),
-                              thumbColor: const Color(0xffFEBB46),
-                              overlayColor: Colors.black,
-                              overlayShape:
-                                  RoundSliderOverlayShape(overlayRadius: 28.0),
-                              tickMarkShape: RoundSliderTickMarkShape(),
-                              activeTickMarkColor: Colors.white,
-                              inactiveTickMarkColor: Colors.white,
-                              valueIndicatorShape:
-                                  PaddleSliderValueIndicatorShape(),
-                              //     valueIndicatorColor: Colors.redAccent,
-                              valueIndicatorTextStyle: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                            child: Slider(
-                              label: "$metalRecycled",
-                              value: metalRecycled,
-                              min: 0,
-                              max: 100,
-                              divisions: 10,
-                              activeColor: const Color(0xffFEBB46),
-                              onChanged: (double value) {
-                                setState(() {
-                                  metalRecycled = value;
-                                });
-                              },
-                            ),
-                          ),
-                        ),
-                        Text(
-                          "100",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        
-
-                      ]),
-                    ),
-                  ),
-                  
                 ],
               ),
             ),

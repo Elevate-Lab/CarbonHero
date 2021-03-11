@@ -106,151 +106,153 @@ class _ElectricityState extends State<Electricity> {
                 color: Colors.white),
             margin: EdgeInsets.fromLTRB(0, _height * 0.04, 0, 0),
 
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  'Total Electricity consumption (KW/h)',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: _height * 0.04,
-                ),
-                Container(
-                  width: _width * 0.8,
-                  height: _height * 0.07,
-                  decoration: BoxDecoration(
-                    borderRadius: new BorderRadius.circular(10),
-                    color: const Color(0xff281627),
+            child: SingleChildScrollView(
+                          child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'Total Electricity consumption (KW/h)',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                    child: Row(children: [
-                      Text(
-                        "0",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Expanded(
-                        child: SliderTheme(
-                          data: SliderThemeData(
-                            //  activeTrackColor: Colors.red[700],
-                            inactiveTrackColor: const Color(0xff281627),
-                            trackShape: RoundedRectSliderTrackShape(),
-                            trackHeight: 10.0,
-                            thumbShape:
-                                RoundSliderThumbShape(enabledThumbRadius: 12.0),
-                            thumbColor: const Color(0xffFEBB46),
-                            overlayColor: Colors.black,
-                            overlayShape:
-                                RoundSliderOverlayShape(overlayRadius: 28.0),
-                            tickMarkShape: RoundSliderTickMarkShape(),
-                            activeTickMarkColor: Colors.white,
-                            inactiveTickMarkColor: Colors.white,
-                            valueIndicatorShape:
-                                PaddleSliderValueIndicatorShape(),
-                            valueIndicatorColor: Colors.redAccent,
-                            valueIndicatorTextStyle: TextStyle(
-                              color: Colors.white,
+                  SizedBox(
+                    height: _height * 0.04,
+                  ),
+                  Container(
+                    width: _width * 0.8,
+                    height: _height * 0.07,
+                    decoration: BoxDecoration(
+                      borderRadius: new BorderRadius.circular(10),
+                      color: const Color(0xff281627),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: Row(children: [
+                        Text(
+                          "0",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Expanded(
+                          child: SliderTheme(
+                            data: SliderThemeData(
+                              //  activeTrackColor: Colors.red[700],
+                              inactiveTrackColor: const Color(0xff281627),
+                              trackShape: RoundedRectSliderTrackShape(),
+                              trackHeight: 10.0,
+                              thumbShape:
+                                  RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                              thumbColor: const Color(0xffFEBB46),
+                              overlayColor: Colors.black,
+                              overlayShape:
+                                  RoundSliderOverlayShape(overlayRadius: 28.0),
+                              tickMarkShape: RoundSliderTickMarkShape(),
+                              activeTickMarkColor: Colors.white,
+                              inactiveTickMarkColor: Colors.white,
+                              valueIndicatorShape:
+                                  PaddleSliderValueIndicatorShape(),
+                              valueIndicatorColor: Colors.redAccent,
+                              valueIndicatorTextStyle: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            child: Slider(
+                              label: "$consumption",
+                              value: consumption,
+                              min: 0,
+                              max: 2000,
+                              divisions: 10,
+                              activeColor: const Color(0xffFEBB46),
+                              onChanged: (double value) {
+                                setState(() {
+                                  consumption = value;
+                                });
+                              },
                             ),
                           ),
-                          child: Slider(
-                            label: "$consumption",
-                            value: consumption,
-                            min: 0,
-                            max: 2000,
-                            divisions: 10,
-                            activeColor: const Color(0xffFEBB46),
-                            onChanged: (double value) {
-                              setState(() {
-                                consumption = value;
-                              });
-                            },
-                          ),
                         ),
-                      ),
-                      Text(
-                        "2000",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ]),
+                        Text(
+                          "2000",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ]),
+                    ),
                   ),
-                ),
-                SizedBox(height: _height * 0.02),
-                new Divider(
-                  color: Colors.grey,
-                ),
-                SizedBox(height: _height * 0.02),
-                Text(
-                  'Electricity Bill Amount (Rs.)',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: _height * 0.04,
-                ),
-                Container(
-                  width: _width * 0.8,
-                  height: _height * 0.07,
-                  decoration: BoxDecoration(
-                    borderRadius: new BorderRadius.circular(10),
-                    color: const Color(0xff281627),
+                  SizedBox(height: _height * 0.02),
+                  new Divider(
+                    color: Colors.grey,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                    child: Row(children: [
-                      Text(
-                        "0",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Expanded(
-                        child: SliderTheme(
-                          data: SliderThemeData(
-                            //  activeTrackColor: Colors.red[700],
-                            inactiveTrackColor: const Color(0xff281627),
-                            trackShape: RoundedRectSliderTrackShape(),
-                            trackHeight: _height * 0.01,
-                            thumbShape:
-                                RoundSliderThumbShape(enabledThumbRadius: 12.0),
-                            thumbColor: const Color(0xffFEBB46),
-                            overlayColor: Colors.black,
-                            overlayShape:
-                                RoundSliderOverlayShape(overlayRadius: 28.0),
-                            tickMarkShape: RoundSliderTickMarkShape(),
-                            activeTickMarkColor: Colors.white,
-                            inactiveTickMarkColor: Colors.white,
-                            valueIndicatorShape:
-                                PaddleSliderValueIndicatorShape(),
-                            //     valueIndicatorColor: Colors.redAccent,
-                            valueIndicatorTextStyle: TextStyle(
-                              color: Colors.white,
+                  SizedBox(height: _height * 0.02),
+                  Text(
+                    'Electricity Bill Amount (Rs.)',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: _height * 0.04,
+                  ),
+                  Container(
+                    width: _width * 0.8,
+                    height: _height * 0.07,
+                    decoration: BoxDecoration(
+                      borderRadius: new BorderRadius.circular(10),
+                      color: const Color(0xff281627),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: Row(children: [
+                        Text(
+                          "0",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Expanded(
+                          child: SliderTheme(
+                            data: SliderThemeData(
+                              //  activeTrackColor: Colors.red[700],
+                              inactiveTrackColor: const Color(0xff281627),
+                              trackShape: RoundedRectSliderTrackShape(),
+                              trackHeight: _height * 0.01,
+                              thumbShape:
+                                  RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                              thumbColor: const Color(0xffFEBB46),
+                              overlayColor: Colors.black,
+                              overlayShape:
+                                  RoundSliderOverlayShape(overlayRadius: 28.0),
+                              tickMarkShape: RoundSliderTickMarkShape(),
+                              activeTickMarkColor: Colors.white,
+                              inactiveTickMarkColor: Colors.white,
+                              valueIndicatorShape:
+                                  PaddleSliderValueIndicatorShape(),
+                              //     valueIndicatorColor: Colors.redAccent,
+                              valueIndicatorTextStyle: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            child: Slider(
+                              label: "$billAmount",
+                              value: billAmount,
+                              min: 0,
+                              max: 6000,
+                              divisions: 10,
+                              activeColor: const Color(0xffFEBB46),
+                              onChanged: (double value) {
+                                setState(() {
+                                  billAmount = value;
+                                });
+                              },
                             ),
                           ),
-                          child: Slider(
-                            label: "$billAmount",
-                            value: billAmount,
-                            min: 0,
-                            max: 6000,
-                            divisions: 10,
-                            activeColor: const Color(0xffFEBB46),
-                            onChanged: (double value) {
-                              setState(() {
-                                billAmount = value;
-                              });
-                            },
-                          ),
                         ),
-                      ),
-                      Text(
-                        "6000",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ]),
+                        Text(
+                          "6000",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ]),
+                    ),
                   ),
-                ),
-                SizedBox(height: _height * 0.02),
-                new Divider(
-                  color: Colors.grey,
-                ),
-              ],
+                  SizedBox(height: _height * 0.02),
+                  new Divider(
+                    color: Colors.grey,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

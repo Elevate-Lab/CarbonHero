@@ -66,8 +66,7 @@ class _chooseNewActivityState extends State<chooseNewActivity> {
           Row(
             children: [
               Text(
-                '''Add Activities That You Are Interested 
-To Track For Carbon Emission''',
+                '''Add Activities That You Are Interested To Track For Carbon Emission''',
                 style: TextStyle(fontSize: 16, color: Color(0xffFEBB46)),
               )
             ],

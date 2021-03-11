@@ -6,13 +6,14 @@ import 'package:carbon_emission/widget/badge.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:carbon_emission/services/calculations.dart';
 
 class DashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var user = Provider.of<User>(context);
-    print(Provider.of<User>(context).name);
-    print(user.name);
+    double compareMonth = compareFromLastMonth(user.total_carbon_emission_this_month, user.total_carbon_emission_last_month);
+    double compareDay = compareFromYesterday(user.total_carbon_emission_today, user.total_carbon_emission_yesterday);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Padding(

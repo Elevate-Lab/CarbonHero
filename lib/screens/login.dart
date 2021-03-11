@@ -35,11 +35,13 @@ class _LogInState extends State<LogIn> {
   var doc;
   Future<void> getDetails() async {
     doc = await databaseReference.collection("users").document(_currentUser.email).get();
-    print("aa");
-    data.f = doc['userName'];
+    data.name = doc['userName'];
+    data.total_carbon_emission_this_month = doc['totalCarbonEmissionThisMonth'];
+    data.batches_earned = doc['batchesEarned'];
+    data.total_carbon_emission_last_month = doc['totalCarbonEmissionLastMonth'];
+    data.total_carbon_emission_today = doc['totalCarbonEmissionToday'];
+    data.total_carbon_emission_yesterday = doc['totalCarbonEmissionYesterday'];
     Navigator.of(context).pushNamed(MainScreen.routeName);
-    // print("ac");
-    print(doc['emailId']);
   }
   
   @override

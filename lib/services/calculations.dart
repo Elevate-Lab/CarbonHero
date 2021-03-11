@@ -35,3 +35,23 @@ int lpgCalc(int cylinders) {
   double ans = (12 * 12.43 * cylinders * 15);
   return ans.toInt();
 }
+
+double compareFromLastMonth(double now, double prev)
+{
+  if(prev == 0)
+  {
+    return 0.0;
+  }
+  double ans = (now-prev)/prev;
+  return ans;
+}
+
+double compareFromYesterday(double now, double prev)
+{
+  if(prev == 0)
+  {
+    return 0.0;
+  }
+  double ans = (now-prev)/prev;
+  return ans;
+}

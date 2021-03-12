@@ -2,6 +2,7 @@ import 'package:carbon_emission/models/user.dart';
 import 'package:carbon_emission/screens/MainScreen.dart';
 import 'package:carbon_emission/screens/Waste.dart';
 import 'package:carbon_emission/screens/electricityScreen.dart';
+import 'package:carbon_emission/screens/homeAppliances.dart';
 import 'package:carbon_emission/screens/login.dart';
 import 'package:carbon_emission/screens/naturalGas.dart';
 
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
           Electricity.routeName: (ctx) => Electricity(),
           Transport.routeName: (ctx) => Transport(),
           Television.routeName: (ctx) => Television(),
+          HomeAppliances.routeName:(ctx)=>HomeAppliances(),
         },
       ),
     );

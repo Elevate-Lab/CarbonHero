@@ -43,7 +43,8 @@ double compareFromLastMonth(double now, double prev)
     return 0.0;
   }
   double ans = (now-prev)/prev;
-  return ans;
+  print(ans);
+  return ans*100;
 }
 
 double compareFromYesterday(double now, double prev)
@@ -53,5 +54,5 @@ double compareFromYesterday(double now, double prev)
     return 0.0;
   }
   double ans = (now-prev)/prev;
-  return ans;
+  return ans*100;
 }

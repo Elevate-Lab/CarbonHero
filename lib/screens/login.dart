@@ -52,15 +52,7 @@ class _LogInState extends State<LogIn> {
         _currentUser = account;
         auth.createUser(_currentUser);
         if(_currentUser != null)
-          print(55555);
           getDetails();
-          // User newUser = new User(userId: doc['userId'], userName: doc['userName'], emailId: doc['emailId'],
-          //   imgUrl: doc['imgUrl'], savedCarbonEmission: doc['savedCarbonEmission'], totalCarbonEmissionThisMonth: doc['totalCarbonEmissionThisMonth'],
-          //   totalCarbonEmissionLastMonth: doc['totalCarbonEmissionLastMonth'], totalCarbonEmissionYesterday: doc['totalCarbonEmissionYesterday'],
-          //   totalCarbonEmissionToday: doc['totalCarbonEmissionToday'], batchesEarned: doc['batchesEarned'],
-          //   pointsEarned: doc['pointsEarned'], userFriends: doc['userFriends']);
-          //
-          print(777);
       });
     });
     _googleSignIn.signInSilently();

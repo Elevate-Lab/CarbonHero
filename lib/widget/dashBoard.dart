@@ -12,11 +12,16 @@ class DashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var user = Provider.of<User>(context);
-    print(Provider.of<User>(context).name);
     double compareMonth = compareFromLastMonth(user.total_carbon_emission_this_month, user.total_carbon_emission_last_month);
+    double ans1 = double.parse((compareMonth).toStringAsFixed(2));
     double compareDay = compareFromYesterday(user.total_carbon_emission_today, user.total_carbon_emission_yesterday);
+    double ans2 = double.parse((compareDay).toStringAsFixed(2));
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    String userName = user.name;
+    if(userName == null) {
+      userName = "Test";
+    }
     return Padding(
         padding: const EdgeInsets.only(
           top: 40,
@@ -29,8 +34,8 @@ class DashBoard extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                   "${user.name}",
-                    style: TextStyle(color: Colors.white, fontSize: 40),
+                   "$userName",
+                    style: TextStyle(color: Colors.white, fontSize: 27),
                   ),
                   Spacer(),
                   Icon(
@@ -110,7 +115,7 @@ class DashBoard extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        compareMonth.toString()+"%",
+                        ans1.toString()+"%",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
@@ -133,7 +138,7 @@ class DashBoard extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 35,
                   ),
                   Container(
                     height: 55,
@@ -141,12 +146,12 @@ class DashBoard extends StatelessWidget {
                     color: Colors.white,
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 35,
                   ),
                   Column(
                     children: [
                       Text(
-                        compareDay.toString()+"%",
+                        ans2.toString()+"%",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,

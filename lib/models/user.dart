@@ -14,21 +14,6 @@ class User with ChangeNotifier {
   int pointsEarned;
   List<dynamic> userFriends;
 
-  // User({
-  //   @required this.userId,
-  //   @required this.userName,
-  //   @required this.emailId,
-  //   @required this.imgUrl,
-  //   @required this.savedCarbonEmission,
-  //   @required this.totalCarbonEmissionThisMonth,
-  //   @required this.totalCarbonEmissionLastMonth,
-  //   @required this.totalCarbonEmissionYesterday,
-  //   @required this.totalCarbonEmissionToday,
-  //   @required this.batchesEarned,
-  //   @required this.pointsEarned,
-  //   @required this.userFriends,
-  // });
-
   set name(String _username) {
     this.userName = _username;
     notifyListeners();
@@ -137,3 +122,19 @@ class User with ChangeNotifier {
     return this.user_friends;
   }
 }
+
+
+// User({
+//   @required this.userId,
+//   @required this.userName,
+//   @required this.emailId,
+//   @required this.imgUrl,
+//   @required this.savedCarbonEmission,
+//   @required this.totalCarbonEmissionThisMonth,
+//   @required this.totalCarbonEmissionLastMonth,
+//   @required this.totalCarbonEmissionYesterday,
+//   @required this.totalCarbonEmissionToday,
+//   @required this.batchesEarned,
+//   @required this.pointsEarned,
+//   @required this.userFriends,
+// });

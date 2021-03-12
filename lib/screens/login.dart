@@ -53,7 +53,7 @@ class _LogInState extends State<LogIn> {
         auth.createUser(_currentUser);
         if(_currentUser != null)
           print(55555);
-         // getDetails();
+          getDetails();
           // User newUser = new User(userId: doc['userId'], userName: doc['userName'], emailId: doc['emailId'],
           //   imgUrl: doc['imgUrl'], savedCarbonEmission: doc['savedCarbonEmission'], totalCarbonEmissionThisMonth: doc['totalCarbonEmissionThisMonth'],
           //   totalCarbonEmissionLastMonth: doc['totalCarbonEmissionLastMonth'], totalCarbonEmissionYesterday: doc['totalCarbonEmissionYesterday'],

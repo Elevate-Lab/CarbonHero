@@ -15,22 +15,28 @@ class _TransportState extends State<Transport> {
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
-        backgroundColor: const Color(0xff281627),
-          body: Column(
+      backgroundColor: const Color(0xff281627),
+      body: Column(
         children: <Widget>[
           SizedBox(
             height: _height * 0.04,
           ),
           Container(
             padding: EdgeInsets.all(8),
-            margin: EdgeInsets.only(bottom: _height * 0.03, right: _width * 0.04),
+            margin:
+                EdgeInsets.only(bottom: _height * 0.03, right: _width * 0.04),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Icon(
-                  Icons.arrow_back_ios_rounded,
-                  color: Colors.white,
-                  size: 35,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios_rounded,
+                    color: Colors.white,
+                    size: 35,
+                  ),
                 ),
                 Icon(
                   Icons.account_circle_rounded,
@@ -60,7 +66,8 @@ class _TransportState extends State<Transport> {
                 _width * 0.01495, _height * 0.01495),
             margin: EdgeInsets.fromLTRB(_width * 0.02, 0, _width * 0.02, 0),
             decoration: BoxDecoration(
-                borderRadius: new BorderRadius.circular(10), color: Colors.white),
+                borderRadius: new BorderRadius.circular(10),
+                color: Colors.white),
             child: Row(
               children: <Widget>[
                 Container(
@@ -116,7 +123,8 @@ class _TransportState extends State<Transport> {
                   children: [
                     Text(
                       'Number of personal vehicles',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: _height * 0.03,
@@ -146,8 +154,8 @@ class _TransportState extends State<Transport> {
                                     enabledThumbRadius: 12.0),
                                 thumbColor: const Color(0xffFEBB46),
                                 overlayColor: Colors.black,
-                                overlayShape:
-                                    RoundSliderOverlayShape(overlayRadius: 28.0),
+                                overlayShape: RoundSliderOverlayShape(
+                                    overlayRadius: 28.0),
                                 tickMarkShape: RoundSliderTickMarkShape(),
                                 activeTickMarkColor: Colors.white,
                                 inactiveTickMarkColor: Colors.white,
@@ -187,7 +195,8 @@ class _TransportState extends State<Transport> {
                     SizedBox(height: _height * 0.02),
                     Text(
                       'Kilometer,travelled this week(km)',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: _height * 0.04,
@@ -217,8 +226,8 @@ class _TransportState extends State<Transport> {
                                     enabledThumbRadius: 12.0),
                                 thumbColor: const Color(0xffFEBB46),
                                 overlayColor: Colors.black,
-                                overlayShape:
-                                    RoundSliderOverlayShape(overlayRadius: 28.0),
+                                overlayShape: RoundSliderOverlayShape(
+                                    overlayRadius: 28.0),
                                 tickMarkShape: RoundSliderTickMarkShape(),
                                 activeTickMarkColor: Colors.white,
                                 inactiveTickMarkColor: Colors.white,
@@ -258,7 +267,8 @@ class _TransportState extends State<Transport> {
                     SizedBox(height: _height * 0.02),
                     Text(
                       'Average mileage of your vehicle (km/L) ',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: _height * 0.04,
@@ -288,8 +298,8 @@ class _TransportState extends State<Transport> {
                                     enabledThumbRadius: 12.0),
                                 thumbColor: const Color(0xffFEBB46),
                                 overlayColor: Colors.black,
-                                overlayShape:
-                                    RoundSliderOverlayShape(overlayRadius: 28.0),
+                                overlayShape: RoundSliderOverlayShape(
+                                    overlayRadius: 28.0),
                                 tickMarkShape: RoundSliderTickMarkShape(),
                                 activeTickMarkColor: Colors.white,
                                 inactiveTickMarkColor: Colors.white,

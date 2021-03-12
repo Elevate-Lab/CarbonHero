@@ -7,32 +7,34 @@ class ActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Container(
-      height: 50,
-      // color: Colors.orange,
+      height: height*0.01,
+      //color: Colors.orange,
       child: Stack(children: [
         Column(
           children: [
             Container(
-              height: 100,
+              height: height*0.12,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10))),
+                      topLeft: Radius.circular(width*0.04),
+                      topRight: Radius.circular(width*0.04))),
             ),
             Container(
-              height: 5,
+              height: height*0.008,
               color: Colors.purple[200],
             ),
             Container(
-              height: 50,
-              padding: EdgeInsets.only(top: 5),
+              height: height*0.06,
+              padding: EdgeInsets.only(top: height*0.001),
               decoration: BoxDecoration(
                 color: Colors.purple[100],
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10),
+                  bottomLeft: Radius.circular(width*0.04),
+                  bottomRight: Radius.circular(width*0.04),
                 ),
               ),
               child: Align(
@@ -46,7 +48,7 @@ class ActivityCard extends StatelessWidget {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 8.0),
+          padding: const EdgeInsets.only(top: 5.0),
           child: Align(
             alignment: Alignment.bottomCenter,
             child: ClipOval(
@@ -55,12 +57,12 @@ class ActivityCard extends StatelessWidget {
                 child: InkWell(
                   splashColor: Colors.purple[100], // inkwell color
                   child: SizedBox(
-                      width: 50,
-                      height: 50,
+                      width: width*0.12,
+                      height: height*0.06,
                       child: Icon(
                         Icons.add,
                         color: Colors.purple,
-                        size: 40,
+                        size: width*0.1,
                       )),
                   onTap: () {
                     if (routeOfActivity != "NA")

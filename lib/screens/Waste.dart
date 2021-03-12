@@ -30,10 +30,15 @@ class _WasteState extends State<Waste> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Icon(
-                  Icons.arrow_back_ios_rounded,
-                  color: Colors.white,
-                  size: 35,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios_rounded,
+                    color: Colors.white,
+                    size: 35,
+                  ),
                 ),
                 Icon(
                   Icons.account_circle_rounded,

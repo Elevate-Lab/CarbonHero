@@ -66,8 +66,9 @@ class _chooseNewActivityState extends State<chooseNewActivity> {
           Row(
             children: [
               Text(
-                '''Add Activities That You Are Interested To Track For Carbon Emission''',
-                style: TextStyle(fontSize: 16, color: Color(0xffFEBB46)),
+'''Add Activities That You Are Interested 
+To Track For Carbon Emission''',
+                style: TextStyle(fontSize: 14, color: Color(0xffFEBB46)),
               )
             ],
           ),
@@ -91,10 +92,10 @@ class _chooseNewActivityState extends State<chooseNewActivity> {
                         )
                         .toList(),
                     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 200,
+                      maxCrossAxisExtent: width*0.5,
                       childAspectRatio: 7 / 8,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
+                      crossAxisSpacing: width*0.04,
+                      mainAxisSpacing: height*0.02,
                     ),
                   ),
                 ),

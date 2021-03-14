@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class Activity with ChangeNotifier {
   String activityName;
   DateTime lastCheckedAt;
-  int continuousStreak;
   double totalCarbonEmissionToday;
   double totalCarbonEmissionYesterday;
   double totalCarbonEmissionThisMonth;
@@ -13,7 +12,6 @@ class Activity with ChangeNotifier {
   Activity(
       {@required this.activityName,
       @required this.lastCheckedAt,
-      @required this.continuousStreak,
       @required this.totalCarbonEmissionToday,
       @required this.totalCarbonEmissionYesterday,
       @required this.totalCarbonEmissionThisMonth,
@@ -26,11 +24,6 @@ class Activity with ChangeNotifier {
 
   set last_checked_at(DateTime _lastcheckedat) {
     this.lastCheckedAt = _lastcheckedat;
-    notifyListeners();
-  }
-
-  set continuous_streak(int _continuousstreak) {
-    this.continuousStreak = _continuousstreak;
     notifyListeners();
   }
 
@@ -60,10 +53,6 @@ class Activity with ChangeNotifier {
 
   DateTime get last_checked_at {
     return this.lastCheckedAt;
-  }
-
-  int get continuous_streak {
-    return this.continuousStreak;
   }
 
   double get total_carbon_emission_today {

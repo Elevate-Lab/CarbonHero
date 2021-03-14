@@ -23,6 +23,8 @@ class Auth {
     if (doc.exists) {
       return;
     }
+
+    var data;
     await databaseReference
         .collection("users")
         .document(_currentUser.email)
@@ -161,6 +163,19 @@ class Auth {
       'totalCarbonEmissionThisMonth': 0.0,
       'totalCarbonEmissionLastMonth': 0.0,
     });
+
+    // data.name = _currentUser.displayName;
+    // print(_currentUser.displayName);
+    // data.id = _currentUser.id;
+    // data.email_id = _currentUser.email;
+    // data.img_url = _currentUser.photoUrl;
+    // data.total_carbon_emission_this_month = 0.0;
+    // data.batches_earned = [];
+    // data.total_carbon_emission_last_month = 0.0;
+    // data.total_carbon_emission_today = 0.0;
+    // data.total_carbon_emission_yesterday = 0.0;
+    // data.points_earned = 10;
+    // data.user_friends = [];
     return;
   }
 }

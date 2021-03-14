@@ -36,6 +36,7 @@ class _LogInState extends State<LogIn> {
   Future<void> getDetails() async {
     doc = await databaseReference.collection("users").document(_currentUser.email).get();
     data.name = doc['userName'];
+    data.email_id = doc['emailId'];
     data.total_carbon_emission_this_month = doc['totalCarbonEmissionThisMonth'];
     data.batches_earned = doc['batchesEarned'];
     data.total_carbon_emission_last_month = doc['totalCarbonEmissionLastMonth'];

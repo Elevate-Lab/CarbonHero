@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class Auth{
+class Auth {
   final databaseReference = Firestore.instance;
   Future<void> handleSignIn(GoogleSignIn _googleSignIn) async {
     try {
@@ -23,6 +23,8 @@ class Auth{
     if (doc.exists) {
       return;
     }
+
+    var data;
     await databaseReference
         .collection("users")
         .document(_currentUser.email)
@@ -40,6 +42,140 @@ class Auth{
       'pointsEarned': 10,
       'userFriends': [],
     });
+
+    await databaseReference
+        .collection('users')
+        .document(_currentUser.email)
+        .collection('activities')
+        .document('Personal Vehicle')
+        .setData({
+      'activityName': 'Personal Vehicle',
+      'lastCheckedAt': DateTime.now(),
+      'totalCarbonEmissionToday': 0.0,
+      'totalCarbonEmissionYesterday': 0.0,
+      'totalCarbonEmissionThisMonth': 0.0,
+      'totalCarbonEmissionLastMonth': 0.0,
+    });
+    await databaseReference
+        .collection('users')
+        .document(_currentUser.email)
+        .collection('activities')
+        .document('Natural Gas')
+        .setData({
+      'activityName': 'Natural Gas',
+      'lastCheckedAt': DateTime.now(),
+      'totalCarbonEmissionToday': 0.0,
+      'totalCarbonEmissionYesterday': 0.0,
+      'totalCarbonEmissionThisMonth': 0.0,
+      'totalCarbonEmissionLastMonth': 0.0,
+    });
+    await databaseReference
+        .collection('users')
+        .document(_currentUser.email)
+        .collection('activities')
+        .document('Waste')
+        .setData({
+      'activityName': 'Waste',
+      'lastCheckedAt': DateTime.now(),
+      'totalCarbonEmissionToday': 0.0,
+      'totalCarbonEmissionYesterday': 0.0,
+      'totalCarbonEmissionThisMonth': 0.0,
+      'totalCarbonEmissionLastMonth': 0.0,
+    });
+    await databaseReference
+        .collection('users')
+        .document(_currentUser.email)
+        .collection('activities')
+        .document('Electricity')
+        .setData({
+      'activityName': 'Electricity',
+      'lastCheckedAt': DateTime.now(),
+      'totalCarbonEmissionToday': 0.0,
+      'totalCarbonEmissionYesterday': 0.0,
+      'totalCarbonEmissionThisMonth': 0.0,
+      'totalCarbonEmissionLastMonth': 0.0,
+    });
+    await databaseReference
+        .collection('users')
+        .document(_currentUser.email)
+        .collection('activities')
+        .document('Cooking')
+        .setData({
+      'activityName': 'Cooking',
+      'lastCheckedAt': DateTime.now(),
+      'totalCarbonEmissionToday': 0.0,
+      'totalCarbonEmissionYesterday': 0.0,
+      'totalCarbonEmissionThisMonth': 0.0,
+      'totalCarbonEmissionLastMonth': 0.0,
+    });
+    await databaseReference
+        .collection('users')
+        .document(_currentUser.email)
+        .collection('activities')
+        .document('Workout')
+        .setData({
+      'activityName': 'Workout',
+      'lastCheckedAt': DateTime.now(),
+      'totalCarbonEmissionToday': 0.0,
+      'totalCarbonEmissionYesterday': 0.0,
+      'totalCarbonEmissionThisMonth': 0.0,
+      'totalCarbonEmissionLastMonth': 0.0,
+    });
+
+    await databaseReference
+        .collection('users')
+        .document(_currentUser.email)
+        .collection('activities')
+        .document('Television')
+        .setData({
+      'activityName': 'Television',
+      'lastCheckedAt': DateTime.now(),
+      'totalCarbonEmissionToday': 0.0,
+      'totalCarbonEmissionYesterday': 0.0,
+      'totalCarbonEmissionThisMonth': 0.0,
+      'totalCarbonEmissionLastMonth': 0.0,
+    });
+
+    await databaseReference
+        .collection('users')
+        .document(_currentUser.email)
+        .collection('activities')
+        .document('Mobile Phone')
+        .setData({
+      'activityName': 'Mobile Phone',
+      'lastCheckedAt': DateTime.now(),
+      'totalCarbonEmissionToday': 0.0,
+      'totalCarbonEmissionYesterday': 0.0,
+      'totalCarbonEmissionThisMonth': 0.0,
+      'totalCarbonEmissionLastMonth': 0.0,
+    });
+
+    await databaseReference
+        .collection('users')
+        .document(_currentUser.email)
+        .collection('activities')
+        .document('Home Appliances')
+        .setData({
+      'activityName': 'Home Appliances',
+      'lastCheckedAt': DateTime.now(),
+      'totalCarbonEmissionToday': 0.0,
+      'totalCarbonEmissionYesterday': 0.0,
+      'totalCarbonEmissionThisMonth': 0.0,
+      'totalCarbonEmissionLastMonth': 0.0,
+    });
+
+    // data.name = _currentUser.displayName;
+    // print(_currentUser.displayName);
+    // data.id = _currentUser.id;
+    // data.email_id = _currentUser.email;
+    // data.img_url = _currentUser.photoUrl;
+    // data.total_carbon_emission_this_month = 0.0;
+    // data.batches_earned = [];
+    // data.total_carbon_emission_last_month = 0.0;
+    // data.total_carbon_emission_today = 0.0;
+    // data.total_carbon_emission_yesterday = 0.0;
+    // data.points_earned = 10;
+    // data.user_friends = [];
     return;
   }
 }

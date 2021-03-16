@@ -4,7 +4,7 @@ import 'package:carbon_emission/screens/Waste.dart';
 import 'package:carbon_emission/screens/electricityScreen.dart';
 import 'package:carbon_emission/screens/homeAppliances.dart';
 import 'package:carbon_emission/screens/login.dart';
-import 'package:carbon_emission/screens/naturalGas.dart';
+import 'package:carbon_emission/screens/LPG.dart';
 
 import 'package:carbon_emission/screens/splashScreen2.dart';
 
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
           primaryColor: const Color(0xff281627),
           accentColor: const Color(0xffFEBB46),
         ),
-        initialRoute: SplashScreen1.routeName,
+        initialRoute: LogIn.routeName,
         routes: {
           HomeScreen.routeName: (ctx) => HomeScreen(),
           SplashScreen1.routeName: (ctx) => SplashScreen1(),
@@ -58,11 +58,11 @@ class MyApp extends StatelessWidget {
           chooseNewActivity.routeName: (ctx) => chooseNewActivity(),
           MainScreen.routeName: (ctx) => MainScreen(),
           Waste.routeName: (ctx) => Waste(),
-          NaturalGas.routeName: (ctx) => NaturalGas(),
+          LPG.routeName: (ctx) => LPG(),
           Electricity.routeName: (ctx) => Electricity(),
           Transport.routeName: (ctx) => Transport(),
           Television.routeName: (ctx) => Television(),
-          HomeAppliances.routeName:(ctx)=>HomeAppliances(),
+          HomeAppliances.routeName: (ctx) => HomeAppliances(),
         },
       ),
     );

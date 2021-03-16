@@ -19,15 +19,15 @@ int journeyCalc(int distance, int mileage) {
 }
 
 // ------- ELECTRICITY ------
-int electricityCalc(int consumption, int size) {
+double electricityCalc(double consumption, int size) {
   double ans = (consumption * 12 * 1.2385 * poundToKg) / size;
-  return ans.toInt();
+  return ans;
 }
 
 // -------- HOME APPLIANCES ------
-int homeCalc(int television, int ac, int geyser, int refrigerator) {
-  int ans = 490 * ac + 189 * television + 1260 * geyser + 189 * refrigerator;
-  return ans.toInt();
+double homeCalc(var television, var ac, var geyser, var refrigerator) {
+  double ans = 490*ac + 189*television + 1260*geyser + 189*refrigerator;
+  return ans;
 }
 
 // -------- LPG(PROPANE) ---------

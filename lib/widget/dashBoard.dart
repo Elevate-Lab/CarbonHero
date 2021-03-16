@@ -84,7 +84,7 @@ class DashBoard extends StatelessWidget {
                             Text(
                               user.total_carbon_emission_this_month.toInt().toString()+" Kg",
                               style: TextStyle(
-                                  color: const Color(0xffFEBB46), fontSize: 39),
+                                  color: const Color(0xffFEBB46), fontSize: 30),
                             ),
                             Text("of CO2 has been emitted this",
                                 style: TextStyle(

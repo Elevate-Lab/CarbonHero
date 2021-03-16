@@ -27,7 +27,8 @@ class _ElectricityState extends State<Electricity> {
           .document("Electricity")
           .get();
 
-      double carbonEmitted = electricityCalc(consumption, 1);
+      String carbonMonth = double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2)).toString();
+      double carbonEmitted = electricityCalc(consumption, familySize.toInt());
 
       await databaseReference
           .collection("users")

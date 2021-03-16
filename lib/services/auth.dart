@@ -69,8 +69,7 @@ class Auth {
       'totalCarbonEmissionThisMonth': 0.0,
       'totalCarbonEmissionLastMonth': 0.0,
     });
-    await databaseReference
-        .collection('users')
+    await databaseReference.collection('users')
         .document(_currentUser.email)
         .collection('activities')
         .document('Waste')

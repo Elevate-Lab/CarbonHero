@@ -9,6 +9,8 @@ class Television extends StatefulWidget {
 }
 
 class _TelevisionState extends State<Television> {
+  var hoursSpent = 0.00;
+
   @override
   Widget build(BuildContext context) {
     double _height = MediaQuery.of(context).size.height;
@@ -118,68 +120,76 @@ class _TelevisionState extends State<Television> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(
-                        _width * 0.075, _height * 0.06, 0, _height * 0.02),
-                    child: RichText(
-                        text: TextSpan(
-                      text: "Number of hours television watched per day",
-                      style: TextStyle(
-                        fontSize: 22,
-                        color: primary_color,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    )),
+                  Text("Number of cylinders used per month",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  SizedBox(
+                    height: _height * 0.03,
                   ),
                   Container(
-                    padding: EdgeInsets.all(20),
-                    child: SleekCircularSlider(
-                      appearance: CircularSliderAppearance(
-                        startAngle: 165,
-                        angleRange: 210,
-                        size: 230,
-                        customWidths: CustomSliderWidths(progressBarWidth: 30),
-                        customColors: CustomSliderColors(
-                            trackColor: Colors.white,
-                            shadowColor: Colors.white,
-                            dotColor: Colors.white,
-                            progressBarColor: Color(0xff281627)),
-                      ),
-                      min: 0,
-                      max: 24,
-                      initialValue: 5,
-                      onChange: (double value) {
-                        print(value);
-                      },
-                      innerWidget: (double value) {
-                        String percentageModifier(double value) {
-                          final roundedValue = value.ceil().toInt().toString();
-                          return '$roundedValue';
-                        }
-
-                        return Container(
-                          margin: EdgeInsets.fromLTRB(
-                              _width * 0.25, _height * 0.1, 0, 0),
-                          // child: Text(
-                          //     percentageModifier(value),
-                          //     style: TextStyle(
-                          //       color: Color(0xff281627),
-                          //         fontSize: 45,
-                          //         fontWeight: FontWeight.w800
-                          //     )
-                          // )
-                          child: RichText(
-                            text: TextSpan(
-                                text: percentageModifier(value),
-                                style: TextStyle(
-                                    color: Color(0xff281627),
-                                    fontSize: 45,
-                                    fontWeight: FontWeight.w800)),
+                    width: _width * 0.8,
+                    height: _height * 0.07,
+                    decoration: BoxDecoration(
+                      borderRadius: new BorderRadius.circular(10),
+                      color: const Color(0xff281627),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: Row(children: [
+                        Text(
+                          "0",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Expanded(
+                          child: SliderTheme(
+                            data: SliderThemeData(
+                              //  activeTrackColor: Colors.red[700],
+                              inactiveTrackColor: const Color(0xff281627),
+                              trackShape: RoundedRectSliderTrackShape(),
+                              trackHeight: 10.0,
+                              thumbShape: RoundSliderThumbShape(
+                                  enabledThumbRadius: 12.0),
+                              thumbColor: const Color(0xffFEBB46),
+                              overlayColor: Colors.black,
+                              overlayShape:
+                                  RoundSliderOverlayShape(overlayRadius: 28.0),
+                              tickMarkShape: RoundSliderTickMarkShape(),
+                              activeTickMarkColor: Colors.white,
+                              inactiveTickMarkColor: Colors.white,
+                              valueIndicatorShape:
+                                  PaddleSliderValueIndicatorShape(),
+                              valueIndicatorColor: Colors.redAccent,
+                              valueIndicatorTextStyle: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            child: Slider(
+                              label: "$hoursSpent",
+                              value: hoursSpent,
+                              min: 0,
+                              max: 10,
+                              divisions: 10,
+                              activeColor: const Color(0xffFEBB46),
+                              onChanged: (double value) {
+                                setState(() {
+                                  hoursSpent = value;
+                                });
+                              },
+                            ),
                           ),
-                        );
-                      },
+                        ),
+                        Text(
+                          "10",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ]),
                     ),
                   ),
+                  SizedBox(height: _height * 0.02),
+                  new Divider(
+                    color: Colors.grey,
+                  ),
+                  SizedBox(height: _height * 0.02),
                 ],
               ),
             ),

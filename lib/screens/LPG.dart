@@ -1,64 +1,16 @@
-import 'package:carbon_emission/models/user.dart';
-import 'package:carbon_emission/screens/MainScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:carbon_emission/services/calculations.dart';
-import 'package:provider/provider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Electricity extends StatefulWidget {
+class LPG extends StatefulWidget {
   @override
-  _ElectricityState createState() => _ElectricityState();
-  static const routeName = '/ElectricityScreen';
+  _LPG createState() => _LPG();
+  static const routeName = '/LPGScreen';
 }
 
-class _ElectricityState extends State<Electricity> {
-  final databaseReference = Firestore.instance;
-  var consumption = 0.00;
+class _LPG extends State<LPG> {
+  var numCylinders = 0.00;
   var familySize = 1.00;
-
   @override
   Widget build(BuildContext context) {
-    var user = Provider.of<User>(context);
-    Future<void> calculateCarbon() async {
-      var doc = await databaseReference
-          .collection("users")
-          .document(user.email_id)
-          .collection("activities")
-          .document("Electricity")
-          .get();
-
-      double carbonEmitted = electricityCalc(consumption, 1);
-
-      await databaseReference
-          .collection("users")
-          .document(user.email_id)
-          .collection("activities")
-          .document("Electricity")
-          .updateData({
-        'totalCarbonEmissionToday':
-            doc['totalCarbonEmissionToday'] + carbonEmitted,
-        'totalCarbonEmissionThisMonth':
-            doc['totalCarbonEmissionThisMonth'] + carbonEmitted,
-        'lastCheckedAt': DateTime.now(),
-      });
-
-      await databaseReference
-          .collection("users")
-          .document(user.email_id)
-          .updateData({
-        'totalCarbonEmissionToday':
-            user.total_carbon_emission_today + carbonEmitted,
-        'totalCarbonEmissionThisMonth':
-            user.total_carbon_emission_this_month + carbonEmitted,
-      });
-
-      double month = user.total_carbon_emission_this_month;
-      user.total_carbon_emission_this_month = month + carbonEmitted;
-      double today = user.total_carbon_emission_today;
-      user.total_carbon_emission_today = today + carbonEmitted;
-      Navigator.of(context).pushNamed(MainScreen.routeName);
-    }
-
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -100,7 +52,7 @@ class _ElectricityState extends State<Electricity> {
               alignment: Alignment.topLeft,
               child: RichText(
                   text: TextSpan(
-                      text: "Electricity",
+                      text: "LPG",
                       style: TextStyle(color: Colors.white, fontSize: 25))),
             ),
           ),
@@ -145,7 +97,7 @@ class _ElectricityState extends State<Electricity> {
                 Image(
                   width: _width * 0.26,
                   height: _height * 0.12,
-                  image: AssetImage('assets/electricity.png'),
+                  image: AssetImage('assets/Natural gas.png'),
                 ),
                 SizedBox(width: _width * 0.02)
               ],
@@ -167,13 +119,11 @@ class _ElectricityState extends State<Electricity> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      'Total Electricity consumption (KW/h)',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
+                    Text("Number of cylinders used per month",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
                     SizedBox(
-                      height: _height * 0.04,
+                      height: _height * 0.03,
                     ),
                     Container(
                       width: _width * 0.8,
@@ -213,22 +163,22 @@ class _ElectricityState extends State<Electricity> {
                                 ),
                               ),
                               child: Slider(
-                                label: "$consumption",
-                                value: consumption,
+                                label: "$numCylinders",
+                                value: numCylinders,
                                 min: 0,
-                                max: 2000,
+                                max: 10,
                                 divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
                                   setState(() {
-                                    consumption = value;
+                                    numCylinders = value;
                                   });
                                 },
                               ),
                             ),
                           ),
                           Text(
-                            "2000",
+                            "10",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),
@@ -239,13 +189,11 @@ class _ElectricityState extends State<Electricity> {
                       color: Colors.grey,
                     ),
                     SizedBox(height: _height * 0.02),
-                    Text(
-                      'Number Of People In Your Family (Rs.)',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
+                    Text("Number Of People In Your Family",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
                     SizedBox(
-                      height: _height * 0.04,
+                      height: _height * 0.03,
                     ),
                     Container(
                       width: _width * 0.8,
@@ -267,7 +215,7 @@ class _ElectricityState extends State<Electricity> {
                                 //  activeTrackColor: Colors.red[700],
                                 inactiveTrackColor: const Color(0xff281627),
                                 trackShape: RoundedRectSliderTrackShape(),
-                                trackHeight: _height * 0.01,
+                                trackHeight: 10.0,
                                 thumbShape: RoundSliderThumbShape(
                                     enabledThumbRadius: 12.0),
                                 thumbColor: const Color(0xffFEBB46),
@@ -279,7 +227,7 @@ class _ElectricityState extends State<Electricity> {
                                 inactiveTickMarkColor: Colors.white,
                                 valueIndicatorShape:
                                     PaddleSliderValueIndicatorShape(),
-                                //     valueIndicatorColor: Colors.redAccent,
+                                valueIndicatorColor: Colors.redAccent,
                                 valueIndicatorTextStyle: TextStyle(
                                   color: Colors.white,
                                 ),
@@ -287,8 +235,8 @@ class _ElectricityState extends State<Electricity> {
                               child: Slider(
                                 label: "$familySize",
                                 value: familySize,
-                                min: 0,
-                                max: 6000,
+                                min: 1,
+                                max: 10,
                                 divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
@@ -300,7 +248,7 @@ class _ElectricityState extends State<Electricity> {
                             ),
                           ),
                           Text(
-                            "6000",
+                            "10",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),
@@ -310,19 +258,13 @@ class _ElectricityState extends State<Electricity> {
                     new Divider(
                       color: Colors.grey,
                     ),
+                    SizedBox(height: _height * 0.02),
                   ],
                 ),
               ),
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          calculateCarbon();
-        },
-        child: const Icon(Icons.navigation),
-        backgroundColor: Colors.green,
       ),
     );
   }

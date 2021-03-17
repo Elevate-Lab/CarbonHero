@@ -17,7 +17,6 @@ class _LPG extends State<LPG> {
   var familySize = 1.00;
   @override
   Widget build(BuildContext context) {
-
     var user = Provider.of<User>(context);
     Future<void> calculateCarbon() async {
       var doc = await databaseReference
@@ -28,7 +27,9 @@ class _LPG extends State<LPG> {
           .get();
 
       double carbonEmitted = lpgCalc(numCylinders);
-      String carbonMonth = double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2)).toString();
+      String carbonMonth =
+          double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
+              .toString();
 
       await databaseReference
           .collection("users")
@@ -37,9 +38,9 @@ class _LPG extends State<LPG> {
           .document("Natural Gas")
           .updateData({
         'totalCarbonEmissionToday':
-        doc['totalCarbonEmissionToday'] + carbonEmitted,
+            doc['totalCarbonEmissionToday'] + carbonEmitted,
         'totalCarbonEmissionThisMonth':
-        doc['totalCarbonEmissionThisMonth'] + carbonEmitted,
+            doc['totalCarbonEmissionThisMonth'] + carbonEmitted,
         'lastCheckedAt': DateTime.now(),
       });
 
@@ -48,9 +49,9 @@ class _LPG extends State<LPG> {
           .document(user.email_id)
           .updateData({
         'totalCarbonEmissionToday':
-        user.total_carbon_emission_today + carbonEmitted,
+            user.total_carbon_emission_today + carbonEmitted,
         'totalCarbonEmissionThisMonth':
-        user.total_carbon_emission_this_month + carbonEmitted,
+            user.total_carbon_emission_this_month + carbonEmitted,
       });
 
       double month = user.total_carbon_emission_this_month;
@@ -308,6 +309,24 @@ class _LPG extends State<LPG> {
                       color: Colors.grey,
                     ),
                     SizedBox(height: _height * 0.02),
+                    Padding(
+                      padding: EdgeInsets.only(left: 40, right: 40),
+                      child: RaisedButton(
+                        onPressed: () {
+                          calculateCarbon();
+                        },
+                        color: Color(0xffA663C6),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "SUBMIT",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),

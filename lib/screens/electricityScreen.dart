@@ -27,7 +27,9 @@ class _ElectricityState extends State<Electricity> {
           .document("Electricity")
           .get();
 
-      String carbonMonth = double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2)).toString();
+      String carbonMonth =
+          double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
+              .toString();
       double carbonEmitted = electricityCalc(consumption, familySize.toInt());
 
       await databaseReference
@@ -311,19 +313,31 @@ class _ElectricityState extends State<Electricity> {
                     new Divider(
                       color: Colors.grey,
                     ),
+                    SizedBox(height: _height * 0.02),
+                    Padding(
+                      padding: EdgeInsets.only(left: 40, right: 40),
+                      child: RaisedButton(
+                        onPressed: () {
+                          calculateCarbon();
+                        },
+                        color: Color(0xffA663C6),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "SUBMIT",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          calculateCarbon();
-        },
-        child: const Icon(Icons.navigation),
-        backgroundColor: Colors.green,
       ),
     );
   }

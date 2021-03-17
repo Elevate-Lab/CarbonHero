@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:carbon_emission/services/calculations.dart';
+import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:carbon_emission/models/user.dart';
+import 'package:carbon_emission/screens/MainScreen.dart';
 
 class HomeAppliances extends StatefulWidget {
   @override
@@ -7,11 +12,55 @@ class HomeAppliances extends StatefulWidget {
 }
 
 class _HomeAppliancesState extends State<HomeAppliances> {
+  final databaseReference = Firestore.instance;
   var acUsed = 0.00;
   var geyserUsed = 0.00;
   var refUsed = 0.00;
   @override
   Widget build(BuildContext context) {
+
+    var user = Provider.of<User>(context);
+    Future<void> calculateCarbon() async {
+      var doc = await databaseReference
+          .collection("users")
+          .document(user.email_id)
+          .collection("activities")
+          .document("Home Appliances")
+          .get();
+
+      double carbonEmitted = homeCalc(0, acUsed, geyserUsed, refUsed);
+      String carbonMonth = double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2)).toString();
+
+      await databaseReference
+          .collection("users")
+          .document(user.email_id)
+          .collection("activities")
+          .document("Home Appliances")
+          .updateData({
+        'totalCarbonEmissionToday':
+        doc['totalCarbonEmissionToday'] + carbonEmitted,
+        'totalCarbonEmissionThisMonth':
+        doc['totalCarbonEmissionThisMonth'] + carbonEmitted,
+        'lastCheckedAt': DateTime.now(),
+      });
+
+      await databaseReference
+          .collection("users")
+          .document(user.email_id)
+          .updateData({
+        'totalCarbonEmissionToday':
+        user.total_carbon_emission_today + carbonEmitted,
+        'totalCarbonEmissionThisMonth':
+        user.total_carbon_emission_this_month + carbonEmitted,
+      });
+
+      double month = user.total_carbon_emission_this_month;
+      user.total_carbon_emission_this_month = month + carbonEmitted;
+      double today = user.total_carbon_emission_today;
+      user.total_carbon_emission_today = today + carbonEmitted;
+      Navigator.of(context).pushNamed(MainScreen.routeName);
+    }
+
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(

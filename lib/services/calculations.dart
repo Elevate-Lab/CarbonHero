@@ -7,15 +7,15 @@ double electricity = 5455 * poundToKg;
 double lpg = 2243 * poundToKg;
 
 // -------  WASTE --------
-int wasteCalc(int waste, int paper, int plastic, int glass, int metal) {
-  int ans = waste - paper - plastic - glass - metal;
+double wasteCalc(var waste, var paper, var plastic, var glass, var metal) {
+  double ans = waste - paper - plastic - glass - metal;
   return ans;
 }
 
 // ------- TRANSPORTATION --------
-int journeyCalc(int distance, int mileage) {
+double journeyCalc(var distance, var mileage) {
   double ans = (5.178 * distance * poundToKg) / mileage;
-  return ans.toInt();
+  return ans;
 }
 
 // ------- ELECTRICITY ------
@@ -31,9 +31,9 @@ double homeCalc(var television, var ac, var geyser, var refrigerator) {
 }
 
 // -------- LPG(PROPANE) ---------
-int lpgCalc(int cylinders) {
+double lpgCalc(var cylinders) {
   double ans = (12 * 12.43 * cylinders * 15);
-  return ans.toInt();
+  return ans;
 }
 
 double compareFromLastMonth(double now, double prev)

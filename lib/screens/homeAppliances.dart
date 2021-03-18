@@ -19,7 +19,7 @@ class _HomeAppliancesState extends State<HomeAppliances> {
   @override
   Widget build(BuildContext context) {
     var user = Provider.of<User>(context);
-    Future<void> calculateCarbon() async {
+    Future<void> calculateCarbon_5() async {
       var doc = await databaseReference
           .collection("users")
           .document(user.email_id)
@@ -391,7 +391,7 @@ class _HomeAppliancesState extends State<HomeAppliances> {
                       padding: EdgeInsets.only(left: 40, right: 40),
                       child: RaisedButton(
                         onPressed: () {
-                          calculateCarbon();
+                          calculateCarbon_5();
                         },
                         color: Color(0xffA663C6),
                         shape: new RoundedRectangleBorder(

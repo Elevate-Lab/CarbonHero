@@ -18,7 +18,7 @@ class _LPG extends State<LPG> {
   @override
   Widget build(BuildContext context) {
     var user = Provider.of<User>(context);
-    Future<void> calculateCarbon() async {
+    Future<void> calculateCarbon_4() async {
       var doc = await databaseReference
           .collection("users")
           .document(user.email_id)
@@ -313,7 +313,7 @@ class _LPG extends State<LPG> {
                       padding: EdgeInsets.only(left: 40, right: 40),
                       child: RaisedButton(
                         onPressed: () {
-                          calculateCarbon();
+                          calculateCarbon_4();
                         },
                         color: Color(0xffA663C6),
                         shape: new RoundedRectangleBorder(

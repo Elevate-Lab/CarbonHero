@@ -217,7 +217,7 @@ class _StatisticsState extends State<Statistics> {
             child: Row(
               children: [
                 Text(
-                  "Pranshu Tripathi",
+                  user.name,
                   style: TextStyle(color: Colors.white, fontSize: 27),
                 ),
                 Spacer(),

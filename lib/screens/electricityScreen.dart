@@ -19,7 +19,7 @@ class _ElectricityState extends State<Electricity> {
   @override
   Widget build(BuildContext context) {
     var user = Provider.of<User>(context);
-    Future<void> calculateCarbon() async {
+    Future<void> calculateCarbon_6() async {
       var doc = await databaseReference
           .collection("users")
           .document(user.email_id)
@@ -243,7 +243,7 @@ class _ElectricityState extends State<Electricity> {
                     ),
                     SizedBox(height: _height * 0.02),
                     Text(
-                      'Number Of People In Your Family (Rs.)',
+                      'Number Of People In Your Family',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
@@ -290,8 +290,8 @@ class _ElectricityState extends State<Electricity> {
                               child: Slider(
                                 label: "$familySize",
                                 value: familySize,
-                                min: 0,
-                                max: 6000,
+                                min: 1,
+                                max: 20,
                                 divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
@@ -303,7 +303,7 @@ class _ElectricityState extends State<Electricity> {
                             ),
                           ),
                           Text(
-                            "6000",
+                            "10",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),
@@ -318,7 +318,7 @@ class _ElectricityState extends State<Electricity> {
                       padding: EdgeInsets.only(left: 40, right: 40),
                       child: RaisedButton(
                         onPressed: () {
-                          calculateCarbon();
+                          calculateCarbon_6();
                         },
                         color: Color(0xffA663C6),
                         shape: new RoundedRectangleBorder(

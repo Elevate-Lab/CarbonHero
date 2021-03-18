@@ -19,7 +19,7 @@ class _TransportState extends State<Transport> {
   @override
   Widget build(BuildContext context) {
     var user = Provider.of<User>(context);
-    Future<void> calculateCarbon() async {
+    Future<void> calculateCarbon_2() async {
       var doc = await databaseReference
           .collection("users")
           .document(user.email_id)
@@ -391,7 +391,7 @@ class _TransportState extends State<Transport> {
                       padding: EdgeInsets.only(left: 40, right: 40),
                       child: RaisedButton(
                         onPressed: () {
-                          calculateCarbon();
+                          calculateCarbon_2();
                         },
                         color: Color(0xffA663C6),
                         shape: new RoundedRectangleBorder(

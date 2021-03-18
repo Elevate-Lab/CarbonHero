@@ -1,11 +1,214 @@
+import 'package:carbon_emission/models/user.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:provider/provider.dart';
 
-class Statistics extends StatelessWidget {
+class Statistics extends StatefulWidget {
+  @override
+  _StatisticsState createState() => _StatisticsState();
+}
+
+class _StatisticsState extends State<Statistics> {
+  var database = Firestore.instance;
+  double _totalCarbonEmissionThisMonth = 0.00;
+  double _totalCarbonEmissionLastMonth = 0.00;
+  double _totalCarbonEmissionChange = 0.00;
+  var user;
+
+  double _transport_previous_month = 0.00;
+  double _transport_this_month = 0.00;
+  double _transport_percentage_change = 0.00;
+  double _transport_percentage_affect = 0.00;
+
+  double _lpg_previous_month = 0.00;
+  double _lpg_this_month = 0.00;
+  double _lpg_percentage_change = 0.00;
+  double _lpg_percentage_affect = 0.00;
+
+  double _electricity_previous_month = 0.00;
+  double _electricity_this_month = 0.00;
+  double _electricity_percentage_change = 0.00;
+  double _electricity_percentage_affect = 0.00;
+
+  double _homeApp_previous_month = 0.00;
+  double _homeApp_this_month = 0.00;
+  double _homeApp_percentage_change = 0.00;
+  double _homeApp_percentage_affect = 0.00;
+
+  double _waste_previous_month = 0.00;
+  double _waste_this_month = 0.00;
+  double _waste_percentage_change = 0.00;
+  double _waste_percentage_affect = 0.00;
+
+  double _television_previous_month = 0.00;
+  double _television_this_month = 0.00;
+  double _television_percentage_change = 0.00;
+  double _television_percentage_affect = 0.00;
+
+  // double _perPersonal;
+  // String _perLPG;
+  // String _perElectricity;
+  // String _perHomeApp;
+  // String _perTelevision;
+  // String _perWaste;
+  // String _perTotal;
+
+  Future<void> _updateTransport() async {
+    var doc = await database
+        .collection('users')
+        .document(user.email_id)
+        .collection('activities')
+        .document('Personal Vehicle')
+        .get();
+
+    setState(() {
+      _transport_previous_month =
+          doc['totalCarbonEmissionLastMonth'].toDouble();
+      _transport_this_month = doc['totalCarbonEmissionThisMonth'].toDouble();
+
+      _transport_percentage_change =
+          _transport_this_month - _transport_previous_month;
+      _transport_percentage_change /= _transport_previous_month;
+      _transport_percentage_change *= 100;
+
+      _transport_percentage_affect =
+          _transport_this_month / _totalCarbonEmissionThisMonth;
+      _transport_percentage_affect *= 100;
+    });
+  }
+
+  Future<void> _updateLPG() async {
+    var doc = await database
+        .collection('users')
+        .document(user.email_id)
+        .collection('activities')
+        .document('Natural Gas')
+        .get();
+
+    setState(() {
+      _lpg_previous_month = doc['totalCarbonEmissionLastMonth'].toDouble();
+      _lpg_this_month = doc['totalCarbonEmissionThisMonth'].toDouble();
+
+      _lpg_percentage_change = _lpg_this_month - _lpg_previous_month;
+      _lpg_percentage_change /= _lpg_previous_month;
+      _lpg_percentage_change *= 100;
+
+      _lpg_percentage_affect = _lpg_this_month / _totalCarbonEmissionThisMonth;
+      _lpg_percentage_affect *= 100;
+    });
+  }
+
+  Future<void> _updateElectricity() async {
+    var doc = await database
+        .collection('users')
+        .document(user.email_id)
+        .collection('activities')
+        .document('Electricity')
+        .get();
+
+    setState(() {
+      _electricity_previous_month =
+          doc['totalCarbonEmissionLastMonth'].toDouble();
+      _electricity_this_month = doc['totalCarbonEmissionThisMonth'].toDouble();
+
+      _electricity_percentage_change =
+          _electricity_this_month - _electricity_previous_month;
+      _electricity_percentage_change /= _electricity_previous_month;
+      _electricity_percentage_change *= 100;
+
+      _electricity_percentage_affect =
+          _electricity_this_month / _totalCarbonEmissionThisMonth;
+      _electricity_percentage_affect *= 100;
+    });
+  }
+
+  Future<void> _updateHomeAppliances() async {
+    var doc = await database
+        .collection('users')
+        .document(user.email_id)
+        .collection('activities')
+        .document('Home Appliances')
+        .get();
+
+    setState(() {
+      _homeApp_previous_month = doc['totalCarbonEmissionLastMonth'].toDouble();
+      _homeApp_this_month = doc['totalCarbonEmissionThisMonth'].toDouble();
+
+      _homeApp_percentage_change =
+          _homeApp_this_month - _homeApp_previous_month;
+      _homeApp_percentage_change /= _homeApp_previous_month;
+      _homeApp_percentage_change *= 100;
+
+      _homeApp_percentage_affect =
+          _homeApp_this_month / _totalCarbonEmissionThisMonth;
+      _homeApp_percentage_affect *= 100;
+    });
+  }
+
+  Future<void> _updateWaste() async {
+    var doc = await database
+        .collection('users')
+        .document(user.email_id)
+        .collection('activities')
+        .document('Waste')
+        .get();
+
+    _waste_previous_month = doc['totalCarbonEmissionLastMonth'].toDouble();
+    _waste_this_month = doc['totalCarbonEmissionThisMonth'].toDouble();
+
+    _waste_percentage_change = _waste_this_month - _waste_previous_month;
+    _waste_percentage_change /= _waste_previous_month;
+    _waste_percentage_change *= 100;
+
+    _waste_percentage_affect =
+        _waste_this_month / _totalCarbonEmissionThisMonth;
+    _waste_percentage_affect *= 100;
+  }
+
+  Future<void> _updateTelevision() async {
+    var doc = await database
+        .collection('users')
+        .document(user.email_id)
+        .collection('activities')
+        .document('Television')
+        .get();
+
+    setState(() {
+      _television_previous_month =
+          doc['totalCarbonEmissionLastMonth'].toDouble();
+      _television_this_month = doc['totalCarbonEmissionThisMonth'].toDouble();
+      _television_percentage_change =
+          (_television_this_month - _television_previous_month);
+      _television_percentage_change /= _television_previous_month;
+      _television_percentage_change *= 100;
+      _television_percentage_affect =
+          _television_this_month / _totalCarbonEmissionThisMonth;
+      _television_percentage_affect *= 100;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
+
+    _totalCarbonEmissionThisMonth = user.total_carbon_emission_this_month;
+    _totalCarbonEmissionLastMonth = user.total_carbon_emission_last_month;
+    _totalCarbonEmissionChange =
+        (_totalCarbonEmissionThisMonth - _totalCarbonEmissionLastMonth);
+    _totalCarbonEmissionChange /= _totalCarbonEmissionLastMonth;
+    _totalCarbonEmissionChange *= 100;
+
+    _updateTransport();
+    _updateLPG();
+    _updateElectricity();
+    _updateHomeAppliances();
+    _updateTelevision();
+    _updateWaste();
+
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -83,57 +286,87 @@ class Statistics extends StatelessWidget {
                     DataRow(
                       cells: <DataCell>[
                         DataCell(Text('Personal Vehicle')),
-                        DataCell(Text('190')),
-                        DataCell(Text('205')),
-                        DataCell(Text('-14%',
-                            style: TextStyle(color: Colors.green))),
+                        DataCell(Text('$_transport_this_month')),
+                        DataCell(Text('$_transport_previous_month')),
+                        DataCell(Text(
+                            _transport_percentage_change.toStringAsFixed(1) +
+                                "%",
+                            style: TextStyle(
+                                color: (_transport_this_month >
+                                        _transport_previous_month
+                                    ? Colors.red
+                                    : Colors.green)))),
                       ],
                     ),
                     DataRow(
                       cells: <DataCell>[
                         DataCell(Text('LPG')),
-                        DataCell(Text('150')),
-                        DataCell(Text('140')),
-                        DataCell(
-                            Text('14%', style: TextStyle(color: Colors.red)))
+                        DataCell(Text('$_lpg_this_month')),
+                        DataCell(Text('$_lpg_previous_month')),
+                        DataCell(Text(
+                            _lpg_percentage_change.toStringAsFixed(1) + "%",
+                            style: TextStyle(
+                                color: _lpg_this_month > _lpg_previous_month
+                                    ? Colors.red
+                                    : Colors.green)))
                       ],
                     ),
                     DataRow(
                       cells: <DataCell>[
                         DataCell(Text('Electricity')),
-                        DataCell(Text('167')),
-                        DataCell(Text('178')),
+                        DataCell(Text('$_electricity_this_month')),
+                        DataCell(Text('$_electricity_previous_month')),
                         DataCell(Text(
-                          '-13%',
-                          style: TextStyle(color: Colors.green),
+                          _electricity_percentage_change.toStringAsFixed(1) +
+                              "%",
+                          style: TextStyle(
+                              color: _electricity_this_month >
+                                      _electricity_previous_month
+                                  ? Colors.red
+                                  : Colors.green),
                         ))
                       ],
                     ),
                     DataRow(
                       cells: <DataCell>[
                         DataCell(Text('Home Appliances')),
-                        DataCell(Text('167')),
-                        DataCell(Text('178')),
-                        DataCell(
-                            Text('-13%', style: TextStyle(color: Colors.green)))
+                        DataCell(Text('$_homeApp_this_month')),
+                        DataCell(Text('$_homeApp_previous_month')),
+                        DataCell(Text(
+                            _homeApp_percentage_change.toStringAsFixed(1) + "%",
+                            style: TextStyle(
+                                color: _homeApp_this_month >
+                                        _homeApp_previous_month
+                                    ? Colors.red
+                                    : Colors.green)))
                       ],
                     ),
                     DataRow(
                       cells: <DataCell>[
                         DataCell(Text('Television')),
-                        DataCell(Text('167')),
-                        DataCell(Text('178')),
-                        DataCell(
-                            Text('13%', style: TextStyle(color: Colors.red)))
+                        DataCell(Text('$_television_this_month')),
+                        DataCell(Text('$_television_previous_month')),
+                        DataCell(Text(
+                            _television_percentage_change.toStringAsFixed(1) +
+                                "%",
+                            style: TextStyle(
+                                color: _television_this_month >
+                                        _television_previous_month
+                                    ? Colors.red
+                                    : Colors.green)))
                       ],
                     ),
                     DataRow(
                       cells: <DataCell>[
                         DataCell(Text('Waste')),
-                        DataCell(Text('167')),
-                        DataCell(Text('178')),
-                        DataCell(
-                            Text('13%', style: TextStyle(color: Colors.red)))
+                        DataCell(Text('$_waste_this_month')),
+                        DataCell(Text('$_waste_previous_month')),
+                        DataCell(Text(
+                            _waste_percentage_change.toStringAsFixed(1) + "%",
+                            style: TextStyle(
+                                color: _waste_this_month > _waste_previous_month
+                                    ? Colors.red
+                                    : Colors.green)))
                       ],
                     ),
                     DataRow(
@@ -142,13 +375,17 @@ class Statistics extends StatelessWidget {
                           'Total FootPrint',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         )),
-                        DataCell(Text('667',
+                        DataCell(Text('$_totalCarbonEmissionThisMonth',
                             style: TextStyle(fontWeight: FontWeight.bold))),
-                        DataCell(Text('878',
+                        DataCell(Text('$_totalCarbonEmissionLastMonth',
                             style: TextStyle(fontWeight: FontWeight.bold))),
-                        DataCell(Text('23%',
+                        DataCell(Text(
+                            _totalCarbonEmissionChange.toStringAsFixed(1) + '%',
                             style: TextStyle(
-                                color: Colors.red,
+                                color: _totalCarbonEmissionThisMonth >
+                                        _totalCarbonEmissionLastMonth
+                                    ? Colors.red
+                                    : Colors.green,
                                 fontWeight: FontWeight.bold)))
                       ],
                     ),
@@ -285,8 +522,8 @@ class Statistics extends StatelessWidget {
         case 0:
           return PieChartSectionData(
               color: Colors.pink[200],
-              value: 40,
-              title: '40%',
+              value: _transport_percentage_affect,
+              title: _transport_percentage_affect.toStringAsFixed(1) + "%",
               radius: 50,
               titleStyle: TextStyle(
                   fontSize: 16,
@@ -296,8 +533,8 @@ class Statistics extends StatelessWidget {
         case 1:
           return PieChartSectionData(
               color: Colors.green[300],
-              value: 30,
-              title: '30%',
+              value: _lpg_percentage_affect,
+              title: _lpg_percentage_affect.toStringAsFixed(1) + "%",
               radius: 50,
               titleStyle: TextStyle(
                   fontSize: 15,
@@ -307,8 +544,8 @@ class Statistics extends StatelessWidget {
         case 2:
           return PieChartSectionData(
             color: Colors.blue[400],
-            value: 15,
-            title: '15%',
+            value: _electricity_percentage_affect,
+            title: _electricity_percentage_affect.toStringAsFixed(1) + "%",
             radius: 50,
             titleStyle: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
@@ -317,8 +554,8 @@ class Statistics extends StatelessWidget {
         case 3:
           return PieChartSectionData(
             color: Colors.amber,
-            value: 10,
-            title: '10%',
+            value: _homeApp_percentage_affect,
+            title: _homeApp_percentage_affect.toStringAsFixed(1) + "%",
             radius: 50,
             titleStyle: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
@@ -327,8 +564,8 @@ class Statistics extends StatelessWidget {
         case 4:
           return PieChartSectionData(
             color: Colors.blue[50],
-            value: 5,
-            title: '5%',
+            value: _television_percentage_affect,
+            title: _television_percentage_affect.toStringAsFixed(1) + "%",
             radius: 50,
             titleStyle: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
@@ -337,8 +574,8 @@ class Statistics extends StatelessWidget {
         case 5:
           return PieChartSectionData(
             color: Colors.orange,
-            value: 5,
-            title: '5%',
+            value: _waste_percentage_affect,
+            title: _waste_percentage_affect.toStringAsFixed(1) + "%",
             radius: 50,
             titleStyle: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),

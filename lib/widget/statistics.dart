@@ -190,7 +190,6 @@ class _StatisticsState extends State<Statistics> {
 
   @override
   Widget build(BuildContext context) {
-
     user = Provider.of<User>(context);
 
     _totalCarbonEmissionThisMonth = user.total_carbon_emission_this_month;
@@ -214,7 +213,8 @@ class _StatisticsState extends State<Statistics> {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: _width*0.1, right: _width*0.1, top: _height*0.06),
+            padding: EdgeInsets.only(
+                left: _width * 0.1, right: _width * 0.1, top: _height * 0.06),
             child: Row(
               children: [
                 Text(
@@ -233,7 +233,7 @@ class _StatisticsState extends State<Statistics> {
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: EdgeInsets.only(left: _width*0.1),
+              padding: EdgeInsets.only(left: _width * 0.1),
               child: Text("See Your Carbon FootPrint Here\n",
                   style: TextStyle(color: Colors.grey, fontSize: 16)),
             ),
@@ -243,7 +243,7 @@ class _StatisticsState extends State<Statistics> {
           ),
           Container(
             width: _width,
-            height: _height*1.05,
+            height: _height * 1.05,
             padding: EdgeInsets.all(3),
             decoration: BoxDecoration(
                 borderRadius: new BorderRadius.only(
@@ -253,7 +253,8 @@ class _StatisticsState extends State<Statistics> {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: _width*0, right: _width*0.04),
+                  padding:
+                      EdgeInsets.only(left: _width * 0, right: _width * 0.04),
                   child: DataTable(columns: const <DataColumn>[
                     DataColumn(
                       label: Text(
@@ -287,8 +288,10 @@ class _StatisticsState extends State<Statistics> {
                     DataRow(
                       cells: <DataCell>[
                         DataCell(Text('Personal Vehicle')),
-                        DataCell(Text('$_transport_this_month')),
-                        DataCell(Text('$_transport_previous_month')),
+                        DataCell(
+                            Text(_transport_this_month.toStringAsFixed(1))),
+                        DataCell(
+                            Text(_transport_previous_month.toStringAsFixed(1))),
                         DataCell(Text(
                             _transport_percentage_change.toStringAsFixed(1) +
                                 "%",
@@ -302,8 +305,8 @@ class _StatisticsState extends State<Statistics> {
                     DataRow(
                       cells: <DataCell>[
                         DataCell(Text('LPG')),
-                        DataCell(Text('$_lpg_this_month')),
-                        DataCell(Text('$_lpg_previous_month')),
+                        DataCell(Text(_lpg_this_month.toStringAsFixed(1))),
+                        DataCell(Text(_lpg_previous_month.toStringAsFixed(1))),
                         DataCell(Text(
                             _lpg_percentage_change.toStringAsFixed(1) + "%",
                             style: TextStyle(
@@ -315,8 +318,10 @@ class _StatisticsState extends State<Statistics> {
                     DataRow(
                       cells: <DataCell>[
                         DataCell(Text('Electricity')),
-                        DataCell(Text('$_electricity_this_month')),
-                        DataCell(Text('$_electricity_previous_month')),
+                        DataCell(
+                            Text(_electricity_this_month.toStringAsFixed(1))),
+                        DataCell(Text(
+                            _electricity_previous_month.toStringAsFixed(1))),
                         DataCell(Text(
                           _electricity_percentage_change.toStringAsFixed(1) +
                               "%",
@@ -331,8 +336,9 @@ class _StatisticsState extends State<Statistics> {
                     DataRow(
                       cells: <DataCell>[
                         DataCell(Text('Home Appliances')),
-                        DataCell(Text('$_homeApp_this_month')),
-                        DataCell(Text('$_homeApp_previous_month')),
+                        DataCell(Text(_homeApp_this_month.toStringAsFixed(1))),
+                        DataCell(
+                            Text(_homeApp_previous_month.toStringAsFixed(1))),
                         DataCell(Text(
                             _homeApp_percentage_change.toStringAsFixed(1) + "%",
                             style: TextStyle(
@@ -345,8 +351,10 @@ class _StatisticsState extends State<Statistics> {
                     DataRow(
                       cells: <DataCell>[
                         DataCell(Text('Television')),
-                        DataCell(Text('$_television_this_month')),
-                        DataCell(Text('$_television_previous_month')),
+                        DataCell(
+                            Text(_television_this_month.toStringAsFixed(1))),
+                        DataCell(Text(
+                            _television_previous_month.toStringAsFixed(1))),
                         DataCell(Text(
                             _television_percentage_change.toStringAsFixed(1) +
                                 "%",
@@ -360,8 +368,9 @@ class _StatisticsState extends State<Statistics> {
                     DataRow(
                       cells: <DataCell>[
                         DataCell(Text('Waste')),
-                        DataCell(Text('$_waste_this_month')),
-                        DataCell(Text('$_waste_previous_month')),
+                        DataCell(Text(_waste_this_month.toStringAsFixed(1))),
+                        DataCell(
+                            Text(_waste_previous_month.toStringAsFixed(1))),
                         DataCell(Text(
                             _waste_percentage_change.toStringAsFixed(1) + "%",
                             style: TextStyle(
@@ -376,9 +385,11 @@ class _StatisticsState extends State<Statistics> {
                           'Total FootPrint',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         )),
-                        DataCell(Text('$_totalCarbonEmissionThisMonth',
+                        DataCell(Text(
+                            _totalCarbonEmissionThisMonth.toStringAsFixed(1),
                             style: TextStyle(fontWeight: FontWeight.bold))),
-                        DataCell(Text('$_totalCarbonEmissionLastMonth',
+                        DataCell(Text(
+                            _totalCarbonEmissionLastMonth.toStringAsFixed(1),
                             style: TextStyle(fontWeight: FontWeight.bold))),
                         DataCell(Text(
                             _totalCarbonEmissionChange.toStringAsFixed(1) + '%',

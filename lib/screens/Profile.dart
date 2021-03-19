@@ -39,10 +39,15 @@ class _ProfileState extends State<Profile> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Icon(
-                            Icons.arrow_back_ios_rounded,
-                            color: Colors.black,
-                            size: 25,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Icon(
+                              Icons.arrow_back_ios_rounded,
+                              color: Colors.black,
+                              size: 25,
+                            ),
                           ),
                           Text(
                             "My Profile",

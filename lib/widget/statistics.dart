@@ -255,7 +255,9 @@ class _StatisticsState extends State<Statistics> {
                 Padding(
                   padding:
                       EdgeInsets.only(left: _width * 0, right: _width * 0.04),
-                  child: DataTable(columns: const <DataColumn>[
+                  child: DataTable(
+                      columnSpacing: _width*0.06,
+                      columns: const <DataColumn>[
                     DataColumn(
                       label: Text(
                         "Activity",

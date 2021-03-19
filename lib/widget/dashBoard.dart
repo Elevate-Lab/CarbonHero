@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:carbon_emission/models/user.dart';
+import 'package:carbon_emission/screens/Profile.dart';
 import 'package:carbon_emission/screens/chooseNewActivity.dart';
 import 'package:carbon_emission/widget/badge.dart';
 import 'package:flutter/material.dart';
@@ -38,11 +39,16 @@ class DashBoard extends StatelessWidget {
                     style: TextStyle(color: Colors.white, fontSize: 27),
                   ),
                   Spacer(),
-                  Icon(
-                    Icons.account_circle_outlined,
-                    size: 40,
-                    color: Colors.white,
-                  )
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(Profile.routeName);
+                    },
+                    child: Icon(
+                      Icons.account_circle_outlined,
+                      size: 40,
+                      color: Colors.white,
+                    ),
+                  ),
                 ],
               ),
               Align(

@@ -50,6 +50,7 @@ class _LogInState extends State<LogIn> {
         doc['totalCarbonEmissionToday'].toDouble();
     data.total_carbon_emission_yesterday =
         doc['totalCarbonEmissionYesterday'].toDouble();
+    data.img_url = doc['imgUrl'];
     Navigator.of(context).pushNamed(MainScreen.routeName);
   }
 

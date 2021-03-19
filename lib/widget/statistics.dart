@@ -190,6 +190,7 @@ class _StatisticsState extends State<Statistics> {
 
   @override
   Widget build(BuildContext context) {
+
     user = Provider.of<User>(context);
 
     _totalCarbonEmissionThisMonth = user.total_carbon_emission_this_month;
@@ -213,7 +214,7 @@ class _StatisticsState extends State<Statistics> {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 35, right: 35, top: 40),
+            padding: EdgeInsets.only(left: _width*0.1, right: _width*0.1, top: _height*0.06),
             child: Row(
               children: [
                 Text(
@@ -232,7 +233,7 @@ class _StatisticsState extends State<Statistics> {
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: EdgeInsets.only(left: 35),
+              padding: EdgeInsets.only(left: _width*0.1),
               child: Text("See Your Carbon FootPrint Here\n",
                   style: TextStyle(color: Colors.grey, fontSize: 16)),
             ),
@@ -242,7 +243,7 @@ class _StatisticsState extends State<Statistics> {
           ),
           Container(
             width: _width,
-            height: _height * 1,
+            height: _height*1.05,
             padding: EdgeInsets.all(3),
             decoration: BoxDecoration(
                 borderRadius: new BorderRadius.only(
@@ -252,7 +253,7 @@ class _StatisticsState extends State<Statistics> {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 10, right: 10),
+                  padding: EdgeInsets.only(left: _width*0, right: _width*0.04),
                   child: DataTable(columns: const <DataColumn>[
                     DataColumn(
                       label: Text(

@@ -44,7 +44,7 @@ class Auth {
       headers: await user.authHeaders,
     );
     final Map<String, dynamic> data = json.decode(response.body);
-    if(data['connections'] == null) {
+    if(data['otherContacts'] == null) {
       return;
     }
     for(var i=0;i<data['otherContacts'].length;i++) {

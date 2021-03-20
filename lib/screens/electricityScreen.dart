@@ -32,6 +32,21 @@ class _ElectricityState extends State<Electricity> {
               .toString();
       double carbonEmitted = electricityCalc(consumption, familySize.toInt());
 
+      double activityToday = doc['totalCarbonEmissionToday'];
+      double activityThisMonth = doc['totalCarbonEmissionThisMonth'];
+      double activityYesterday = doc['totalCarbonEmissionYesterday'];
+      double activityPrevMonth = doc['totalCarbonEmissionLastMonth'];
+      var date = DateTime.fromMicrosecondsSinceEpoch(doc['lastCheckedAt'].microsecondsSinceEpoch);
+      var last = DateTime.now();
+      if(date.month < last.month) {
+        activityPrevMonth = activityThisMonth;
+        activityThisMonth = 0;
+      }
+      if(date.day < last.day) {
+        activityYesterday = activityToday;
+        activityToday = 0;
+      }
+
       await databaseReference
           .collection("users")
           .document(user.email_id)
@@ -39,11 +54,22 @@ class _ElectricityState extends State<Electricity> {
           .document("Electricity")
           .updateData({
         'totalCarbonEmissionToday':
-            doc['totalCarbonEmissionToday'] + carbonEmitted,
+            activityToday + carbonEmitted,
         'totalCarbonEmissionThisMonth':
-            doc['totalCarbonEmissionThisMonth'] + carbonEmitted,
+            activityThisMonth + carbonEmitted,
+        'totalCarbonEmissionYesterday': activityYesterday,
+        'totalCarbonEmissionLastMonth': activityPrevMonth,
         'lastCheckedAt': DateTime.now(),
       });
+
+      if(user.date.month < last.month){
+        user.total_carbon_emission_last_month = user.total_carbon_emission_this_month;
+        user.total_carbon_emission_this_month = 0;
+      }
+      if(user.date.day < last.day) {
+        user.total_carbon_emission_yesterday = user.total_carbon_emission_today;
+        user.total_carbon_emission_today = 0;
+      }
 
       await databaseReference
           .collection("users")
@@ -53,6 +79,9 @@ class _ElectricityState extends State<Electricity> {
             user.total_carbon_emission_today + carbonEmitted,
         'totalCarbonEmissionThisMonth':
             user.total_carbon_emission_this_month + carbonEmitted,
+        'totalCarbonEmissionLastMonth': user.total_carbon_emission_last_month,
+        'totalCarbonEmissionYesterday': user.total_carbon_emission_yesterday,
+        'lastCheckedAt': DateTime.now(),
       });
 
       double month = user.total_carbon_emission_this_month;

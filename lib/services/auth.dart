@@ -1,9 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import "package:http/http.dart" as http;
+import 'dart:convert' show json;
+import 'dart:async';
 
 class Auth {
   final databaseReference = Firestore.instance;
+  List<dynamic> friends = [];
   Future<void> handleSignIn(GoogleSignIn _googleSignIn) async {
     try {
       await _googleSignIn.signIn();
@@ -15,6 +19,37 @@ class Auth {
   Future<void> handleSignOut(GoogleSignIn _googleSignIn) =>
       _googleSignIn.disconnect();
 
+  Future<void> _handleGetContact(GoogleSignInAccount user) async {
+    // print("first");
+    final http.Response response = await http.get(
+      Uri.parse('https://people.googleapis.com/v1/people/me/connections'
+          '?requestMask.includeField=person.emailAddresses'),
+      headers: await user.authHeaders,
+    );
+    final Map<String, dynamic> data = json.decode(response.body);
+    for(var i=0;i<data['connections'].length;i++) {
+      friends.add(data['connections'][i]['emailAddresses'][0]['value']);
+    }
+    // print(friends);
+    return;
+  }
+
+  Future<void> _handleContact(GoogleSignInAccount user) async {
+    // print("second");
+    final http.Response response = await http.get(
+      Uri.parse('https://people.googleapis.com/v1/otherContacts?readMask=emailAddresses'),
+      headers: await user.authHeaders,
+    );
+    final Map<String, dynamic> data = json.decode(response.body);
+    for(var i=0;i<data['otherContacts'].length;i++) {
+      friends.add(data['otherContacts'][i]['emailAddresses'][0]['value']);
+    }
+    // print(friends);
+    return;
+  }
+
+
+
   void createUser(GoogleSignInAccount _currentUser) async {
     var doc = await databaseReference
         .collection('users')
@@ -23,6 +58,8 @@ class Auth {
     if (doc.exists) {
       return;
     }
+    await _handleGetContact(_currentUser);
+    await _handleContact(_currentUser);
 
     var data;
     await databaseReference
@@ -40,7 +77,7 @@ class Auth {
       'totalCarbonEmissionToday': 0.0,
       'batchesEarned': [],
       'pointsEarned': 10,
-      'userFriends': [],
+      'userFriends': friends,
     });
 
     await databaseReference

@@ -13,6 +13,12 @@ class User with ChangeNotifier {
   List<dynamic> batchesEarned;
   int pointsEarned;
   List<dynamic> userFriends;
+  DateTime lastCheckedAt;
+
+  set date(DateTime _date) {
+    this.lastCheckedAt = _date;
+    notifyListeners();
+  }
 
   set name(String _username) {
     this.userName = _username;
@@ -72,6 +78,10 @@ class User with ChangeNotifier {
   set user_friends(List<dynamic> _userfriends) {
     this.userFriends = _userfriends;
     notifyListeners();
+  }
+
+  DateTime get date {
+    return this.lastCheckedAt;
   }
 
   String get name {

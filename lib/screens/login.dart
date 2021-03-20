@@ -52,6 +52,7 @@ class _LogInState extends State<LogIn> {
     data.total_carbon_emission_yesterday =
         doc['totalCarbonEmissionYesterday'].toDouble();
     data.img_url = doc['imgUrl'];
+    data.date = doc['lastCheckedAt'];
     Navigator.of(context).pushNamed(MainScreen.routeName);
   }
 
@@ -62,7 +63,9 @@ class _LogInState extends State<LogIn> {
       setState(() {
         _currentUser = account;
         auth.createUser(_currentUser);
-        if (_currentUser != null) getDetails();
+        if (_currentUser != null) {
+          getDetails();
+        }
       });
     });
     _googleSignIn.signInSilently();

@@ -27,6 +27,9 @@ class Auth {
       headers: await user.authHeaders,
     );
     final Map<String, dynamic> data = json.decode(response.body);
+    if(data['connections'] == null) {
+      return;
+    }
     for(var i=0;i<data['connections'].length;i++) {
       friends.add(data['connections'][i]['emailAddresses'][0]['value']);
     }
@@ -41,6 +44,9 @@ class Auth {
       headers: await user.authHeaders,
     );
     final Map<String, dynamic> data = json.decode(response.body);
+    if(data['connections'] == null) {
+      return;
+    }
     for(var i=0;i<data['otherContacts'].length;i++) {
       friends.add(data['otherContacts'][i]['emailAddresses'][0]['value']);
     }
@@ -78,6 +84,7 @@ class Auth {
       'batchesEarned': [],
       'pointsEarned': 10,
       'userFriends': friends,
+      'lastCheckedAt': DateTime.now(),
     });
 
     await databaseReference

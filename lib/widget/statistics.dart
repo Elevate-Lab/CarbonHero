@@ -46,13 +46,7 @@ class _StatisticsState extends State<Statistics> {
   double _television_percentage_change = 0.00;
   double _television_percentage_affect = 0.00;
 
-  // double _perPersonal;
-  // String _perLPG;
-  // String _perElectricity;
-  // String _perHomeApp;
-  // String _perTelevision;
-  // String _perWaste;
-  // String _perTotal;
+  String userName;
 
   Future<void> _updateTransport() async {
     var doc = await database
@@ -199,6 +193,14 @@ class _StatisticsState extends State<Statistics> {
     _totalCarbonEmissionChange /= _totalCarbonEmissionLastMonth;
     _totalCarbonEmissionChange *= 100;
 
+    userName = user.name;
+    if (userName == null) {
+      userName = "Test";
+    }
+    if (userName.length > 20) {
+      userName = userName.substring(0, 21) + "...";
+    }
+
     _updateTransport();
     _updateLPG();
     _updateElectricity();
@@ -218,7 +220,7 @@ class _StatisticsState extends State<Statistics> {
             child: Row(
               children: [
                 Text(
-                  user.name,
+                  userName,
                   style: TextStyle(color: Colors.white, fontSize: 27),
                 ),
                 Spacer(),
@@ -255,9 +257,9 @@ class _StatisticsState extends State<Statistics> {
                 Padding(
                   padding:
                       EdgeInsets.only(left: _width * 0, right: _width * 0.04),
-                  child: DataTable(
-                      columnSpacing: _width*0.06,
-                      columns: const <DataColumn>[
+                  child:
+                      DataTable(columnSpacing: _width * 0.06, columns: const <
+                          DataColumn>[
                     DataColumn(
                       label: Text(
                         "Activity",

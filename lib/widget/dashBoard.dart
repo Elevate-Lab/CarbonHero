@@ -13,16 +13,23 @@ class DashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var user = Provider.of<User>(context);
-    double compareMonth = compareFromLastMonth(user.total_carbon_emission_this_month, user.total_carbon_emission_last_month);
+    double compareMonth = compareFromLastMonth(
+        user.total_carbon_emission_this_month,
+        user.total_carbon_emission_last_month);
     double ans1 = double.parse((compareMonth).toStringAsFixed(2));
-    double compareDay = compareFromYesterday(user.total_carbon_emission_today, user.total_carbon_emission_yesterday);
+    double compareDay = compareFromYesterday(
+        user.total_carbon_emission_today, user.total_carbon_emission_yesterday);
     double ans2 = double.parse((compareDay).toStringAsFixed(2));
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     String userName = user.name;
-    if(userName == null) {
+    if (userName == null) {
       userName = "Test";
     }
+    if (userName.length > 20) {
+      userName = userName.substring(0, 20) + '...';
+    }
+
     return Padding(
         padding: const EdgeInsets.only(
           top: 40,
@@ -30,12 +37,12 @@ class DashBoard extends StatelessWidget {
           right: 35,
         ),
         child: SingleChildScrollView(
-                  child: Column(
+          child: Column(
             children: [
               Row(
                 children: [
                   Text(
-                   "$userName",
+                    "$userName",
                     style: TextStyle(color: Colors.white, fontSize: 27),
                   ),
                   Spacer(),
@@ -58,11 +65,7 @@ class DashBoard extends StatelessWidget {
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 ),
               ),
-              Row(
-                  children: user.batchesEarned.map(
-                          (e) => Badge(e)
-                  ).toList()
-              ),
+              Row(children: user.batchesEarned.map((e) => Badge(e)).toList()),
               SfRadialGauge(
                 axes: <RadialAxis>[
                   RadialAxis(
@@ -88,7 +91,10 @@ class DashBoard extends StatelessWidget {
                               height: 75,
                             ),
                             Text(
-                              user.total_carbon_emission_this_month.toInt().toString()+" Kg",
+                              user.total_carbon_emission_this_month
+                                      .toInt()
+                                      .toString() +
+                                  " Kg",
                               style: TextStyle(
                                   color: const Color(0xffFEBB46), fontSize: 30),
                             ),
@@ -121,7 +127,7 @@ class DashBoard extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        ans1.toString()+"%",
+                        ans1.toString() + "%",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
@@ -157,7 +163,7 @@ class DashBoard extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        ans2.toString()+"%",
+                        ans2.toString() + "%",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,

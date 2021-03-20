@@ -52,7 +52,7 @@ class _LogInState extends State<LogIn> {
     data.total_carbon_emission_yesterday =
         doc['totalCarbonEmissionYesterday'].toDouble();
     data.img_url = doc['imgUrl'];
-    data.date = doc['lastCheckedAt'];
+    data.user_friends = doc['userFriends'];
     Navigator.of(context).pushNamed(MainScreen.routeName);
   }
 

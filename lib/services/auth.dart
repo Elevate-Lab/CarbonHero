@@ -27,11 +27,13 @@ class Auth {
       headers: await user.authHeaders,
     );
     final Map<String, dynamic> data = json.decode(response.body);
-    if(data['connections'] == null) {
+    if (data['connections'] == null) {
       return;
     }
-    for(var i=0;i<data['connections'].length;i++) {
-      friends.add(data['connections'][i]['emailAddresses'][0]['value']);
+    for (var i = 0; i < data['connections'].length; i++) {
+      //print(data['connections'][i]);
+      if (data['connections'][i]['emailAddresses'][0]['value'] != null)
+        friends.add(data['connections'][i]['emailAddresses'][0]['value']);
     }
     // print(friends);
     return;
@@ -40,21 +42,21 @@ class Auth {
   Future<void> _handleContact(GoogleSignInAccount user) async {
     // print("second");
     final http.Response response = await http.get(
-      Uri.parse('https://people.googleapis.com/v1/otherContacts?readMask=emailAddresses'),
+      Uri.parse(
+          'https://people.googleapis.com/v1/otherContacts?readMask=emailAddresses'),
       headers: await user.authHeaders,
     );
     final Map<String, dynamic> data = json.decode(response.body);
-    if(data['otherContacts'] == null) {
-      return;
-    }
-    for(var i=0;i<data['otherContacts'].length;i++) {
+    //print(data);
+    // if (data['otherContacts'] == null) {
+    //   print('R><><><><><><><><><><');
+    //   return;
+    // }
+    for (var i = 0; i < data['otherContacts'].length; i++) {
       friends.add(data['otherContacts'][i]['emailAddresses'][0]['value']);
     }
-    // print(friends);
     return;
   }
-
-
 
   void createUser(GoogleSignInAccount _currentUser) async {
     var doc = await databaseReference
@@ -113,7 +115,8 @@ class Auth {
       'totalCarbonEmissionThisMonth': 0.0,
       'totalCarbonEmissionLastMonth': 0.0,
     });
-    await databaseReference.collection('users')
+    await databaseReference
+        .collection('users')
         .document(_currentUser.email)
         .collection('activities')
         .document('Waste')

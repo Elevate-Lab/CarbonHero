@@ -15,10 +15,22 @@ class _ElectricityState extends State<Electricity> {
   final databaseReference = Firestore.instance;
   var consumption = 0.00;
   var familySize = 1.00;
+  var user;
+  double val=0.0;
+
+  Future<void> update() async {
+    var doc = await databaseReference.collection("users").document(user.email_id).collection("activities").document("Electricity").get();
+    setState(() {
+      val = doc['totalCarbonEmissionThisMonth'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    var user = Provider.of<User>(context);
+    user = Provider.of<User>(context);
+
+    update();
+
     Future<void> calculateCarbon_6() async {
       var doc = await databaseReference
           .collection("users")
@@ -166,7 +178,7 @@ class _ElectricityState extends State<Electricity> {
                         height: _height * 0.01,
                       ),
                       Text(
-                          user.total_carbon_emission_this_month.toStringAsFixed(1),
+                          val.toStringAsFixed(1),
                           style: TextStyle(
                               fontSize: 30,
                               color: Color(0xff281627),

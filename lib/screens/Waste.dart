@@ -18,11 +18,22 @@ class _WasteState extends State<Waste> {
   var plasticRecycled = 0.00;
   var glassRecycled = 0.00;
   var metalRecycled = 0.00;
+  var user;
+  double val=0.0;
 
+  Future<void> update() async {
+    var doc = await databaseReference.collection("users").document(user.email_id).collection("activities").document("Waste").get();
+    // print(val);
+    setState(() {
+      val = doc['totalCarbonEmissionThisMonth'];
+      // print(val);
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
-    var user = Provider.of<User>(context);
-
+    user = Provider.of<User>(context);
+    update();
     Future<void> calculateCarbon_1() async {
       var doc = await databaseReference
           .collection("users")
@@ -172,7 +183,7 @@ class _WasteState extends State<Waste> {
                         height: _height * 0.01,
                       ),
                       Text(
-                          "241kg",
+                          val.toStringAsFixed(1),
                           style: TextStyle(
                               fontSize: 30,
                               color: Color(0xff281627),

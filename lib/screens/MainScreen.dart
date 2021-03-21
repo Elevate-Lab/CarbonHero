@@ -29,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       backgroundColor: const Color(0xff281627),
       body: (_currentIndex == 0
-          ? DashBoard()
+          ? LeaderBoard()
           : (_currentIndex == 1 ? LeaderBoard() : Statistics())),
       bottomNavigationBar: BottomNavigationBar(
         fixedColor: Colors.black,

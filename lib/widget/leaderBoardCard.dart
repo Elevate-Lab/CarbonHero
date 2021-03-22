@@ -29,12 +29,11 @@ class LeaderBoardCard extends StatelessWidget {
               children: [
                 Text("$userName",
                 style: TextStyle(
-                  fontSize: width*0.04
+                  fontSize: width*0.05
                 ),
 
-                )
-                , Text('''$totalContributions kg C02 emission last
-   week''',
+                ),
+                Text('''$totalContributions kg C02 emission last week''',
                  style: TextStyle(
                   fontSize: width*0.027
                 ),

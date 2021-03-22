@@ -25,7 +25,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
         );
         friendsRanking.add(leaderBoardDetails);
       }
-      friendsRanking.sort((a, b) => a.userPoints.compareTo(b.userPoints));
+      friendsRanking.sort((a, b) => b.userPoints.compareTo(a.userPoints));
     });
   }
 
@@ -113,9 +113,9 @@ class _LeaderBoardState extends State<LeaderBoard> {
                     ),
                     Expanded(
                       child: ListView.builder(
-                          itemCount: 0,
+                          itemCount: friendsRanking.length-3,
                           itemBuilder: (BuildContext ctx, int index) {
-                            return     LeaderBoardCard(friendsRanking[index].imgUrl, friendsRanking[index].username, 19.12, 4, true);
+                            return     LeaderBoardCard(friendsRanking[index+2].imgUrl, friendsRanking[index].username, 19.12, 4, true);
                           }),
                     ),
                   ],
@@ -193,7 +193,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
           bottom: height * 0.57,
           left: width * 0.08,
           child: Text(
-            friendsRanking[0].username,
+            friendsRanking[1].username,
             style: TextStyle(color: Colors.white, fontSize: width * 0.03),
           ),
         ),
@@ -208,7 +208,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
             backgroundColor: const Color(0xffA48FD1),
             child: CircleAvatar(
               radius: width * 0.092,
-              backgroundImage: AssetImage('assets/electricity.png'),
+              backgroundImage: NetworkImage(friendsRanking[2].imgUrl),
             ),
           ),
         ),
@@ -230,7 +230,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
           bottom: height * 0.57,
           right: width * 0.08,
           child: Text(
-            "Rayan Singh",
+            friendsRanking[2].username,
             style: TextStyle(color: Colors.white, fontSize: width * 0.03),
           ),
         ),

@@ -1,10 +1,3 @@
-import 'package:carbon_emission/screens/Waste.dart';
-import 'package:carbon_emission/screens/chooseNewActivity.dart';
-import 'package:carbon_emission/screens/electricityScreen.dart';
-import 'package:carbon_emission/screens/homeAppliances.dart';
-import 'package:carbon_emission/screens/homeScreen.dart';
-import 'package:carbon_emission/screens/LPG.dart';
-import 'package:carbon_emission/screens/transportScreen.dart';
 import 'package:carbon_emission/widget/Leaderboard.dart';
 import 'package:carbon_emission/widget/dashBoard.dart';
 import 'package:carbon_emission/widget/statistics.dart';

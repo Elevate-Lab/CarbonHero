@@ -29,7 +29,7 @@ double electricityCalc(double consumption, int size) {
 
 // -------- HOME APPLIANCES ------
 double homeCalc(var television, var ac, var geyser, var refrigerator) {
-  double ans = 490*ac + 189*television + 1260*geyser + 189*refrigerator;
+  double ans = 490 * ac + 189 * television + 1260 * geyser + 189 * refrigerator;
   return ans;
 }
 
@@ -39,21 +39,17 @@ double lpgCalc(var cylinders) {
   return ans;
 }
 
-double compareFromLastMonth(double now, double prev)
-{
-  if(prev == 0)
-  {
+double compareFromLastMonth(double now, double prev) {
+  if (prev == 0) {
     return 0.0;
   }
-  double ans = (now-prev)/prev;
+  double ans = (now - prev) / prev;
   print(ans);
-  return ans*100;
+  return ans * 100;
 }
 
-double compareFromYesterday(double now, double prev)
-{
-  if(prev == 0)
-  {
+double compareFromYesterday(double now, double prev) {
+  if (prev == 0) {
     return 0.0;
   }
   double ans = (now-prev)/prev;

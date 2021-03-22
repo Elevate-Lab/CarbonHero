@@ -198,7 +198,7 @@ class _StatisticsState extends State<Statistics> {
       userName = "Test";
     }
     if (userName.length > 20) {
-      userName = userName.substring(0, 21) + "...";
+      userName = userName.substring(0, 20) + "...";
     }
 
     _updateTransport();

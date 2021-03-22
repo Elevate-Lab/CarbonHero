@@ -37,15 +37,14 @@ class _ProfileState extends State<Profile> {
             username: doc1['username'],
             userPoints: doc1['userPoints'],
             imgUrl: doc1['imgUrl'],
-            leaderBoardRank: doc1['leaderBoardRank']
+            leaderBoardRank: doc1['leaderBoardRank'],
+            email: doc1['email']
         );
         friendsRanking.add(leaderBoardDetails);
       }
     }
     friendsRanking.sort((a, b) => a.leaderBoardRank.compareTo(b.leaderBoardRank));
-    // print(friends);
-    // print(friendsRanking);
-    // print(friendsRanking.length);
+    print(friendsRanking.length);
   }
 
   @override
@@ -147,7 +146,7 @@ class _ProfileState extends State<Profile> {
                           child: ListView.builder(
                             itemCount: friendsRanking.length,
                             itemBuilder: (BuildContext ctx, int index) {
-                              return LeaderBoardCard("cbj", "hell", 0.0, 10, true);
+                              return LeaderBoardCard(friendsRanking[index].imgUrl, friendsRanking[index].username, 0.0, index+1, true);
                             }),
                           ),
                       ],

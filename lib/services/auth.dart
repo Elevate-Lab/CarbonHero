@@ -97,6 +97,7 @@ class Auth {
       'imgUrl': _currentUser.photoUrl,
       'userPoints': 10,
       'leaderBoardRank': 0,
+      'email': _currentUser.email,
     });
 
     await databaseReference

@@ -40,7 +40,7 @@ class LeaderBoardCard extends StatelessWidget {
                 )],
             ),
             SizedBox(
-            width: width * 0.2,
+            width: width * 0.1,
           ),
           Column(
             children: [

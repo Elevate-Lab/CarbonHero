@@ -1,7 +1,9 @@
+import 'package:carbon_emission/models/user.dart';
 import 'package:carbon_emission/widget/leaderBoardCard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:carbon_emission/models/leaderboardDetails.dart';
+import 'package:provider/provider.dart';
 
 class LeaderBoard extends StatefulWidget {
   @override
@@ -10,28 +12,41 @@ class LeaderBoard extends StatefulWidget {
 
 class _LeaderBoardState extends State<LeaderBoard> {
 
+  var user;
   final databaseReference = Firestore.instance;
   List<LeaderBoardDetails> friendsRanking = [];
 
   Future<void> getRanks() async {
     var doc = await databaseReference.collection('LeaderBoard').getDocuments();
-    setState(() {
+    setState(() async {
       for(var i=0;i<doc.documents.length;i++) {
         LeaderBoardDetails leaderBoardDetails = new LeaderBoardDetails(
           username: doc.documents[i].data['username'],
           userPoints: doc.documents[i].data['userPoints'],
           imgUrl: doc.documents[i].data['imgUrl'],
           leaderBoardRank: doc.documents[i].data['leaderBoardRank'],
+          email: doc.documents[i].data['email'],
         );
         friendsRanking.add(leaderBoardDetails);
       }
       friendsRanking.sort((a, b) => b.userPoints.compareTo(a.userPoints));
+      for(var i=0;i<friendsRanking.length;i++) {
+        print(friendsRanking[i].email);
+        if(friendsRanking[i].email == user.email_id) {
+          print(i);
+          await databaseReference.collection("LeaderBoard").document(user.email_id).updateData({
+            'leaderBoardRank': i+1,
+          });
+          break;
+        }
+      }
     });
+
   }
 
   @override
   Widget build(BuildContext context) {
-
+    user = Provider.of<User>(context);
     getRanks();
 
     double height = MediaQuery.of(context).size.height;
@@ -115,7 +130,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                       child: ListView.builder(
                           itemCount: friendsRanking.length-3,
                           itemBuilder: (BuildContext ctx, int index) {
-                            return     LeaderBoardCard(friendsRanking[index+2].imgUrl, friendsRanking[index].username, 19.12, 4, true);
+                            return     LeaderBoardCard(friendsRanking[index+2].imgUrl, friendsRanking[index].username, 19.12, index+4, true);
                           }),
                     ),
                   ],

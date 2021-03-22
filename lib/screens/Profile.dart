@@ -1,3 +1,4 @@
+import 'package:carbon_emission/models/leaderboardDetails.dart';
 import 'package:carbon_emission/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -11,16 +12,34 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   var user;
+  var doc1, doc2;
   var database = Firestore.instance;
-  Future<void> _getFriendsDetails() async {
-    var doc;
-    for (int i = 0; i < user.user_friends.length; i++) {
-      doc = await database
-          .collection('LeaderBoard')
-          .document(user.user_friends[i])
-          .get();
+  List<dynamic> friends = [];
+  List<LeaderBoardDetails> friendsRanking = [];
 
-      if (doc.exists()) {}
+  Future<void> _getFriendsList() async {
+    doc2 = await database.collection('users').document(user.email_id).get();
+    for (int i = 0; i < doc2['userFriends'].length; i++)
+      friends.add(doc2['userFriends'][i]);
+    _getFriendsDetails();
+    return;
+  }
+
+  Future<void> _getFriendsDetails() async {
+    for (int i = 0; i < friends.length; i++) {
+      //print(friends[i]);
+      doc1 =
+          await database.collection('LeaderBoard').document(friends[i]).get();
+      if (doc1.exists) {
+        LeaderBoardDetails leaderBoardDetails = new LeaderBoardDetails(
+            username: doc1['name'],
+            userPoints: doc1['pointsEarned'],
+            imgUrl: doc1['imgUrl'],
+            leaderBoardRank: doc1['rank']);
+        friendsRanking.add(leaderBoardDetails);
+        print(leaderBoardDetails.username);
+        print(leaderBoardDetails.userPoints);
+      }
     }
   }
 
@@ -29,7 +48,7 @@ class _ProfileState extends State<Profile> {
     user = Provider.of<User>(context);
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
-    _getFriendsDetails();
+    _getFriendsList();
     return Scaffold(
         backgroundColor: Colors.white,
         body: Stack(

@@ -12,7 +12,7 @@ class User with ChangeNotifier {
   double totalCarbonEmissionToday;
   List<dynamic> batchesEarned;
   int pointsEarned;
-  List<dynamic> userFriends;
+  List<dynamic> userFriends = [];
   DateTime lastCheckedAt;
 
   set date(DateTime _date) {
@@ -76,7 +76,8 @@ class User with ChangeNotifier {
   }
 
   set user_friends(List<dynamic> _userfriends) {
-    this.userFriends = _userfriends;
+    this.userFriends.clear();
+    for (int i = 0; i < _userfriends.length; i++) print(_userfriends[i]);
     notifyListeners();
   }
 
@@ -132,7 +133,6 @@ class User with ChangeNotifier {
     return this.user_friends;
   }
 }
-
 
 // User({
 //   @required this.userId,

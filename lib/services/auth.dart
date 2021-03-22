@@ -90,6 +90,17 @@ class Auth {
     });
 
     await databaseReference
+        .collection("LeaderBoard")
+        .document(_currentUser.email)
+        .setData({
+      'username': _currentUser.displayName,
+      'imgUrl': _currentUser.photoUrl,
+      'userPoints': 10,
+      'leaderBoardRank': 0,
+      'email': _currentUser.email,
+    });
+
+    await databaseReference
         .collection('users')
         .document(_currentUser.email)
         .collection('activities')

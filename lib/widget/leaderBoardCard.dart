@@ -13,34 +13,34 @@ class LeaderBoardCard extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Column(
-          children:[ Row(
-        children: [
-          CircleAvatar(
-            radius: width * 0.07,
-            backgroundColor: const Color(0xffA48FD1),
-            backgroundImage: AssetImage('assets/electricity.png'),
-          ),
-          SizedBox(
-            width: width * 0.075,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [    
-              Text("$userName",
-              style: TextStyle(
-                fontSize: width*0.06
-              ),
-              
-              )
-              , Text('''$totalContributions kg C02 emission last
- week''',
-               style: TextStyle(
-                fontSize: width*0.027
-              ),
-              )],
-          ),
+          children:[
+            Row(
+              children: [
+            CircleAvatar(
+              radius: width * 0.07,
+              backgroundColor: const Color(0xffA48FD1),
+              backgroundImage: NetworkImage(imgPath),
+            ),
             SizedBox(
-            width: width * 0.2,
+              width: width * 0.075,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("$userName",
+                style: TextStyle(
+                  fontSize: width*0.05
+                ),
+
+                ),
+                Text('''$totalContributions kg C02 emission last week''',
+                 style: TextStyle(
+                  fontSize: width*0.027
+                ),
+                )],
+            ),
+            SizedBox(
+            width: width * 0.1,
           ),
           Column(
             children: [

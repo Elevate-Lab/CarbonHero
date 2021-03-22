@@ -1,9 +1,54 @@
+import 'package:carbon_emission/models/user.dart';
 import 'package:carbon_emission/widget/leaderBoardCard.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:carbon_emission/models/leaderboardDetails.dart';
+import 'package:provider/provider.dart';
 
-class LeaderBoard extends StatelessWidget {
+class LeaderBoard extends StatefulWidget {
+  @override
+  _LeaderBoardState createState() => _LeaderBoardState();
+}
+
+class _LeaderBoardState extends State<LeaderBoard> {
+
+  var user;
+  final databaseReference = Firestore.instance;
+  List<LeaderBoardDetails> friendsRanking = [];
+
+  Future<void> getRanks() async {
+    var doc = await databaseReference.collection('LeaderBoard').getDocuments();
+    setState(() async {
+      for(var i=0;i<doc.documents.length;i++) {
+        LeaderBoardDetails leaderBoardDetails = new LeaderBoardDetails(
+          username: doc.documents[i].data['username'],
+          userPoints: doc.documents[i].data['userPoints'],
+          imgUrl: doc.documents[i].data['imgUrl'],
+          leaderBoardRank: doc.documents[i].data['leaderBoardRank'],
+          email: doc.documents[i].data['email'],
+        );
+        friendsRanking.add(leaderBoardDetails);
+      }
+      friendsRanking.sort((a, b) => b.userPoints.compareTo(a.userPoints));
+      for(var i=0;i<friendsRanking.length;i++) {
+        print(friendsRanking[i].email);
+        if(friendsRanking[i].email == user.email_id) {
+          print(i);
+          await databaseReference.collection("LeaderBoard").document(user.email_id).updateData({
+            'leaderBoardRank': i+1,
+          });
+          break;
+        }
+      }
+    });
+
+  }
+
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<User>(context);
+    getRanks();
+
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -83,12 +128,11 @@ class LeaderBoard extends StatelessWidget {
                     ),
                     Expanded(
                       child: ListView.builder(
-                          itemCount: 6,
-                          itemBuilder: (BuildContext ctxt, int index) {
-                            return     LeaderBoardCard("imgPath", "Ganesh", 19.12, 4, true);
+                          itemCount: friendsRanking.length-3,
+                          itemBuilder: (BuildContext ctx, int index) {
+                            return     LeaderBoardCard(friendsRanking[index+2].imgUrl, friendsRanking[index].username, 19.12, index+4, true);
                           }),
                     ),
-                
                   ],
                 ),
               ),
@@ -105,7 +149,7 @@ class LeaderBoard extends StatelessWidget {
             backgroundColor: const Color(0xff95E27B),
             child: CircleAvatar(
               radius: width * 0.1325,
-              backgroundImage: AssetImage('assets/electricity.png'),
+              backgroundImage: NetworkImage(friendsRanking[0].imgUrl),
             ),
           ),
         ),
@@ -127,8 +171,8 @@ class LeaderBoard extends StatelessWidget {
           bottom: height * 0.61,
           left: width * 0.35,
           child: Text(
-            "Rayan Singh",
-            style: TextStyle(color: Colors.white, fontSize: width * 0.045),
+            friendsRanking[0].username,
+            style: TextStyle(color: Colors.white, fontSize: width * 0.04),
           ),
         ),
 
@@ -142,7 +186,7 @@ class LeaderBoard extends StatelessWidget {
             backgroundColor: const Color(0xffFEBB46),
             child: CircleAvatar(
               radius: width * 0.092,
-              backgroundImage: AssetImage('assets/electricity.png'),
+              backgroundImage: NetworkImage(friendsRanking[1].imgUrl),
             ),
           ),
         ),
@@ -164,7 +208,7 @@ class LeaderBoard extends StatelessWidget {
           bottom: height * 0.57,
           left: width * 0.08,
           child: Text(
-            "Rayan Singh",
+            friendsRanking[1].username,
             style: TextStyle(color: Colors.white, fontSize: width * 0.03),
           ),
         ),
@@ -179,7 +223,7 @@ class LeaderBoard extends StatelessWidget {
             backgroundColor: const Color(0xffA48FD1),
             child: CircleAvatar(
               radius: width * 0.092,
-              backgroundImage: AssetImage('assets/electricity.png'),
+              backgroundImage: NetworkImage(friendsRanking[2].imgUrl),
             ),
           ),
         ),
@@ -201,7 +245,7 @@ class LeaderBoard extends StatelessWidget {
           bottom: height * 0.57,
           right: width * 0.08,
           child: Text(
-            "Rayan Singh",
+            friendsRanking[2].username,
             style: TextStyle(color: Colors.white, fontSize: width * 0.03),
           ),
         ),

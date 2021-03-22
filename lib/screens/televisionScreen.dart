@@ -97,6 +97,10 @@ class _TelevisionState extends State<Television> {
         'pointsEarned': user.points_earned,
       });
 
+      await databaseReference.collection("LeaderBoard").document(user.email_id).updateData({
+        'userPoints': user.points_earned,
+      });
+
       double month = user.total_carbon_emission_this_month;
       user.total_carbon_emission_this_month = month + carbonEmitted;
       double today = user.total_carbon_emission_today;

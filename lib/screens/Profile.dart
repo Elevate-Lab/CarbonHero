@@ -20,7 +20,9 @@ class _ProfileState extends State<Profile> {
           .document(user.user_friends[i])
           .get();
 
-      if (doc.exists()) {}
+      if (doc.exists()) {
+
+      }
     }
   }
 

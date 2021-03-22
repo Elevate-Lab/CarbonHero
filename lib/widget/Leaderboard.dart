@@ -1,3 +1,4 @@
+import 'package:carbon_emission/widget/leaderBoardCard.dart';
 import 'package:flutter/material.dart';
 
 class LeaderBoard extends StatelessWidget {
@@ -50,7 +51,7 @@ class LeaderBoard extends StatelessWidget {
             Expanded(
               child: Container(
                 width: width,
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.only(left :25,right: 25,top:25),
                 //   height: _height*0.53,
                 decoration: BoxDecoration(
                     borderRadius: new BorderRadius.only(
@@ -58,6 +59,38 @@ class LeaderBoard extends StatelessWidget {
                         topLeft: Radius.circular(30)),
                     color: Colors.white),
                 margin: EdgeInsets.fromLTRB(0, height * 0.04, 0, 0),
+
+                child: Column(
+                  children: [
+                    Text(
+                      "Global Friends",
+                      style: TextStyle(
+                        fontSize: width * 0.048,
+                        fontWeight: FontWeight.bold,
+                        color: const Color(0xffFEBB46),
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * 0.009,
+                    ),
+                    Container(
+                      width: width * 0.45,
+                      height: height * 0.001,
+                      color: const Color(0xffFEBB46),
+                    ),
+                    SizedBox(
+                      height: height * 0.02,
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                          itemCount: 6,
+                          itemBuilder: (BuildContext ctxt, int index) {
+                            return     LeaderBoardCard("imgPath", "Ganesh", 19.12, 4, true);
+                          }),
+                    ),
+                
+                  ],
+                ),
               ),
             ),
           ],
@@ -99,11 +132,7 @@ class LeaderBoard extends StatelessWidget {
           ),
         ),
 
-
-
         // Ranked - 2
-
-
 
         Positioned(
           bottom: height * 0.6,
@@ -140,7 +169,6 @@ class LeaderBoard extends StatelessWidget {
           ),
         ),
 
-
         //Ranked - 3
 
         Positioned(
@@ -160,7 +188,7 @@ class LeaderBoard extends StatelessWidget {
           right: width * 0.084,
           child: CircleAvatar(
               radius: width * 0.025,
-              backgroundColor:  const Color(0xffA48FD1),
+              backgroundColor: const Color(0xffA48FD1),
               child: Text(
                 "3",
                 style: TextStyle(
@@ -171,8 +199,7 @@ class LeaderBoard extends StatelessWidget {
 
         Positioned(
           bottom: height * 0.57,
-          right:  width* 0.08,
-
+          right: width * 0.08,
           child: Text(
             "Rayan Singh",
             style: TextStyle(color: Colors.white, fontSize: width * 0.03),

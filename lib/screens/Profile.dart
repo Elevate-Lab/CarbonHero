@@ -41,6 +41,8 @@ class _ProfileState extends State<Profile> {
         print(leaderBoardDetails.userPoints);
       }
     }
+    friendsRanking
+        .sort((a, b) => a.leaderBoardRank.compareTo(b.leaderBoardRank));
   }
 
   @override

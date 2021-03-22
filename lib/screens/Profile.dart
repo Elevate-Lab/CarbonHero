@@ -1,5 +1,8 @@
+import 'package:carbon_emission/models/leaderboardDetails.dart';
 import 'package:carbon_emission/models/user.dart';
+import 'package:carbon_emission/widget/leaderBoardCard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,19 +14,38 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   var user;
+  var doc1, doc2;
   var database = Firestore.instance;
+  List<dynamic> friends = [];
+  List<LeaderBoardDetails> friendsRanking = [];
+
+  Future<void> _getFriendsList() async {
+    doc2 = await database.collection('users').document(user.email_id).get();
+
+    for (int i = 0; i < doc2['userFriends'].length; i++) {
+      friends.add(doc2['userFriends'][i]);
+    }
+    await _getFriendsDetails();
+    return;
+  }
+
   Future<void> _getFriendsDetails() async {
-    var doc;
-    for (int i = 0; i < user.user_friends.length; i++) {
-      doc = await database
-          .collection('LeaderBoard')
-          .document(user.user_friends[i])
-          .get();
-
-      if (doc.exists()) {
-
+    for (int i = 0; i < friends.length; i++) {
+      doc1 = await database.collection('LeaderBoard').document(friends[i]).get();
+      if (doc1.exists) {
+        LeaderBoardDetails leaderBoardDetails = new LeaderBoardDetails(
+            username: doc1['username'],
+            userPoints: doc1['userPoints'],
+            imgUrl: doc1['imgUrl'],
+            leaderBoardRank: doc1['leaderBoardRank']
+        );
+        friendsRanking.add(leaderBoardDetails);
       }
     }
+    friendsRanking.sort((a, b) => a.leaderBoardRank.compareTo(b.leaderBoardRank));
+    // print(friends);
+    // print(friendsRanking);
+    // print(friendsRanking.length);
   }
 
   @override
@@ -31,7 +53,9 @@ class _ProfileState extends State<Profile> {
     user = Provider.of<User>(context);
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
-    _getFriendsDetails();
+
+    _getFriendsList();
+
     return Scaffold(
         backgroundColor: Colors.white,
         body: Stack(
@@ -101,6 +125,33 @@ class _ProfileState extends State<Profile> {
                             fontWeight: FontWeight.w700),
                       ),
                     ],
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    width: _width,
+                    padding: EdgeInsets.only(left: 25, right: 25, top: _height*0.06),
+                    margin: EdgeInsets.only(top: _height*0.018),
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "My Friends",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 25,
+                            color: Colors.grey,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: friendsRanking.length,
+                            itemBuilder: (BuildContext ctx, int index) {
+                              return LeaderBoardCard("cbj", "hell", 0.0, 10, true);
+                            }),
+                          ),
+                      ],
+                    ),
                   ),
                 )
               ],

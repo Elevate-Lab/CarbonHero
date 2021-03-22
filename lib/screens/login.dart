@@ -31,7 +31,7 @@ class _LogInState extends State<LogIn> {
   GoogleSignInAccount _currentUser;
   //String _contactText;
   var data;
-  bool _newUser = true;
+  bool _newUser = true; //data.user_friends = doc['userFriends'];
   Auth auth = new Auth();
   var doc;
   Future<void> getDetails() async {
@@ -52,7 +52,9 @@ class _LogInState extends State<LogIn> {
     data.total_carbon_emission_yesterday =
         doc['totalCarbonEmissionYesterday'].toDouble();
     data.img_url = doc['imgUrl'];
-    data.user_friends = doc['userFriends'];
+    // for (int i = 0; i < doc['userFriends'].length; i++)
+    //   data.userFriends.add(doc['userFriends'][i]);
+    // print(data.user_friends[0]);
     var date = DateTime.fromMicrosecondsSinceEpoch(
         doc['lastCheckedAt'].microsecondsSinceEpoch);
     data.date = date;

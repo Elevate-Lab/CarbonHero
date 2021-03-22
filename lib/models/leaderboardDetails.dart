@@ -1,6 +1,13 @@
+import 'package:flutter/material.dart';
+
 class LeaderBoardDetails {
   String username;
-  String userPoints;
+  int userPoints;
   String imgUrl;
-  String leaderBoardRank;
+  int leaderBoardRank;
+  LeaderBoardDetails(
+      {@required this.username,
+      @required this.userPoints,
+      @required this.imgUrl,
+      @required this.leaderBoardRank});
 }

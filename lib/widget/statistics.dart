@@ -11,6 +11,7 @@ class Statistics extends StatefulWidget {
 
 class _StatisticsState extends State<Statistics> {
   var database = Firestore.instance;
+
   double _totalCarbonEmissionThisMonth = 0.00;
   double _totalCarbonEmissionLastMonth = 0.00;
   double _totalCarbonEmissionChange = 0.00;
@@ -188,8 +189,7 @@ class _StatisticsState extends State<Statistics> {
 
     _totalCarbonEmissionThisMonth = user.total_carbon_emission_this_month;
     _totalCarbonEmissionLastMonth = user.total_carbon_emission_last_month;
-    _totalCarbonEmissionChange =
-        (_totalCarbonEmissionThisMonth - _totalCarbonEmissionLastMonth);
+    _totalCarbonEmissionChange = (_totalCarbonEmissionThisMonth - _totalCarbonEmissionLastMonth);
     _totalCarbonEmissionChange /= _totalCarbonEmissionLastMonth;
     _totalCarbonEmissionChange *= 100;
 

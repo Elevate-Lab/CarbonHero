@@ -15,9 +15,21 @@ class _LPG extends State<LPG> {
   final databaseReference = Firestore.instance;
   var numCylinders = 0.00;
   var familySize = 1.00;
+
+  var user;
+  double val=0.0;
+
+  Future<void> update() async {
+    var doc = await databaseReference.collection("users").document(user.email_id).collection("activities").document("Natural Gas").get();
+    setState(() {
+      val = doc['totalCarbonEmissionThisMonth'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    var user = Provider.of<User>(context);
+    user = Provider.of<User>(context);
+    update();
     Future<void> calculateCarbon_4() async {
       var doc = await databaseReference
           .collection("users")
@@ -27,9 +39,10 @@ class _LPG extends State<LPG> {
           .get();
 
       double carbonEmitted = lpgCalc(numCylinders);
-      String carbonMonth =
-          double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
-              .toString();
+      String carbonMonth = double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2)).toString();
+      int pointsScored = points(carbonEmitted, 4);
+      int pts = user.points_earned;
+      user.points_earned = pts + pointsScored;
 
       double activityToday = doc['totalCarbonEmissionToday'];
       double activityThisMonth = doc['totalCarbonEmissionThisMonth'];
@@ -37,11 +50,11 @@ class _LPG extends State<LPG> {
       double activityPrevMonth = doc['totalCarbonEmissionLastMonth'];
       var date = DateTime.fromMicrosecondsSinceEpoch(doc['lastCheckedAt'].microsecondsSinceEpoch);
       var last = DateTime.now();
-      if(date.month < last.month) {
+      if(date.month != last.month) {
         activityPrevMonth = activityThisMonth;
         activityThisMonth = 0;
       }
-      if(date.day < last.day) {
+      if(date.day != last.day) {
         activityYesterday = activityToday;
         activityToday = 0;
       }
@@ -61,11 +74,11 @@ class _LPG extends State<LPG> {
         'lastCheckedAt': DateTime.now(),
       });
 
-      if(user.date.month < last.month){
+      if(user.date.month != last.month){
         user.total_carbon_emission_last_month = user.total_carbon_emission_this_month;
         user.total_carbon_emission_this_month = 0;
       }
-      if(user.date.day < last.day) {
+      if(user.date.day != last.day) {
         user.total_carbon_emission_yesterday = user.total_carbon_emission_today;
         user.total_carbon_emission_today = 0;
       }
@@ -81,6 +94,7 @@ class _LPG extends State<LPG> {
         'totalCarbonEmissionLastMonth': user.total_carbon_emission_last_month,
         'totalCarbonEmissionYesterday': user.total_carbon_emission_yesterday,
         'lastCheckedAt': DateTime.now(),
+        'pointsEarned': user.points_earned,
       });
 
       double month = user.total_carbon_emission_this_month;
@@ -162,13 +176,14 @@ class _LPG extends State<LPG> {
                       SizedBox(
                         height: _height * 0.01,
                       ),
-                      RichText(
-                          text: TextSpan(
-                              text: "241 Kg",
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  color: Color(0xff281627),
-                                  fontWeight: FontWeight.w900))),
+                      Text(
+                          val.toStringAsFixed(1),
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Color(0xff281627),
+                              fontWeight: FontWeight.w900
+                          )
+                      ),
                     ],
                   ),
                 ),

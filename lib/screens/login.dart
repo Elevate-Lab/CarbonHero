@@ -56,6 +56,7 @@ class _LogInState extends State<LogIn> {
     var date = DateTime.fromMicrosecondsSinceEpoch(
         doc['lastCheckedAt'].microsecondsSinceEpoch);
     data.date = date;
+    data.points_earned = doc['pointsEarned'];
     Navigator.of(context).pushNamed(MainScreen.routeName);
   }
 

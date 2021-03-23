@@ -12,6 +12,9 @@ var tele = 189*4;
 // -------  WASTE --------
 double wasteCalc(var waste, var paper, var plastic, var glass, var metal) {
   double ans = waste - paper - plastic - glass - metal;
+  if(ans < 0) {
+    return 0;
+  }
   return ans;
 }
 
@@ -34,8 +37,8 @@ double homeCalc(var television, var ac, var geyser, var refrigerator) {
 }
 
 // -------- LPG(PROPANE) ---------
-double lpgCalc(var cylinders) {
-  double ans = (12.43*cylinders*15);
+double lpgCalc(var cylinders, int size) {
+  double ans = (12.43*cylinders*15)/size;
   return ans;
 }
 
@@ -76,5 +79,5 @@ int points(double emission, int ind) {
   else {
 
   }
-  return ans.toInt();
+  return (ans.toInt() + 10);
 }

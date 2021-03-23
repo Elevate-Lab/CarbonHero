@@ -152,8 +152,8 @@ class _LeaderBoardState extends State<LeaderBoard> {
                                   return LeaderBoardCard(
                                       friendsRanking[index + 3].imgUrl,
                                       friendsRanking[index + 3].username,
-                                      19.12,
-                                      index + 4,
+                                      friendsRanking[index+3].userPoints,
+                                      index+4,
                                       true);
                                 }),
                           )
@@ -196,7 +196,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                 left: width * 0.35,
                 child: Text(
                   friendsRanking[0].username,
-                  style: TextStyle(color: Colors.white, fontSize: width * 0.04),
+                  style: TextStyle(color: Colors.white, fontSize: width*0.04),
                 ),
               ),
 

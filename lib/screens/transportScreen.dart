@@ -52,11 +52,11 @@ class _TransportState extends State<Transport> {
       var last = DateTime.now();
       if(date.month != last.month) {
         activityPrevMonth = activityThisMonth;
-        activityThisMonth = 0;
+        activityThisMonth = 0.0;
       }
       if(date.day != last.day) {
         activityYesterday = activityToday;
-        activityToday = 0;
+        activityToday = 0.0;
       }
 
       await databaseReference
@@ -76,11 +76,11 @@ class _TransportState extends State<Transport> {
 
       if(user.date.month != last.month){
         user.total_carbon_emission_last_month = user.total_carbon_emission_this_month;
-        user.total_carbon_emission_this_month = 0;
+        user.total_carbon_emission_this_month = 0.0;
       }
       if(user.date.day != last.day) {
         user.total_carbon_emission_yesterday = user.total_carbon_emission_today;
-        user.total_carbon_emission_today = 0;
+        user.total_carbon_emission_today = 0.0;
       }
 
       await databaseReference

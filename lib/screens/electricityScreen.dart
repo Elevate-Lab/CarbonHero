@@ -14,7 +14,7 @@ class Electricity extends StatefulWidget {
 class _ElectricityState extends State<Electricity> {
   final databaseReference = Firestore.instance;
   var consumption = 0.00;
-  var familySize = 1.00;
+  var familySize = 1;
   var user;
   double val=0.0;
 
@@ -40,7 +40,7 @@ class _ElectricityState extends State<Electricity> {
           .get();
 
       String carbonMonth = double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2)).toString();
-      double carbonEmitted = electricityCalc(consumption, familySize.toInt());
+      double carbonEmitted = electricityCalc(consumption, familySize);
       int pointsScored = points(carbonEmitted, 3);
       int pts = user.points_earned;
       user.points_earned = pts + pointsScored;
@@ -53,11 +53,11 @@ class _ElectricityState extends State<Electricity> {
       var last = DateTime.now();
       if(date.month != last.month) {
         activityPrevMonth = activityThisMonth;
-        activityThisMonth = 0;
+        activityThisMonth = 0.0;
       }
       if(date.day != last.day) {
         activityYesterday = activityToday;
-        activityToday = 0;
+        activityToday = 0.0;
       }
 
       await databaseReference
@@ -77,11 +77,11 @@ class _ElectricityState extends State<Electricity> {
 
       if(user.date.month != last.month){
         user.total_carbon_emission_last_month = user.total_carbon_emission_this_month;
-        user.total_carbon_emission_this_month = 0;
+        user.total_carbon_emission_this_month = 0.0;
       }
       if(user.date.day != last.day) {
         user.total_carbon_emission_yesterday = user.total_carbon_emission_today;
-        user.total_carbon_emission_today = 0;
+        user.total_carbon_emission_today = 0.0;
       }
 
       await databaseReference
@@ -337,14 +337,14 @@ class _ElectricityState extends State<Electricity> {
                               ),
                               child: Slider(
                                 label: "$familySize",
-                                value: familySize,
+                                value: familySize.toDouble(),
                                 min: 1,
-                                max: 20,
+                                max: 10,
                                 divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
                                   setState(() {
-                                    familySize = value;
+                                    familySize = value.toInt();
                                   });
                                 },
                               ),

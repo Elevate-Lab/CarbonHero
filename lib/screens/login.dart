@@ -52,9 +52,6 @@ class _LogInState extends State<LogIn> {
     data.total_carbon_emission_yesterday =
         doc['totalCarbonEmissionYesterday'].toDouble();
     data.img_url = doc['imgUrl'];
-    // for (int i = 0; i < doc['userFriends'].length; i++)
-    //   data.userFriends.add(doc['userFriends'][i]);
-    // print(data.user_friends[0]);
     var date = DateTime.fromMicrosecondsSinceEpoch(
         doc['lastCheckedAt'].microsecondsSinceEpoch);
     data.date = date;

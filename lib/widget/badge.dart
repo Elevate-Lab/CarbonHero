@@ -6,15 +6,14 @@ class Badge extends StatelessWidget {
   Badge(this.badgeName);
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.only(left: 4, right: 4),
-        child: ActionChip(
+    return
+        Chip(
           elevation: 8.0,
           padding: EdgeInsets.all(2.0),
           label: Text('$badgeName'),
-          onPressed: () {},
+         
           backgroundColor: const Color(0xffFEBB46),
           shape: StadiumBorder(),
-        ));
+        );
   }
 }

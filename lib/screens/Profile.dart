@@ -59,12 +59,16 @@ class _ProfileState extends State<Profile> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _getFriendsList();
+  }
+
+  @override
   Widget build(BuildContext context) {
     user = Provider.of<User>(context);
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
-
-    _getFriendsList();
 
     return Scaffold(
         backgroundColor: Colors.white,

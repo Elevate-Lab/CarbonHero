@@ -195,7 +195,7 @@ class _TransportState extends State<Transport> {
                 Image(
                   width: _width * 0.26,
                   height: _height * 0.12,
-                  image: AssetImage('assets/transport.png'),
+                  image: AssetImage('assets/transport_com.jpg'),
                 ),
                 SizedBox(width: _width * 0.02)
               ],

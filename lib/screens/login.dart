@@ -104,11 +104,11 @@ class _LogInState extends State<LogIn> {
               height: height * 0.35,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/login_screen.png'),
+                      image: AssetImage('assets/login_com.jpg'),
                       fit: BoxFit.contain)),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 20),
+              padding: EdgeInsets.only(top: 25),
               child: Text("Welcome",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -124,7 +124,7 @@ class _LogInState extends State<LogIn> {
                       fontSize: 20)),
             ),
             SizedBox(
-              height: height * 0.07,
+              height: height * 0.075,
             ),
             Material(
               color: Color(0xff281627),

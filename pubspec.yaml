@@ -58,16 +58,16 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/splash_1.png
-    - assets/splash_2.png
-    - assets/tv.png
-    - assets/transport.png
-    - assets/electricity.png
-    - assets/Natural gas.png
-    - assets/login_screen.png
-    - assets/waste.png
     - assets/Cover.png
     - assets/google.png
+    - assets/waste_com.jpg
+    - assets/tv_com.jpg
+    - assets/transport_com.jpg
+    - assets/lpg_com.jpg
+    - assets/electricity_com.jpg
+    - assets/login_com.jpg
+    - assets/splash_1_com.jpg
+    - assets/splash_2_com.jpg
 
   # To add assets to your application, add an assets section, like this:
   #assets:

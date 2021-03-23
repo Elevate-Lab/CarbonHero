@@ -201,7 +201,7 @@ class _WasteState extends State<Waste> {
                 Image(
                   width: _width * 0.26,
                   height: _height * 0.12,
-                  image: AssetImage('assets/waste.png'),
+                  image: AssetImage('assets/waste_com.jpg'),
                 ),
                 SizedBox(width: _width * 0.02)
               ],

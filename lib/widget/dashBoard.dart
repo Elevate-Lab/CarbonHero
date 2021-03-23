@@ -20,9 +20,16 @@ class DashBoard extends StatelessWidget {
     double compareDay = compareFromYesterday(
         user.total_carbon_emission_today, user.total_carbon_emission_yesterday);
     double ans2 = double.parse((compareDay).toStringAsFixed(2));
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+     double height = MediaQuery.of(context).size.height;
+     double width = MediaQuery.of(context).size.width;
     String userName = user.name;
+
+    // var userName="asasas";
+    // double compareMonth=3.00;
+    // double ans1 = double.parse((compareMonth).toStringAsFixed(2));
+    // double compareDay=23.2;
+    // double ans2 = double.parse((compareDay).toStringAsFixed(2));
+
     if (userName == null) {
       userName = "Test";
     }
@@ -43,7 +50,7 @@ class DashBoard extends StatelessWidget {
                 children: [
                   Text(
                     "$userName",
-                    style: TextStyle(color: Colors.white, fontSize: 27),
+                    style: TextStyle(color: Colors.white, fontSize: width*0.1),
                   ),
                   Spacer(),
                   GestureDetector(
@@ -61,11 +68,12 @@ class DashBoard extends StatelessWidget {
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  "Your carbon emission is going well\n ",
-                  style: TextStyle(color: Colors.grey, fontSize: 16),
+                  "Your carbon emission is going well ",
+                  style: TextStyle(color: Colors.grey, fontSize: width*0.048),
                 ),
               ),
-              Row(children: user.batchesEarned.map((e) => Badge(e)).toList()),
+            //  Row(children: [Badge("sssdsd")],),
+             Row(children: user.batchesEarned.map((e) => Badge(e)).toList()),
               SfRadialGauge(
                 axes: <RadialAxis>[
                   RadialAxis(
@@ -88,7 +96,7 @@ class DashBoard extends StatelessWidget {
                         widget: Column(
                           children: [
                             SizedBox(
-                              height: 75,
+                              height: height*0.088
                             ),
                             Text(
                               user.total_carbon_emission_this_month
@@ -96,16 +104,16 @@ class DashBoard extends StatelessWidget {
                                       .toString() +
                                   " Kg",
                               style: TextStyle(
-                                  color: const Color(0xffFEBB46), fontSize: 30),
+                                  color: const Color(0xffFEBB46), fontSize: width*0.08),
                             ),
                             Text("of CO2 has been emitted this",
                                 style: TextStyle(
                                     color: const Color(0xffFEBB46),
-                                    fontSize: 14)),
+                                    fontSize: width*0.03)),
                             Text("month ",
                                 style: TextStyle(
                                     color: const Color(0xffFEBB46),
-                                    fontSize: 14)),
+                                    fontSize: width*0.03)),
                           ],
                         ),
                       ),
@@ -130,35 +138,35 @@ class DashBoard extends StatelessWidget {
                         ans1.toString() + "%",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: width*0.048,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
                         "CO2 this",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: width*0.035,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
                         "month",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: width*0.035,
                             fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
                   SizedBox(
-                    width: 35,
+                    width: width*0.08,
                   ),
                   Container(
-                    height: 55,
-                    width: 2,
+                    height: height*0.07,
+                    width: width*0.005,
                     color: Colors.white,
                   ),
                   SizedBox(
-                    width: 35,
+                    width:  width*0.08,
                   ),
                   Column(
                     children: [
@@ -166,21 +174,21 @@ class DashBoard extends StatelessWidget {
                         ans2.toString() + "%",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: width*0.048,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
                         "CO2 from",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: width*0.035,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
                         "yesterday",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: width*0.035,
                             fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -188,28 +196,29 @@ class DashBoard extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 20,
+                height: height*0.01,
               ),
               Text(
                 "We have a single mission: to protect and",
-                style: TextStyle(color: const Color(0xffFEBB46), fontSize: 14),
+                style: TextStyle(color: const Color(0xffFEBB46), fontSize: width*0.035,),
               ),
               Text(
                 "hand on the planet to the next",
-                style: TextStyle(color: const Color(0xffFEBB46), fontSize: 14),
+                style: TextStyle(color: const Color(0xffFEBB46), fontSize:  width*0.035,),
               ),
               Text(
                 "generation",
-                style: TextStyle(color: const Color(0xffFEBB46), fontSize: 14),
+                style: TextStyle(color: const Color(0xffFEBB46), fontSize:  width*0.035,),
               ),
               SizedBox(
-                height: 10,
+                height: height*0.02,
               ),
               RaisedButton(
                 textColor: Colors.white,
                 color: const Color(0xffA663C6),
                 child: Container(
-                  width: width * 0.4,
+                  width: width * 0.5,
+                  height: height*0.06,
                   child: Row(
                     children: [
                       Icon(
@@ -220,7 +229,7 @@ class DashBoard extends StatelessWidget {
                         " Add CO2 sources",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 14,
+                            fontSize:  width*0.045,
                             fontWeight: FontWeight.bold),
                       ),
                     ],

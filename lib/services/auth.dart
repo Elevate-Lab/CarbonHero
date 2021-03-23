@@ -1,9 +1,13 @@
+import 'package:carbon_emission/models/user.dart';
+import 'package:carbon_emission/screens/MainScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import "package:http/http.dart" as http;
 import 'dart:convert' show json;
 import 'dart:async';
+
+import 'package:provider/provider.dart';
 
 class Auth {
   final databaseReference = Firestore.instance;
@@ -58,7 +62,8 @@ class Auth {
     return;
   }
 
-  void createUser(GoogleSignInAccount _currentUser) async {
+  void createUser(
+      GoogleSignInAccount _currentUser, BuildContext context) async {
     var doc = await databaseReference
         .collection('users')
         .document(_currentUser.email)
@@ -69,7 +74,7 @@ class Auth {
     await _handleGetContact(_currentUser);
     await _handleContact(_currentUser);
 
-    var data;
+    var data = Provider.of<User>(context, listen: false);
     await databaseReference
         .collection("users")
         .document(_currentUser.email)
@@ -221,19 +226,20 @@ class Auth {
       'totalCarbonEmissionLastMonth': 0.0,
     });
 
-    // data.name = _currentUser.displayName;
-    // print(_currentUser.displayName);
-    // data.id = _currentUser.id;
-    // data.email_id = _currentUser.email;
-    // data.img_url = _currentUser.photoUrl;
-    // data.total_carbon_emission_this_month = 0.0;
-    // data.batches_earned = [];
-    // data.total_carbon_emission_last_month = 0.0;
-    // data.total_carbon_emission_today = 0.0;
-    // data.total_carbon_emission_yesterday = 0.0;
-    // data.points_earned = 10;
-    // data.user_friends = [];
-    return;
+    data.name = _currentUser.displayName;
+    print(_currentUser.displayName);
+    data.id = _currentUser.id;
+    data.email_id = _currentUser.email;
+    data.img_url = _currentUser.photoUrl;
+    data.total_carbon_emission_this_month = 0.0;
+    data.batches_earned = [];
+    data.total_carbon_emission_last_month = 0.0;
+    data.total_carbon_emission_today = 0.0;
+    data.total_carbon_emission_yesterday = 0.0;
+    data.points_earned = 10;
+    data.user_friends = [];
+    Navigator.pop(context);
+    Navigator.pushNamed(context, MainScreen.routeName);
   }
 }
 

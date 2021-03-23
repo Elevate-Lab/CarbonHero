@@ -1,5 +1,6 @@
 import 'package:carbon_emission/models/leaderboardDetails.dart';
 import 'package:carbon_emission/models/user.dart';
+import 'package:carbon_emission/widget/cirdular_progress_indicator.dart';
 import 'package:carbon_emission/widget/leaderBoardCard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,6 +16,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   var user;
   var doc1, doc2;
+  int friendsCount = 0;
   var database = Firestore.instance;
   List<dynamic> friends = [];
   List<LeaderBoardDetails> friendsRanking = [];
@@ -30,21 +32,30 @@ class _ProfileState extends State<Profile> {
   }
 
   Future<void> _getFriendsDetails() async {
+    friendsRanking.clear();
     for (int i = 0; i < friends.length; i++) {
-      doc1 = await database.collection('LeaderBoard').document(friends[i]).get();
+      doc1 =
+          await database.collection('LeaderBoard').document(friends[i]).get();
       if (doc1.exists) {
         LeaderBoardDetails leaderBoardDetails = new LeaderBoardDetails(
             username: doc1['username'],
             userPoints: doc1['userPoints'],
             imgUrl: doc1['imgUrl'],
             leaderBoardRank: doc1['leaderBoardRank'],
-            email: doc1['email']
-        );
-        friendsRanking.add(leaderBoardDetails);
+            email: doc1['email']);
+        if (!friendsRanking.contains(leaderBoardDetails))
+          friendsRanking.add(leaderBoardDetails);
       }
     }
-    friendsRanking.sort((a, b) => a.leaderBoardRank.compareTo(b.leaderBoardRank));
-    print(friendsRanking.length);
+    friendsRanking
+        .sort((a, b) => a.leaderBoardRank.compareTo(b.leaderBoardRank));
+
+    if (friendsRanking.length > friendsCount) {
+      setState(() {
+        friendsCount = friendsRanking.length;
+      });
+    }
+    return;
   }
 
   @override
@@ -129,8 +140,9 @@ class _ProfileState extends State<Profile> {
                 Expanded(
                   child: Container(
                     width: _width,
-                    padding: EdgeInsets.only(left: 25, right: 25, top: _height*0.06),
-                    margin: EdgeInsets.only(top: _height*0.018),
+                    padding: EdgeInsets.only(
+                        left: 25, right: 25, top: _height * 0.06),
+                    margin: EdgeInsets.only(top: _height * 0.018),
                     child: Column(
                       children: <Widget>[
                         Text(
@@ -142,13 +154,31 @@ class _ProfileState extends State<Profile> {
                           ),
                           textAlign: TextAlign.start,
                         ),
-                        Expanded(
-                          child: ListView.builder(
-                            itemCount: friendsRanking.length,
-                            itemBuilder: (BuildContext ctx, int index) {
-                              return LeaderBoardCard(friendsRanking[index].imgUrl, friendsRanking[index].username, 0.0, index+1, true);
-                            }),
-                          ),
+                        (friendsCount >= 1
+                            ? Expanded(
+                                child: ListView.builder(
+                                    itemCount: friendsCount,
+                                    itemBuilder: (BuildContext ctx, int index) {
+                                      return LeaderBoardCard(
+                                          friendsRanking[index].imgUrl,
+                                          friendsRanking[index].username,
+                                          0.0,
+                                          index + 1,
+                                          true);
+                                    }),
+                              )
+                            : Column(
+                                children: [
+                                  SizedBox(
+                                    height: _height * 0.04,
+                                  ),
+                                  CircularProgressIndicatorApp(),
+                                  SizedBox(
+                                    height: _height * 0.01,
+                                  ),
+                                  Text('Searching Your Friends'),
+                                ],
+                              ))
                       ],
                     ),
                   ),

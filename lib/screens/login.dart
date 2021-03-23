@@ -57,6 +57,7 @@ class _LogInState extends State<LogIn> {
         doc['lastCheckedAt'].microsecondsSinceEpoch);
     data.date = date;
     data.points_earned = doc['pointsEarned'];
+    Navigator.pop(context);
     Navigator.of(context).pushNamed(MainScreen.routeName);
   }
 

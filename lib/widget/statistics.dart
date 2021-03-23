@@ -1,4 +1,5 @@
 import 'package:carbon_emission/models/user.dart';
+import 'package:carbon_emission/screens/Profile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -189,7 +190,8 @@ class _StatisticsState extends State<Statistics> {
 
     _totalCarbonEmissionThisMonth = user.total_carbon_emission_this_month;
     _totalCarbonEmissionLastMonth = user.total_carbon_emission_last_month;
-    _totalCarbonEmissionChange = (_totalCarbonEmissionThisMonth - _totalCarbonEmissionLastMonth);
+    _totalCarbonEmissionChange =
+        (_totalCarbonEmissionThisMonth - _totalCarbonEmissionLastMonth);
     _totalCarbonEmissionChange /= _totalCarbonEmissionLastMonth;
     _totalCarbonEmissionChange *= 100;
 
@@ -197,8 +199,8 @@ class _StatisticsState extends State<Statistics> {
     if (userName == null) {
       userName = "Test";
     }
-    if (userName.length > 20) {
-      userName = userName.substring(0, 20) + "...";
+    if (userName.length > 18) {
+      userName = userName.substring(0, 18) + "...";
     }
 
     _updateTransport();
@@ -224,10 +226,13 @@ class _StatisticsState extends State<Statistics> {
                   style: TextStyle(color: Colors.white, fontSize: 27),
                 ),
                 Spacer(),
-                Icon(
-                  Icons.account_circle_outlined,
-                  size: 40,
-                  color: Colors.white,
+                GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, Profile.routeName),
+                  child: Icon(
+                    Icons.account_circle_outlined,
+                    size: 40,
+                    color: Colors.white,
+                  ),
                 )
               ],
             ),

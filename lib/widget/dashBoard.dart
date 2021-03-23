@@ -26,8 +26,8 @@ class DashBoard extends StatelessWidget {
     if (userName == null) {
       userName = "Test";
     }
-    if (userName.length > 20) {
-      userName = userName.substring(0, 20) + '...';
+    if (userName.length > 18) {
+      userName = userName.substring(0, 18) + '...';
     }
 
     return Padding(

@@ -58,11 +58,11 @@ class _WasteState extends State<Waste> {
       var last = DateTime.now();
       if(date.month != last.month) {
         activityPrevMonth = activityThisMonth;
-        activityThisMonth = 0;
+        activityThisMonth = 0.0;
       }
       if(date.day != last.day) {
         activityYesterday = activityToday;
-        activityToday = 0;
+        activityToday = 0.0;
       }
 
       await databaseReference
@@ -82,11 +82,11 @@ class _WasteState extends State<Waste> {
 
       if(user.date.month != last.month){
         user.total_carbon_emission_last_month = user.total_carbon_emission_this_month;
-        user.total_carbon_emission_this_month = 0;
+        user.total_carbon_emission_this_month = 0.0;
       }
       if(user.date.day != last.day) {
         user.total_carbon_emission_yesterday = user.total_carbon_emission_today;
-        user.total_carbon_emission_today = 0;
+        user.total_carbon_emission_today = 0.0;
       }
 
       await databaseReference
@@ -273,8 +273,8 @@ class _WasteState extends State<Waste> {
                                 label: "$totalWaste",
                                 value: totalWaste,
                                 min: 0,
-                                max: 50,
-                                divisions: 10,
+                                max: 1000,
+                                divisions: 50,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
                                   setState(() {
@@ -285,7 +285,7 @@ class _WasteState extends State<Waste> {
                             ),
                           ),
                           Text(
-                            "50",
+                            "1000",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),
@@ -345,7 +345,7 @@ class _WasteState extends State<Waste> {
                                 label: "$paperRecycled",
                                 value: paperRecycled,
                                 min: 0,
-                                max: 100,
+                                max: 200,
                                 divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
@@ -357,7 +357,7 @@ class _WasteState extends State<Waste> {
                             ),
                           ),
                           Text(
-                            "100",
+                            "200",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),
@@ -489,7 +489,7 @@ class _WasteState extends State<Waste> {
                                 label: "$glassRecycled",
                                 value: glassRecycled,
                                 min: 0,
-                                max: 100,
+                                max: 50,
                                 divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
@@ -501,7 +501,7 @@ class _WasteState extends State<Waste> {
                             ),
                           ),
                           Text(
-                            "100",
+                            "50",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),

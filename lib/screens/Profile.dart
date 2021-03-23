@@ -20,10 +20,11 @@ class _ProfileState extends State<Profile> {
   var database = Firestore.instance;
   List<dynamic> friends = [];
   List<LeaderBoardDetails> friendsRanking = [];
-  int rank=0;
+  int rank = 0;
 
   Future<void> getRank() async {
-    var doc = await database.collection("LeaderBoard").document(user.email_id).get();
+    var doc =
+        await database.collection("LeaderBoard").document(user.email_id).get();
     setState(() {
       rank = doc["leaderBoardRank"];
     });
@@ -69,13 +70,12 @@ class _ProfileState extends State<Profile> {
   @override
   void initState() {
     super.initState();
+    user = Provider.of<User>(context, listen: false);
     _getFriendsList();
   }
 
   @override
   Widget build(BuildContext context) {
-
-    user = Provider.of<User>(context);
     getRank();
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;

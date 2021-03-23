@@ -185,9 +185,19 @@ class _StatisticsState extends State<Statistics> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    user = Provider.of<User>(context);
+  void initState() {
+    super.initState();
+    user = Provider.of<User>(context, listen: false);
+    _updateTransport();
+    _updateLPG();
+    _updateElectricity();
+    _updateHomeAppliances();
+    _updateTelevision();
+    _updateWaste();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     _totalCarbonEmissionThisMonth = user.total_carbon_emission_this_month;
     _totalCarbonEmissionLastMonth = user.total_carbon_emission_last_month;
     _totalCarbonEmissionChange =
@@ -202,13 +212,6 @@ class _StatisticsState extends State<Statistics> {
     if (userName.length > 18) {
       userName = userName.substring(0, 18) + "...";
     }
-
-    _updateTransport();
-    _updateLPG();
-    _updateElectricity();
-    _updateHomeAppliances();
-    _updateTelevision();
-    _updateWaste();
 
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;

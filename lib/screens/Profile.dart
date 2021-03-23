@@ -280,8 +280,9 @@ class _ProfileState extends State<Profile> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           auth.handleSignOut(_googleSignIn);
-          while (Navigator.canPop(context)) Navigator.pop(context);
-          Navigator.pushNamed(context, SplashScreen1.routeName);
+          while (Navigator.canPop(context))
+            Navigator.pop(context);
+          Navigator.pushNamed(context, LogIn.routeName);
         },
         child: Icon(Icons.logout),
       ),

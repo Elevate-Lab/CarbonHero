@@ -67,6 +67,7 @@ flutter:
     - assets/login_screen.png
     - assets/waste.png
     - assets/Cover.png
+    - assets/google.png
 
   # To add assets to your application, add an assets section, like this:
   #assets:

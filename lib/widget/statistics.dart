@@ -226,7 +226,7 @@ class _StatisticsState extends State<Statistics> {
               children: [
                 Text(
                   userName,
-                  style: TextStyle(color: Colors.white, fontSize: 27),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 Spacer(),
                 GestureDetector(

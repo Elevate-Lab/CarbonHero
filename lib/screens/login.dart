@@ -124,7 +124,7 @@ class _LogInState extends State<LogIn> {
                       fontSize: 20)),
             ),
             SizedBox(
-              height: height * 0.05,
+              height: height * 0.07,
             ),
             Material(
               color: Color(0xff281627),
@@ -140,22 +140,17 @@ class _LogInState extends State<LogIn> {
                       BoxDecoration(border: Border.all(color: Colors.white)),
                   //color: Colors.green,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Icon(
-                        Icons.login,
-                        color: Colors.amber,
-                      ),
-                      SizedBox(
-                        width: 4,
+                      Image(
+                        width: 20,
+                        height: 20,
+                        image: AssetImage('assets/google.png'),
                       ),
                       Container(
                         width: 1,
                         height: 20,
                         color: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 6,
                       ),
                       Text(
                         """Sign In with Google""",
@@ -172,47 +167,47 @@ class _LogInState extends State<LogIn> {
             SizedBox(
               height: height * 0.02,
             ),
-            Material(
-              color: Color(0xff281627),
-              child: InkWell(
-                splashColor: Colors.purple[100],
-                onTap: () {},
-                child: Container(
-                  padding: EdgeInsets.all(width * 0.02),
-                  width: width * 0.75,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.white)),
-                  //color: Colors.green,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.login,
-                        color: Colors.amber,
-                      ),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      Container(
-                        width: 1,
-                        height: 20,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 6,
-                      ),
-                      Text(
-                        """Sign In with Facebook""",
-                        style: TextStyle(
-                          fontSize: width * 0.05,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            // Material(
+            //   color: Color(0xff281627),
+            //   child: InkWell(
+            //     splashColor: Colors.purple[100],
+            //     onTap: () {},
+            //     child: Container(
+            //       padding: EdgeInsets.all(width * 0.02),
+            //       width: width * 0.75,
+            //       decoration:
+            //           BoxDecoration(border: Border.all(color: Colors.white)),
+            //       //color: Colors.green,
+            //       child: Row(
+            //         mainAxisAlignment: MainAxisAlignment.center,
+            //         children: [
+            //           Icon(
+            //             Icons.login,
+            //             color: Colors.amber,
+            //           ),
+            //           SizedBox(
+            //             width: 4,
+            //           ),
+            //           Container(
+            //             width: 1,
+            //             height: 20,
+            //             color: Colors.white,
+            //           ),
+            //           SizedBox(
+            //             width: 6,
+            //           ),
+            //           Text(
+            //             """Sign In with Facebook""",
+            //             style: TextStyle(
+            //               fontSize: width * 0.05,
+            //               color: Colors.white,
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       );

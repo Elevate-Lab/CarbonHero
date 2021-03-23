@@ -1,8 +1,10 @@
 import 'package:carbon_emission/models/activityDetails.dart';
+import 'package:carbon_emission/models/user.dart';
 import 'package:carbon_emission/widget/activity_card.dart';
 import 'package:carbon_emission/widget/cirdular_progress_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class chooseNewActivity extends StatefulWidget {
   static const routeName = '/chooseNewActivity';
@@ -48,6 +50,9 @@ class _chooseNewActivityState extends State<chooseNewActivity> {
   }
 
   Widget _buildBody(double height, double width, BuildContext context) {
+
+    var user = Provider.of<User>(context);
+
     return Padding(
       padding: EdgeInsets.only(left: 35, right: 35, top: 40, bottom: 40),
       child: Column(
@@ -55,8 +60,8 @@ class _chooseNewActivityState extends State<chooseNewActivity> {
           Row(
             children: [
               Text(
-                "Hello Rayn!",
-                style: TextStyle(color: Colors.white, fontSize: 40),
+                user.userName,
+                style: TextStyle(color: Colors.white, fontSize: 25),
               )
             ],
           ),

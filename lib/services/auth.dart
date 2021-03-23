@@ -157,32 +157,6 @@ class Auth {
       'totalCarbonEmissionThisMonth': 0.0,
       'totalCarbonEmissionLastMonth': 0.0,
     });
-    await databaseReference
-        .collection('users')
-        .document(_currentUser.email)
-        .collection('activities')
-        .document('Cooking')
-        .setData({
-      'activityName': 'Cooking',
-      'lastCheckedAt': DateTime.now(),
-      'totalCarbonEmissionToday': 0.0,
-      'totalCarbonEmissionYesterday': 0.0,
-      'totalCarbonEmissionThisMonth': 0.0,
-      'totalCarbonEmissionLastMonth': 0.0,
-    });
-    await databaseReference
-        .collection('users')
-        .document(_currentUser.email)
-        .collection('activities')
-        .document('Workout')
-        .setData({
-      'activityName': 'Workout',
-      'lastCheckedAt': DateTime.now(),
-      'totalCarbonEmissionToday': 0.0,
-      'totalCarbonEmissionYesterday': 0.0,
-      'totalCarbonEmissionThisMonth': 0.0,
-      'totalCarbonEmissionLastMonth': 0.0,
-    });
 
     await databaseReference
         .collection('users')
@@ -191,20 +165,6 @@ class Auth {
         .document('Television')
         .setData({
       'activityName': 'Television',
-      'lastCheckedAt': DateTime.now(),
-      'totalCarbonEmissionToday': 0.0,
-      'totalCarbonEmissionYesterday': 0.0,
-      'totalCarbonEmissionThisMonth': 0.0,
-      'totalCarbonEmissionLastMonth': 0.0,
-    });
-
-    await databaseReference
-        .collection('users')
-        .document(_currentUser.email)
-        .collection('activities')
-        .document('Mobile Phone')
-        .setData({
-      'activityName': 'Mobile Phone',
       'lastCheckedAt': DateTime.now(),
       'totalCarbonEmissionToday': 0.0,
       'totalCarbonEmissionYesterday': 0.0,

@@ -77,6 +77,7 @@ class _LogInState extends State<LogIn> {
   }
 
   Widget _buildBody(double height, double width) {
+    print(_currentUser);
     if (_currentUser != null) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -1,5 +1,6 @@
 import 'package:carbon_emission/models/user.dart';
 import 'package:carbon_emission/services/auth.dart';
+import 'package:carbon_emission/widget/cirdular_progress_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
@@ -68,7 +69,7 @@ class _LogInState extends State<LogIn> {
     _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount account) {
       setState(() {
         _currentUser = account;
-        auth.createUser(_currentUser);
+        auth.createUser(_currentUser, context);
         if (_currentUser != null) {
           getDetails();
         }
@@ -80,23 +81,14 @@ class _LogInState extends State<LogIn> {
   Widget _buildBody(double height, double width) {
     if (_currentUser != null) {
       return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          ListTile(
-            leading: GoogleUserCircleAvatar(
-              identity: _currentUser,
-            ),
-            title: Text(_currentUser.displayName ?? ''),
-            subtitle: Text(_currentUser.email ?? ''),
+        children: [
+          CircularProgressIndicatorApp(),
+          SizedBox(
+            height: height * 0.01,
           ),
-          Text(_newUser ? "NEW USER REGISTERED" : "WELCOME BACK"),
-          ElevatedButton(
-            child: const Text('SIGN OUT'),
-            onPressed: () {
-              auth.handleSignOut(_googleSignIn);
-            },
-          ),
+          Text('Loging You In Please Wait ....')
         ],
       );
     } else {

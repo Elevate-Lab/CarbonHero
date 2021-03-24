@@ -64,7 +64,7 @@ class SplashScreen1 extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Text(
                 '''Track your carbon emission
-easily with and automatically with our simple tracker.''',
+easily and automatically with our simple tracker.''',
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
             ),

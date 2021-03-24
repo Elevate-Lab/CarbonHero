@@ -1,6 +1,5 @@
 import 'package:carbon_emission/models/leaderboardDetails.dart';
 import 'package:carbon_emission/models/user.dart';
-import 'package:carbon_emission/screens/login.dart';
 import 'package:carbon_emission/screens/splashScreen1.dart';
 import 'package:carbon_emission/services/auth.dart';
 import 'package:carbon_emission/widget/cirdular_progress_indicator.dart';
@@ -71,10 +70,9 @@ class _ProfileState extends State<Profile> {
           friendsRanking.add(leaderBoardDetails);
       }
     }
-    friendsRanking
-        .sort((a, b) => a.leaderBoardRank.compareTo(b.leaderBoardRank));
+    friendsRanking.sort((a, b) => b.userPoints.compareTo(a.userPoints));
 
-    if (friendsRanking.length > friendsCount) {
+    if (friendsRanking.length > friendsCount && this.mounted) {
       setState(() {
         friendsCount = friendsRanking.length;
       });
@@ -191,7 +189,7 @@ class _ProfileState extends State<Profile> {
                                     return LeaderBoardCard(
                                         friendsRanking[index].imgUrl,
                                         friendsRanking[index].username,
-                                        0.0,
+                                        friendsRanking[index].userPoints,
                                         index + 1,
                                         true);
                                   }),

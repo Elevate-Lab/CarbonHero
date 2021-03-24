@@ -36,6 +36,7 @@ class Auth {
     }
     for (var i = 0; i < data['connections'].length; i++) {
       //print(data['connections'][i]);
+      if (data['connections'][i]['emailAddresses'] == null) continue;
       if (data['connections'][i]['emailAddresses'][0]['value'] != null)
         friends.add(data['connections'][i]['emailAddresses'][0]['value']);
     }
@@ -51,12 +52,12 @@ class Auth {
       headers: await user.authHeaders,
     );
     final Map<String, dynamic> data = json.decode(response.body);
-    //print(data);
-    // if (data['otherContacts'] == null) {
-    //   print('R><><><><><><><><><><');
-    //   return;
-    // }
+    if (data['otherContacts'] == null) {
+      print('R><><><><><><><><><><');
+      return;
+    }
     for (var i = 0; i < data['otherContacts'].length; i++) {
+      if (data['otherContacts'][i]['emailAddresses'] == null) continue;
       friends.add(data['otherContacts'][i]['emailAddresses'][0]['value']);
     }
     return;

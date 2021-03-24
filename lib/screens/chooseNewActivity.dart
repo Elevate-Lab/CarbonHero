@@ -60,6 +60,16 @@ class _chooseNewActivityState extends State<chooseNewActivity> {
         children: [
           Row(
             children: [
+              GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Icon(
+                  Icons.arrow_back_ios_rounded,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                width: 35,
+              ),
               Text(
                 user.userName,
                 style: TextStyle(color: Colors.white, fontSize: 25),
@@ -67,7 +77,7 @@ class _chooseNewActivityState extends State<chooseNewActivity> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           Row(
             children: [

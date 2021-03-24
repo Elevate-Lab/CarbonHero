@@ -1,4 +1,5 @@
 import 'package:carbon_emission/models/user.dart';
+import 'package:carbon_emission/screens/Profile.dart';
 import 'package:carbon_emission/widget/leaderBoardCard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -16,23 +17,19 @@ class _LeaderBoardState extends State<LeaderBoard> {
   var user;
   bool leaderBoardFetched = false;
   final databaseReference = Firestore.instance;
-   
-   var firstOffset="";
-   var secondOffset="";
-   var thirdOffset="";
 
+  var firstOffset = "";
+  var secondOffset = "";
+  var thirdOffset = "";
 
-   var first;
-   var second;
-   var third;
+  var first;
+  var second;
+  var third;
   //  var third="a12";
   //  var off=" ";
 
-  
   List<LeaderBoardDetails> friendsRanking = [];
- 
 
-  
   Future<void> getRanks() async {
     friendsRanking.clear();
     var doc = await databaseReference.collection('LeaderBoard').getDocuments();
@@ -48,22 +45,18 @@ class _LeaderBoardState extends State<LeaderBoard> {
         friendsRanking.add(leaderBoardDetails);
     }
     _sortTheMembers();
-     first =friendsRanking[0].username.split(" ");
-     second=friendsRanking[1].username.split(" ");
-     third= friendsRanking[2].username.split(" ");
-    if(first[0].length<12)
-    {
-      firstOffset=" "*(12-first[0].length);
+    first = friendsRanking[0].username.split(" ");
+    second = friendsRanking[1].username.split(" ");
+    third = friendsRanking[2].username.split(" ");
+    if (first[0].length < 12) {
+      firstOffset = " " * (12 - first[0].length);
     }
-       if(second[0].length<12)
-    {
-      secondOffset=" "*(12-second[0].length);
+    if (second[0].length < 12) {
+      secondOffset = " " * (12 - second[0].length);
     }
-       if(friendsRanking[2].username.length<12)
-    {
-      thirdOffset=" "*(12-third[0].length);
+    if (friendsRanking[2].username.length < 12) {
+      thirdOffset = " " * (12 - third[0].length);
     }
-   
 
     return;
   }
@@ -84,7 +77,6 @@ class _LeaderBoardState extends State<LeaderBoard> {
       }
     }
 
- 
     setState(() {
       leaderBoardFetched = true;
     });
@@ -98,7 +90,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
     // {
     //   off=" "*(12-third.length);
     // }
-   getRanks();
+    getRanks();
   }
 
   @override
@@ -122,15 +114,8 @@ class _LeaderBoardState extends State<LeaderBoard> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Icon(
-                            Icons.arrow_back_ios_rounded,
-                            color: Colors.white,
-                            size: 35,
-                          ),
+                        SizedBox(
+                          width: 35,
                         ),
                         Text(
                           "Leaderboard",
@@ -139,10 +124,15 @@ class _LeaderBoardState extends State<LeaderBoard> {
                             color: const Color(0xffFEBB46),
                           ),
                         ),
-                        Icon(
-                          Icons.account_circle_rounded,
-                          color: Colors.white,
-                          size: 35,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(Profile.routeName);
+                          },
+                          child: Icon(
+                            Icons.account_circle_outlined,
+                            size: 40,
+                            color: Colors.white,
+                          ),
                         ),
                       ],
                     ),
@@ -190,8 +180,8 @@ class _LeaderBoardState extends State<LeaderBoard> {
                                   return LeaderBoardCard(
                                       friendsRanking[index + 3].imgUrl,
                                       friendsRanking[index + 3].username,
-                                      friendsRanking[index+3].userPoints,
-                                      index+4,
+                                      friendsRanking[index + 3].userPoints,
+                                      index + 4,
                                       true);
                                 }),
                           ),
@@ -211,7 +201,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                   backgroundColor: const Color(0xff95E27B),
                   child: CircleAvatar(
                     radius: width * 0.1325,
-                   backgroundImage: NetworkImage(friendsRanking[0].imgUrl),
+                    backgroundImage: NetworkImage(friendsRanking[0].imgUrl),
                   ),
                 ),
               ),
@@ -233,9 +223,8 @@ class _LeaderBoardState extends State<LeaderBoard> {
                 bottom: height * 0.61,
                 left: width * 0.35,
                 child: Text(
-                 firstOffset+ first[0],
-                 
-                  style: TextStyle(color: Colors.white, fontSize: width*0.04),
+                  firstOffset + first[0],
+                  style: TextStyle(color: Colors.white, fontSize: width * 0.04),
                 ),
               ),
 
@@ -249,7 +238,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                   backgroundColor: const Color(0xffFEBB46),
                   child: CircleAvatar(
                     radius: width * 0.092,
-                 backgroundImage: NetworkImage(friendsRanking[1].imgUrl),
+                    backgroundImage: NetworkImage(friendsRanking[1].imgUrl),
                   ),
                 ),
               ),
@@ -271,8 +260,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                 bottom: height * 0.57,
                 left: width * 0.08,
                 child: Text(
-                  secondOffset+ friendsRanking[1].username,
-              
+                  secondOffset + friendsRanking[1].username,
                   style: TextStyle(color: Colors.white, fontSize: width * 0.03),
                 ),
               ),
@@ -309,9 +297,9 @@ class _LeaderBoardState extends State<LeaderBoard> {
                 bottom: height * 0.57,
                 left: width * 0.7,
                 child: Text(
-                thirdOffset+  friendsRanking[2].username,
-                
-              // off+ "$third",
+                  thirdOffset + friendsRanking[2].username,
+
+                  // off+ "$third",
                   style: TextStyle(color: Colors.white, fontSize: width * 0.03),
                 ),
               ),

@@ -96,7 +96,7 @@ class DashBoard extends StatelessWidget {
                         angle: 90,
                         widget: Column(
                           children: [
-                            SizedBox(height: height * 0.088),
+                            SizedBox(height: height * 0.145),
                             Text(
                               user.total_carbon_emission_this_month
                                       .toInt()

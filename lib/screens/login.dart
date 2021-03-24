@@ -104,7 +104,7 @@ class _LogInState extends State<LogIn> {
               height: height * 0.35,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/login_com.jpg'),
+                      image: AssetImage('assets/login_screen.png'),
                       fit: BoxFit.contain)),
             ),
             Padding(

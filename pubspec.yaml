@@ -65,9 +65,10 @@ flutter:
     - assets/transport_com.jpg
     - assets/lpg_com.jpg
     - assets/electricity_com.jpg
-    - assets/login_com.jpg
-    - assets/splash_1_com.jpg
-    - assets/splash_2_com.jpg
+    - assets/login_screen.png
+    - assets/splash_screen_1.png
+    - assets/splash_screen_2.png
+    - assets/home_appliances.png
 
   # To add assets to your application, add an assets section, like this:
   #assets:

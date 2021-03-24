@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:carbon_emission/models/user.dart';
 import 'package:carbon_emission/screens/Profile.dart';
 import 'package:carbon_emission/screens/chooseNewActivity.dart';

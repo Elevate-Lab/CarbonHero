@@ -16,8 +16,23 @@ class _LeaderBoardState extends State<LeaderBoard> {
   var user;
   bool leaderBoardFetched = false;
   final databaseReference = Firestore.instance;
-  List<LeaderBoardDetails> friendsRanking = [];
+   
+   var firstOffset="";
+   var secondOffset="";
+   var thirdOffset="";
 
+
+   var first;
+   var second;
+   var third;
+  //  var third="a12";
+  //  var off=" ";
+
+  
+  List<LeaderBoardDetails> friendsRanking = [];
+ 
+
+  
   Future<void> getRanks() async {
     friendsRanking.clear();
     var doc = await databaseReference.collection('LeaderBoard').getDocuments();
@@ -33,6 +48,23 @@ class _LeaderBoardState extends State<LeaderBoard> {
         friendsRanking.add(leaderBoardDetails);
     }
     _sortTheMembers();
+     first =friendsRanking[0].username.split(" ");
+     second=friendsRanking[1].username.split(" ");
+     third= friendsRanking[2].username.split(" ");
+    if(first[0].length<12)
+    {
+      firstOffset=" "*(12-first[0].length);
+    }
+       if(second[0].length<12)
+    {
+      secondOffset=" "*(12-second[0].length);
+    }
+       if(friendsRanking[2].username.length<12)
+    {
+      thirdOffset=" "*(12-third[0].length);
+    }
+   
+
     return;
   }
 
@@ -52,6 +84,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
       }
     }
 
+ 
     setState(() {
       leaderBoardFetched = true;
     });
@@ -60,7 +93,12 @@ class _LeaderBoardState extends State<LeaderBoard> {
   @override
   void initState() {
     super.initState();
-    getRanks();
+
+    // if(third.length<12)
+    // {
+    //   off=" "*(12-third.length);
+    // }
+   getRanks();
   }
 
   @override
@@ -156,7 +194,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                                       index+4,
                                       true);
                                 }),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -173,7 +211,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                   backgroundColor: const Color(0xff95E27B),
                   child: CircleAvatar(
                     radius: width * 0.1325,
-                    backgroundImage: NetworkImage(friendsRanking[0].imgUrl),
+                   backgroundImage: NetworkImage(friendsRanking[0].imgUrl),
                   ),
                 ),
               ),
@@ -195,7 +233,8 @@ class _LeaderBoardState extends State<LeaderBoard> {
                 bottom: height * 0.61,
                 left: width * 0.35,
                 child: Text(
-                  friendsRanking[0].username,
+                 firstOffset+ first[0],
+                 
                   style: TextStyle(color: Colors.white, fontSize: width*0.04),
                 ),
               ),
@@ -210,7 +249,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                   backgroundColor: const Color(0xffFEBB46),
                   child: CircleAvatar(
                     radius: width * 0.092,
-                    backgroundImage: NetworkImage(friendsRanking[1].imgUrl),
+                 backgroundImage: NetworkImage(friendsRanking[1].imgUrl),
                   ),
                 ),
               ),
@@ -232,7 +271,8 @@ class _LeaderBoardState extends State<LeaderBoard> {
                 bottom: height * 0.57,
                 left: width * 0.08,
                 child: Text(
-                  friendsRanking[1].username,
+                  secondOffset+ friendsRanking[1].username,
+              
                   style: TextStyle(color: Colors.white, fontSize: width * 0.03),
                 ),
               ),
@@ -267,9 +307,11 @@ class _LeaderBoardState extends State<LeaderBoard> {
 
               Positioned(
                 bottom: height * 0.57,
-                right: width * 0.08,
+                left: width * 0.7,
                 child: Text(
-                  friendsRanking[2].username,
+                thirdOffset+  friendsRanking[2].username,
+                
+              // off+ "$third",
                   style: TextStyle(color: Colors.white, fontSize: width * 0.03),
                 ),
               ),

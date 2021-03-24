@@ -60,11 +60,11 @@ flutter:
   assets:
     - assets/Cover.png
     - assets/google.png
-    - assets/waste_com.jpg
-    - assets/tv_com.jpg
-    - assets/transport_com.jpg
-    - assets/lpg_com.jpg
-    - assets/electricity_com.jpg
+    - assets/waste_com.png
+    - assets/tv_com.png
+    - assets/transport_com.png
+    - assets/lpg_com.png
+    - assets/electricity_com.png
     - assets/login_screen.png
     - assets/splash_screen_1.png
     - assets/splash_screen_2.png

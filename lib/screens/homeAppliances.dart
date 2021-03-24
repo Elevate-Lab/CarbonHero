@@ -26,9 +26,11 @@ class _HomeAppliancesState extends State<HomeAppliances> {
         .collection("activities")
         .document("Home Appliances")
         .get();
-    setState(() {
-      val = doc['totalCarbonEmissionThisMonth'];
-    });
+    if (this.mounted) {
+      setState(() {
+        val = doc['totalCarbonEmissionThisMonth'];
+      });
+    }
   }
 
   @override
@@ -175,7 +177,7 @@ class _HomeAppliancesState extends State<HomeAppliances> {
                     children: <Widget>[
                       RichText(
                           text: TextSpan(
-                              text: "Weekly Carbon Footprint",
+                              text: "Monthly Carbon Footprint",
                               style: TextStyle(
                                   fontSize: 15, color: Color(0xff281627)))),
                       SizedBox(

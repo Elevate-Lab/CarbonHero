@@ -17,13 +17,20 @@ class _TelevisionState extends State<Television> {
   final databaseReference = Firestore.instance;
   var hoursSpent = 0.00;
   var user;
-  double val=0.0;
+  double val = 0.0;
 
   Future<void> update() async {
-    var doc = await databaseReference.collection("users").document(user.email_id).collection("activities").document("Television").get();
-    setState(() {
-      val = doc['totalCarbonEmissionThisMonth'];
-    });
+    var doc = await databaseReference
+        .collection("users")
+        .document(user.email_id)
+        .collection("activities")
+        .document("Television")
+        .get();
+    if (this.mounted) {
+      setState(() {
+        val = doc['totalCarbonEmissionThisMonth'];
+      });
+    }
   }
 
   @override
@@ -38,7 +45,9 @@ class _TelevisionState extends State<Television> {
           .document("Television")
           .get();
 
-      String carbonMonth = double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2)).toString();
+      String carbonMonth =
+          double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
+              .toString();
       double carbonEmitted = homeCalc(hoursSpent, 0, 0, 0);
       int pointsScored = points(carbonEmitted, 5);
       int pts = user.points_earned;
@@ -48,13 +57,14 @@ class _TelevisionState extends State<Television> {
       double activityThisMonth = doc['totalCarbonEmissionThisMonth'];
       double activityYesterday = doc['totalCarbonEmissionYesterday'];
       double activityPrevMonth = doc['totalCarbonEmissionLastMonth'];
-      var date = DateTime.fromMicrosecondsSinceEpoch(doc['lastCheckedAt'].microsecondsSinceEpoch);
+      var date = DateTime.fromMicrosecondsSinceEpoch(
+          doc['lastCheckedAt'].microsecondsSinceEpoch);
       var last = DateTime.now();
-      if(date.month != last.month) {
+      if (date.month != last.month) {
         activityPrevMonth = activityThisMonth;
         activityThisMonth = 0.0;
       }
-      if(date.day != last.day) {
+      if (date.day != last.day) {
         activityYesterday = activityToday;
         activityToday = 0.0;
       }
@@ -74,11 +84,12 @@ class _TelevisionState extends State<Television> {
         'lastCheckedAt': DateTime.now(),
       });
 
-      if(user.date.month != last.month){
-        user.total_carbon_emission_last_month = user.total_carbon_emission_this_month;
+      if (user.date.month != last.month) {
+        user.total_carbon_emission_last_month =
+            user.total_carbon_emission_this_month;
         user.total_carbon_emission_this_month = 0.0;
       }
-      if(user.date.day != last.day) {
+      if (user.date.day != last.day) {
         user.total_carbon_emission_yesterday = user.total_carbon_emission_today;
         user.total_carbon_emission_today = 0.0;
       }
@@ -97,7 +108,10 @@ class _TelevisionState extends State<Television> {
         'pointsEarned': user.points_earned,
       });
 
-      await databaseReference.collection("LeaderBoard").document(user.email_id).updateData({
+      await databaseReference
+          .collection("LeaderBoard")
+          .document(user.email_id)
+          .updateData({
         'userPoints': user.points_earned,
       });
 
@@ -174,29 +188,26 @@ class _TelevisionState extends State<Television> {
                     children: <Widget>[
                       RichText(
                           text: TextSpan(
-                              text: "Weekly Carbon Footprint",
+                              text: "Monthly Carbon Footprint",
                               style: TextStyle(
                                   fontSize: 15, color: Color(0xff281627)))),
                       SizedBox(
                         height: _height * 0.01,
                       ),
-                      Text(
-                          val.toStringAsFixed(1),
+                      Text(val.toStringAsFixed(1),
                           style: TextStyle(
                               fontSize: 30,
                               color: Color(0xff281627),
-                              fontWeight: FontWeight.w900
-                          )
-                      ),
+                              fontWeight: FontWeight.w900)),
                     ],
                   ),
                 ),
                 Spacer(),
-                // Image(
-                //   width: _width * 0.26,
-                //   height: _height * 0.12,
-                //   image: AssetImage('assets/tv_com.jpg'),
-                // ),
+                Image(
+                  width: _width * 0.26,
+                  height: _height * 0.12,
+                  image: AssetImage('assets/tv_com.png'),
+                ),
                 SizedBox(width: _width * 0.02)
               ],
             ),

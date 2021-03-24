@@ -16,6 +16,7 @@ class _chooseNewActivityState extends State<chooseNewActivity> {
   final databaseReference = Firestore.instance;
   List<dynamic> listOfActivitiesToTrack;
   List<dynamic> listOfRoutes;
+  List<dynamic> listOfImgAssets;
   List<ActivityDetails> detailsOfActivity = [];
   bool noActivtyOptions = true;
 
@@ -29,15 +30,16 @@ class _chooseNewActivityState extends State<chooseNewActivity> {
 
     listOfActivitiesToTrack = doc['activitylist'];
 
+    listOfImgAssets = doc['imageUrl'];
+
     if (listOfActivitiesToTrack.isNotEmpty && listOfRoutes.isNotEmpty) {
       setState(() {
         for (int i = 0; i < listOfActivitiesToTrack.length; i++) {
           detailsOfActivity.add(new ActivityDetails(
               activityName: listOfActivitiesToTrack[i],
               activityRoute: listOfRoutes[i],
-              activityImgUrl: "None"));
+              activityImgUrl: listOfImgAssets[i]));
         }
-        print(detailsOfActivity);
         noActivtyOptions = false;
       });
     }
@@ -50,7 +52,6 @@ class _chooseNewActivityState extends State<chooseNewActivity> {
   }
 
   Widget _buildBody(double height, double width, BuildContext context) {
-
     var user = Provider.of<User>(context);
 
     return Padding(
@@ -71,7 +72,7 @@ class _chooseNewActivityState extends State<chooseNewActivity> {
           Row(
             children: [
               Text(
-'''Add Activities That You Are Interested 
+                '''Add Activities That You Are Interested 
 To Track For Carbon Emission''',
                 style: TextStyle(fontSize: 14, color: Color(0xffFEBB46)),
               )
@@ -93,14 +94,15 @@ To Track For Carbon Emission''',
                           (e) => ActivityCard(
                             nameOfActivity: e.activityName,
                             routeOfActivity: e.activityRoute,
+                            imageOfActivity: e.activityImgUrl,
                           ),
                         )
                         .toList(),
                     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: width*0.5,
+                      maxCrossAxisExtent: width * 0.5,
                       childAspectRatio: 7 / 8,
-                      crossAxisSpacing: width*0.04,
-                      mainAxisSpacing: height*0.02,
+                      crossAxisSpacing: width * 0.04,
+                      mainAxisSpacing: height * 0.02,
                     ),
                   ),
                 ),

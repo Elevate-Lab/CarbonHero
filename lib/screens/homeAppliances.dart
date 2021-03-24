@@ -17,10 +17,15 @@ class _HomeAppliancesState extends State<HomeAppliances> {
   var geyserUsed = 0.00;
   var refUsed = 0.00;
   var user;
-  double val=0.0;
+  double val = 0.0;
 
   Future<void> update() async {
-    var doc = await databaseReference.collection("users").document(user.email_id).collection("activities").document("Home Appliances").get();
+    var doc = await databaseReference
+        .collection("users")
+        .document(user.email_id)
+        .collection("activities")
+        .document("Home Appliances")
+        .get();
     setState(() {
       val = doc['totalCarbonEmissionThisMonth'];
     });
@@ -47,13 +52,14 @@ class _HomeAppliancesState extends State<HomeAppliances> {
       double activityThisMonth = doc['totalCarbonEmissionThisMonth'];
       double activityYesterday = doc['totalCarbonEmissionYesterday'];
       double activityPrevMonth = doc['totalCarbonEmissionLastMonth'];
-      var date = DateTime.fromMicrosecondsSinceEpoch(doc['lastCheckedAt'].microsecondsSinceEpoch);
+      var date = DateTime.fromMicrosecondsSinceEpoch(
+          doc['lastCheckedAt'].microsecondsSinceEpoch);
       var last = DateTime.now();
-      if(date.month != last.month) {
+      if (date.month != last.month) {
         activityPrevMonth = activityThisMonth;
         activityThisMonth = 0.0;
       }
-      if(date.day != last.day) {
+      if (date.day != last.day) {
         activityYesterday = activityToday;
         activityToday = 0.0;
       }
@@ -73,11 +79,12 @@ class _HomeAppliancesState extends State<HomeAppliances> {
         'lastCheckedAt': DateTime.now(),
       });
 
-      if(user.date.month != last.month){
-        user.total_carbon_emission_last_month = user.total_carbon_emission_this_month;
+      if (user.date.month != last.month) {
+        user.total_carbon_emission_last_month =
+            user.total_carbon_emission_this_month;
         user.total_carbon_emission_this_month = 0.0;
       }
-      if(user.date.day != last.day) {
+      if (user.date.day != last.day) {
         user.total_carbon_emission_yesterday = user.total_carbon_emission_today;
         user.total_carbon_emission_today = 0.0;
       }
@@ -174,14 +181,11 @@ class _HomeAppliancesState extends State<HomeAppliances> {
                       SizedBox(
                         height: _height * 0.01,
                       ),
-                      Text(
-                          val.toStringAsFixed(1),
+                      Text(val.toStringAsFixed(1),
                           style: TextStyle(
                               fontSize: 30,
                               color: Color(0xff281627),
-                              fontWeight: FontWeight.w900
-                          )
-                      ),
+                              fontWeight: FontWeight.w900)),
                     ],
                   ),
                 ),
@@ -189,7 +193,7 @@ class _HomeAppliancesState extends State<HomeAppliances> {
                 Image(
                   width: _width * 0.26,
                   height: _height * 0.12,
-                  image: AssetImage('assets/electricity_com.jpg'),
+                  image: AssetImage('assets/home_appliances.png'),
                 ),
                 SizedBox(width: _width * 0.02)
               ],

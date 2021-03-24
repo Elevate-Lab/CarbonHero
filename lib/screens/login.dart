@@ -53,9 +53,9 @@ class _LogInState extends State<LogIn> {
     data.total_carbon_emission_yesterday =
         doc['totalCarbonEmissionYesterday'].toDouble();
     data.img_url = doc['imgUrl'];
-    var date = DateTime.fromMicrosecondsSinceEpoch(
-        doc['lastCheckedAt'].microsecondsSinceEpoch);
+    var date = DateTime.fromMicrosecondsSinceEpoch(doc['lastCheckedAt'].microsecondsSinceEpoch);
     data.date = date;
+    print(data.date.month);
     data.points_earned = doc['pointsEarned'];
     Navigator.pop(context);
     Navigator.of(context).pushNamed(MainScreen.routeName);

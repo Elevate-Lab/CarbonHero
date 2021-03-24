@@ -192,11 +192,11 @@ class _TelevisionState extends State<Television> {
                   ),
                 ),
                 Spacer(),
-                Image(
-                  width: _width * 0.26,
-                  height: _height * 0.12,
-                  image: AssetImage('assets/tv_com.jpg'),
-                ),
+                // Image(
+                //   width: _width * 0.26,
+                //   height: _height * 0.12,
+                //   image: AssetImage('assets/tv_com.jpg'),
+                // ),
                 SizedBox(width: _width * 0.02)
               ],
             ),

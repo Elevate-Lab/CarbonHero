@@ -192,11 +192,11 @@ class _LPG extends State<LPG> {
                   ),
                 ),
                 Spacer(),
-                Image(
-                  width: _width * 0.26,
-                  height: _height * 0.12,
-                  image: AssetImage('assets/lpg_com.jpg'),
-                ),
+                // Image(
+                //   width: _width * 0.26,
+                //   height: _height * 0.12,
+                //   image: AssetImage('assets/lpg_com.jpg'),
+                // ),
                 SizedBox(width: _width * 0.02)
               ],
             ),

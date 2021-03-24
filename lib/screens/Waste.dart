@@ -56,6 +56,7 @@ class _WasteState extends State<Waste> {
       double activityPrevMonth = doc['totalCarbonEmissionLastMonth'];
       var date = DateTime.fromMicrosecondsSinceEpoch(doc['lastCheckedAt'].microsecondsSinceEpoch);
       var last = DateTime.now();
+
       if(date.month != last.month) {
         activityPrevMonth = activityThisMonth;
         activityThisMonth = 0.0;
@@ -198,11 +199,11 @@ class _WasteState extends State<Waste> {
                   ),
                 ),
                 Spacer(),
-                Image(
-                  width: _width * 0.26,
-                  height: _height * 0.12,
-                  image: AssetImage('assets/waste_com.jpg'),
-                ),
+                // Image(
+                //   width: _width * 0.26,
+                //   height: _height * 0.12,
+                //   image: AssetImage('assets/waste_com.jpg'),
+                // ),
                 SizedBox(width: _width * 0.02)
               ],
             ),

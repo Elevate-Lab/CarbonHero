@@ -8,6 +8,9 @@ double waste = 692*poundToKg/12;
 double electricity = 5455*poundToKg/12;
 double lpg = 2243*poundToKg/12;
 var tele = 189*4;
+var geyser = 630;
+var acWinter = 490*2;
+var acSummer = 490*5;
 
 // -------  WASTE --------
 double wasteCalc(var waste, var paper, var plastic, var glass, var metal) {
@@ -31,8 +34,8 @@ double electricityCalc(double consumption, int size) {
 }
 
 // -------- HOME APPLIANCES ------
-double homeCalc(var television, var ac, var geyser, var refrigerator) {
-  double ans = 490 * ac + 189 * television + 1260 * geyser + 189 * refrigerator;
+double homeCalc(var television, var ac, var geyser) {
+  double ans = 490 * ac + 189 * television + 1260 * geyser;
   return ans;
 }
 
@@ -77,7 +80,13 @@ int points(double emission, int ind) {
     ans = (tele-emission)*100/tele;
   }
   else {
-
+    DateTime date = DateTime.now();
+    if(date.month>=3 && date.month<=10) {
+      ans = (acSummer-emission)*100/acSummer;
+    }
+    else {
+      ans = (acWinter-emission)*100/acWinter;
+    }
   }
   return (ans.toInt() + 10);
 }

@@ -45,10 +45,13 @@ class _HomeAppliancesState extends State<HomeAppliances> {
           .document("Home Appliances")
           .get();
 
-      double carbonEmitted = homeCalc(0, acUsed, geyserUsed, refUsed);
+      double carbonEmitted = homeCalc(0, acUsed, geyserUsed);
       String carbonMonth =
           double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
               .toString();
+      int pointsScored = points(carbonEmitted, 6);
+      int pts = user.points_earned;
+      user.points_earned = pts + pointsScored;
 
       double activityToday = doc['totalCarbonEmissionToday'];
       double activityThisMonth = doc['totalCarbonEmissionThisMonth'];
@@ -102,7 +105,15 @@ class _HomeAppliancesState extends State<HomeAppliances> {
         'totalCarbonEmissionLastMonth': user.total_carbon_emission_last_month,
         'totalCarbonEmissionYesterday': user.total_carbon_emission_yesterday,
         'lastCheckedAt': DateTime.now(),
+        'pointsEarned': user.points_earned,
       });
+
+      await databaseReference
+          .collection("LeaderBoard")
+          .document(user.email_id)
+          .updateData({
+            'userPoints': user.points_earned,
+          });
 
       double month = user.total_carbon_emission_this_month;
       user.total_carbon_emission_this_month = month + carbonEmitted;
@@ -358,78 +369,78 @@ class _HomeAppliancesState extends State<HomeAppliances> {
                       ),
                     ),
                     SizedBox(height: _height * 0.02),
-                    new Divider(
-                      color: Colors.grey,
-                    ),
-                    SizedBox(height: _height * 0.02),
-                    Text(
-                      'Refrigerator used (hours/day) ',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: _height * 0.04,
-                    ),
-                    Container(
-                      width: _width * 0.8,
-                      height: _height * 0.06,
-                      decoration: BoxDecoration(
-                        borderRadius: new BorderRadius.circular(10),
-                        color: const Color(0xff281627),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                        child: Row(children: [
-                          Text(
-                            "0",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          Expanded(
-                            child: SliderTheme(
-                              data: SliderThemeData(
-                                //  activeTrackColor: Colors.red[700],
-                                inactiveTrackColor: const Color(0xff281627),
-                                trackShape: RoundedRectSliderTrackShape(),
-                                trackHeight: _height * 0.01,
-                                thumbShape: RoundSliderThumbShape(
-                                    enabledThumbRadius: 12.0),
-                                thumbColor: const Color(0xffFEBB46),
-                                overlayColor: Colors.black,
-                                overlayShape: RoundSliderOverlayShape(
-                                    overlayRadius: 28.0),
-                                tickMarkShape: RoundSliderTickMarkShape(),
-                                activeTickMarkColor: Colors.white,
-                                inactiveTickMarkColor: Colors.white,
-                                valueIndicatorShape:
-                                    PaddleSliderValueIndicatorShape(),
-                                //     valueIndicatorColor: Colors.redAccent,
-                                valueIndicatorTextStyle: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              child: Slider(
-                                label: "${refUsed.floor()}",
-                                value: refUsed,
-                                min: 0,
-                                max: 24,
-                                divisions: 10,
-                                activeColor: const Color(0xffFEBB46),
-                                onChanged: (double value) {
-                                  setState(() {
-                                    refUsed = value;
-                                  });
-                                },
-                              ),
-                            ),
-                          ),
-                          Text(
-                            "24",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ]),
-                      ),
-                    ),
-                    SizedBox(height: _height * 0.02),
+                    // new Divider(
+                    //   color: Colors.grey,
+                    // ),
+                    // SizedBox(height: _height * 0.02),
+                    // Text(
+                    //   'Refrigerator used (hours/day) ',
+                    //   style:
+                    //       TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    // ),
+                    // SizedBox(
+                    //   height: _height * 0.04,
+                    // ),
+                    // Container(
+                    //   width: _width * 0.8,
+                    //   height: _height * 0.06,
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: new BorderRadius.circular(10),
+                    //     color: const Color(0xff281627),
+                    //   ),
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                    //     child: Row(children: [
+                    //       Text(
+                    //         "0",
+                    //         style: TextStyle(color: Colors.white),
+                    //       ),
+                    //       Expanded(
+                    //         child: SliderTheme(
+                    //           data: SliderThemeData(
+                    //             //  activeTrackColor: Colors.red[700],
+                    //             inactiveTrackColor: const Color(0xff281627),
+                    //             trackShape: RoundedRectSliderTrackShape(),
+                    //             trackHeight: _height * 0.01,
+                    //             thumbShape: RoundSliderThumbShape(
+                    //                 enabledThumbRadius: 12.0),
+                    //             thumbColor: const Color(0xffFEBB46),
+                    //             overlayColor: Colors.black,
+                    //             overlayShape: RoundSliderOverlayShape(
+                    //                 overlayRadius: 28.0),
+                    //             tickMarkShape: RoundSliderTickMarkShape(),
+                    //             activeTickMarkColor: Colors.white,
+                    //             inactiveTickMarkColor: Colors.white,
+                    //             valueIndicatorShape:
+                    //                 PaddleSliderValueIndicatorShape(),
+                    //             //     valueIndicatorColor: Colors.redAccent,
+                    //             valueIndicatorTextStyle: TextStyle(
+                    //               color: Colors.white,
+                    //             ),
+                    //           ),
+                    //           child: Slider(
+                    //             label: "${refUsed.floor()}",
+                    //             value: refUsed,
+                    //             min: 0,
+                    //             max: 24,
+                    //             divisions: 10,
+                    //             activeColor: const Color(0xffFEBB46),
+                    //             onChanged: (double value) {
+                    //               setState(() {
+                    //                 refUsed = value;
+                    //               });
+                    //             },
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       Text(
+                    //         "24",
+                    //         style: TextStyle(color: Colors.white),
+                    //       ),
+                    //     ]),
+                    //   ),
+                    // ),
+                    // SizedBox(height: _height * 0.02),
                     new Divider(
                       color: Colors.grey,
                     ),

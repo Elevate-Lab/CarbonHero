@@ -15,7 +15,7 @@ class Television extends StatefulWidget {
 
 class _TelevisionState extends State<Television> {
   final databaseReference = Firestore.instance;
-  var hoursSpent = 0.00;
+  var hoursSpent = 0;
   var user;
   double val = 0.0;
 
@@ -48,7 +48,7 @@ class _TelevisionState extends State<Television> {
       String carbonMonth =
           double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
               .toString();
-      double carbonEmitted = homeCalc(hoursSpent, 0, 0, 0);
+      double carbonEmitted = homeCalc(hoursSpent, 0, 0);
       int pointsScored = points(carbonEmitted, 5);
       int pts = user.points_earned;
       user.points_earned = pts + pointsScored;
@@ -112,8 +112,8 @@ class _TelevisionState extends State<Television> {
           .collection("LeaderBoard")
           .document(user.email_id)
           .updateData({
-        'userPoints': user.points_earned,
-      });
+            'userPoints': user.points_earned,
+          });
 
       double month = user.total_carbon_emission_this_month;
       user.total_carbon_emission_this_month = month + carbonEmitted;
@@ -272,21 +272,21 @@ class _TelevisionState extends State<Television> {
                             ),
                             child: Slider(
                               label: "$hoursSpent",
-                              value: hoursSpent,
+                              value: hoursSpent.toDouble(),
                               min: 0,
-                              max: 10,
+                              max: 24,
                               divisions: 10,
                               activeColor: const Color(0xffFEBB46),
                               onChanged: (double value) {
                                 setState(() {
-                                  hoursSpent = value;
+                                  hoursSpent = value.toInt();
                                 });
                               },
                             ),
                           ),
                         ),
                         Text(
-                          "10",
+                          "24",
                           style: TextStyle(color: Colors.white),
                         ),
                       ]),

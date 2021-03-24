@@ -284,8 +284,8 @@ class _WasteState extends State<Waste> {
                                 label: "$totalWaste",
                                 value: totalWaste,
                                 min: 0,
-                                max: 1000,
-                                divisions: 50,
+                                max: 100,
+                                divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
                                   setState(() {
@@ -296,7 +296,7 @@ class _WasteState extends State<Waste> {
                             ),
                           ),
                           Text(
-                            "1000",
+                            "100",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),
@@ -356,7 +356,7 @@ class _WasteState extends State<Waste> {
                                 label: "$paperRecycled",
                                 value: paperRecycled,
                                 min: 0,
-                                max: 200,
+                                max: 20,
                                 divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
@@ -368,7 +368,7 @@ class _WasteState extends State<Waste> {
                             ),
                           ),
                           Text(
-                            "200",
+                            "20",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),
@@ -428,7 +428,7 @@ class _WasteState extends State<Waste> {
                                 label: "$plasticRecycled",
                                 value: plasticRecycled,
                                 min: 0,
-                                max: 100,
+                                max: 20,
                                 divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
@@ -440,7 +440,7 @@ class _WasteState extends State<Waste> {
                             ),
                           ),
                           Text(
-                            "100",
+                            "20",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),
@@ -500,7 +500,7 @@ class _WasteState extends State<Waste> {
                                 label: "$glassRecycled",
                                 value: glassRecycled,
                                 min: 0,
-                                max: 50,
+                                max: 20,
                                 divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
@@ -512,7 +512,7 @@ class _WasteState extends State<Waste> {
                             ),
                           ),
                           Text(
-                            "50",
+                            "20",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),
@@ -572,7 +572,7 @@ class _WasteState extends State<Waste> {
                                 label: "$metalRecycled",
                                 value: metalRecycled,
                                 min: 0,
-                                max: 100,
+                                max: 20,
                                 divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
@@ -584,7 +584,7 @@ class _WasteState extends State<Waste> {
                             ),
                           ),
                           Text(
-                            "100",
+                            "20",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),

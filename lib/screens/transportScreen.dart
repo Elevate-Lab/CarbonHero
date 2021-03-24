@@ -350,8 +350,8 @@ class _TransportState extends State<Transport> {
                                 label: "$totalDistance",
                                 value: totalDistance,
                                 min: 0,
-                                max: 2000,
-                                divisions: 10,
+                                max: 1000,
+                                divisions: 20,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
                                   setState(() {
@@ -362,7 +362,7 @@ class _TransportState extends State<Transport> {
                             ),
                           ),
                           Text(
-                            "2000",
+                            "1000",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),
@@ -422,7 +422,7 @@ class _TransportState extends State<Transport> {
                                 label: "$avgMileage",
                                 value: avgMileage,
                                 min: 0,
-                                max: 2000,
+                                max: 50,
                                 divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
@@ -434,7 +434,7 @@ class _TransportState extends State<Transport> {
                             ),
                           ),
                           Text(
-                            "2000",
+                            "50",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),

@@ -8,6 +8,7 @@ import 'package:carbon_emission/widget/restart_app.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 
@@ -278,8 +279,30 @@ class _ProfileState extends State<Profile> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          auth.handleSignOut(_googleSignIn);
-          RestartWidget.restartApp(context);
+          showDialog(
+            context: context,
+            child: AlertDialog(
+              title: Text('Are You Sure You Want To Log Out?'),
+              content: Text('Restart Application After Logging Out'),
+              actions: [
+                FlatButton(
+                  onPressed: () => Navigator.pop(context, false),
+                  child: Text("No"),
+                ),
+                FlatButton(
+                  onPressed: () => Navigator.pop(context, true),
+                  child: Text("Yes"),
+                )
+              ],
+            ),
+          ).then((value) {
+            if (value == null) return;
+            if (value) {
+              auth.handleSignOut(_googleSignIn);
+              SystemNavigator.pop();
+            } else
+              return;
+          });
         },
         child: Icon(Icons.logout),
       ),

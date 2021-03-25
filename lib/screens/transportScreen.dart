@@ -46,9 +46,6 @@ class _TransportState extends State<Transport> {
           .get();
 
       double carbonEmitted = journeyCalc(totalDistance, avgMileage);
-      String carbonMonth =
-          double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
-              .toString();
       int pointsScored = points(carbonEmitted, 1);
       int pts = user.points_earned;
       user.points_earned = pts + pointsScored;

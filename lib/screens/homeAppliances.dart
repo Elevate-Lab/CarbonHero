@@ -46,9 +46,9 @@ class _HomeAppliancesState extends State<HomeAppliances> {
           .get();
 
       double carbonEmitted = homeCalc(0, acUsed, geyserUsed);
-      String carbonMonth =
-          double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
-              .toString();
+      // String carbonMonth =
+      //     double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
+      //         .toString();
       int pointsScored = points(carbonEmitted, 6);
       int pts = user.points_earned;
       user.points_earned = pts + pointsScored;
@@ -116,8 +116,8 @@ class _HomeAppliancesState extends State<HomeAppliances> {
           .collection("LeaderBoard")
           .document(user.email_id)
           .updateData({
-            'userPoints': user.points_earned,
-          });
+        'userPoints': user.points_earned,
+      });
 
       double month = user.total_carbon_emission_this_month;
       user.total_carbon_emission_this_month = month + carbonEmitted;

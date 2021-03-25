@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="carbon_emission"
+        android:label="Carbon Hero"
         android:icon="@mipmap/ic_launcher">
 
         <meta-data android:name="com.facebook.sdk.ApplicationId"

@@ -52,9 +52,9 @@ class _WasteState extends State<Waste> {
       double carbonEmitted = wasteCalc(totalWaste, paperRecycled,
           plasticRecycled, glassRecycled, metalRecycled);
 
-      String carbonMonth =
-          double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
-              .toString();
+      // String carbonMonth =
+      //     double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
+      //         .toString();
       int pointsScored = points(carbonEmitted, 2);
       int pts = user.points_earned;
       user.points_earned = pts + pointsScored;

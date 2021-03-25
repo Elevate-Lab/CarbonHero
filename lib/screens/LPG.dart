@@ -46,9 +46,9 @@ class _LPG extends State<LPG> {
           .get();
 
       double carbonEmitted = lpgCalc(numCylinders, familySize);
-      String carbonMonth =
-          double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
-              .toString();
+      // String carbonMonth =
+      //     double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
+      //         .toString();
       int pointsScored = points(carbonEmitted, 4);
       int pts = user.points_earned;
       user.points_earned = pts + pointsScored;

@@ -3,12 +3,12 @@ import 'package:carbon_emission/services/auth.dart';
 import 'package:carbon_emission/widget/cirdular_progress_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_login/flutter_facebook_login.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert' as JSON;
+// import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+// import 'package:http/http.dart' as http;
+// import 'dart:convert' as JSON;
 import 'dart:async';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
+// import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:provider/provider.dart';
 
 import 'MainScreen.dart';
@@ -32,7 +32,7 @@ class _LogInState extends State<LogIn> {
   GoogleSignInAccount _currentUser;
   //String _contactText;
   var data;
-  bool _newUser = true; //data.user_friends = doc['userFriends'];
+  // bool _newUser = true; //data.user_friends = doc['userFriends'];
   Auth auth = new Auth();
   var doc;
   Future<void> getDetails() async {
@@ -53,7 +53,8 @@ class _LogInState extends State<LogIn> {
     data.total_carbon_emission_yesterday =
         doc['totalCarbonEmissionYesterday'].toDouble();
     data.img_url = doc['imgUrl'];
-    var date = DateTime.fromMicrosecondsSinceEpoch(doc['lastCheckedAt'].microsecondsSinceEpoch);
+    var date = DateTime.fromMicrosecondsSinceEpoch(
+        doc['lastCheckedAt'].microsecondsSinceEpoch);
     data.date = date;
     data.points_earned = doc['pointsEarned'];
     Navigator.pop(context);

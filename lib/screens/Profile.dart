@@ -1,10 +1,10 @@
 import 'package:carbon_emission/models/leaderboardDetails.dart';
 import 'package:carbon_emission/models/user.dart';
-import 'package:carbon_emission/screens/splashScreen1.dart';
+// import 'package:carbon_emission/screens/splashScreen1.dart';
 import 'package:carbon_emission/services/auth.dart';
 import 'package:carbon_emission/widget/cirdular_progress_indicator.dart';
 import 'package:carbon_emission/widget/leaderBoardCard.dart';
-import 'package:carbon_emission/widget/restart_app.dart';
+// import 'package:carbon_emission/widget/restart_app.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

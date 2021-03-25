@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ActivityCard extends StatelessWidget {
-  dynamic nameOfActivity;
-  dynamic routeOfActivity;
-  dynamic imageOfActivity;
+  final dynamic nameOfActivity;
+  final dynamic routeOfActivity;
+  final dynamic imageOfActivity;
   ActivityCard(
       {this.nameOfActivity, this.routeOfActivity, this.imageOfActivity});
 

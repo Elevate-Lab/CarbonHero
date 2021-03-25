@@ -46,9 +46,9 @@ class _ElectricityState extends State<Electricity> {
           .document("Electricity")
           .get();
 
-      String carbonMonth =
-          double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
-              .toString();
+      // String carbonMonth =
+      //     double.parse((doc['totalCarbonEmissionThisMonth']).toStringAsFixed(2))
+      //         .toString();
       double carbonEmitted = electricityCalc(consumption, familySize);
       int pointsScored = points(carbonEmitted, 3);
       int pts = user.points_earned;

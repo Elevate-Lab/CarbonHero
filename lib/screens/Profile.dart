@@ -280,22 +280,23 @@ class _ProfileState extends State<Profile> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
-            context: context,
-            child: AlertDialog(
-              title: Text('Are You Sure You Want To Log Out?'),
-              content: Text('Restart Application After Logging Out'),
-              actions: [
-                FlatButton(
-                  onPressed: () => Navigator.pop(context, false),
-                  child: Text("No"),
-                ),
-                FlatButton(
-                  onPressed: () => Navigator.pop(context, true),
-                  child: Text("Yes"),
-                )
-              ],
-            ),
-          ).then((value) {
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('Are You Sure You Want To Log Out?'),
+                  content: Text('Restart Application After Logging Out'),
+                  actions: [
+                    FlatButton(
+                      onPressed: () => Navigator.pop(context, false),
+                      child: Text("No"),
+                    ),
+                    FlatButton(
+                      onPressed: () => Navigator.pop(context, true),
+                      child: Text("Yes"),
+                    )
+                  ],
+                );
+              }).then((value) {
             if (value == null) return;
             if (value) {
               auth.handleSignOut(_googleSignIn);

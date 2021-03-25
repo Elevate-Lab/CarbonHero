@@ -232,7 +232,7 @@ class _ElectricityState extends State<Electricity> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      'Total Electricity consumption (KW/h)',
+                      'Total Electricity consumption This Month(KW/h)',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),

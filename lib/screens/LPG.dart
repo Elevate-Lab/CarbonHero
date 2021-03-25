@@ -13,7 +13,7 @@ class LPG extends StatefulWidget {
 
 class _LPG extends State<LPG> {
   final databaseReference = Firestore.instance;
-  var numCylinders = 0;
+  var numCylinders = 1;
   var familySize = 1;
 
   var user;
@@ -249,7 +249,7 @@ class _LPG extends State<LPG> {
                         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                         child: Row(children: [
                           Text(
-                            "0",
+                            "1",
                             style: TextStyle(color: Colors.white),
                           ),
                           Expanded(
@@ -278,8 +278,8 @@ class _LPG extends State<LPG> {
                               child: Slider(
                                 label: "$numCylinders",
                                 value: numCylinders.toDouble(),
-                                min: 0,
-                                max: 10,
+                                min: 1,
+                                max: 11,
                                 divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
@@ -291,7 +291,7 @@ class _LPG extends State<LPG> {
                             ),
                           ),
                           Text(
-                            "10",
+                            "11",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),

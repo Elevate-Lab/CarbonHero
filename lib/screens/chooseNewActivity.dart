@@ -52,7 +52,7 @@ class _chooseNewActivityState extends State<chooseNewActivity> {
   }
 
   Widget _buildBody(double height, double width, BuildContext context) {
-    var user = Provider.of<User>(context);
+   var user = Provider.of<User>(context);
 
     return Padding(
       padding: EdgeInsets.only(left: 35, right: 35, top: 40, bottom: 40),
@@ -71,7 +71,8 @@ class _chooseNewActivityState extends State<chooseNewActivity> {
                 width: 35,
               ),
               Text(
-                user.userName,
+               user.userName,
+                
                 style: TextStyle(color: Colors.white, fontSize: 25),
               )
             ],

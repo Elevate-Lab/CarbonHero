@@ -256,15 +256,14 @@ class _ProfileState extends State<Profile> {
                   Column(
                     children: <Widget>[
                       Text(
-                        user.total_carbon_emission_this_month
-                            .toStringAsFixed(1),
+                        user.points_earned.toString(),
                         style: TextStyle(
                           color: Colors.yellow,
                           fontSize: 20,
                         ),
                       ),
                       Text(
-                        "CO2 Emission",
+                        "Points Earned",
                         style: TextStyle(
                           color: Colors.white,
                         ),

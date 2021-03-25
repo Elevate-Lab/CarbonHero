@@ -18,15 +18,13 @@ class ActivityCard extends StatelessWidget {
         Column(
           children: [
             Container(
-              child: Image(
-                image: AssetImage(imageOfActivity),
-                height: double.infinity,
-                width: double.infinity,
-                fit: BoxFit.contain,
-              ),
               height: height * 0.12,
               decoration: BoxDecoration(
                   color: Colors.white,
+                  image: DecorationImage(
+                    image: AssetImage(imageOfActivity),
+                    fit: BoxFit.contain,
+                  ),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(width * 0.04),
                       topRight: Radius.circular(width * 0.04))),

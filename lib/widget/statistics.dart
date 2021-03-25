@@ -65,12 +65,20 @@ class _StatisticsState extends State<Statistics> {
 
       _transport_percentage_change =
           _transport_this_month - _transport_previous_month;
-      _transport_percentage_change /= _transport_previous_month;
-      _transport_percentage_change *= 100;
+      if (_transport_previous_month > 0) {
+        _transport_percentage_change /= _transport_previous_month;
+        _transport_percentage_change *= 100;
+      } else {
+        _transport_percentage_change = 0.0;
+      }
 
-      _transport_percentage_affect =
-          _transport_this_month / _totalCarbonEmissionThisMonth;
-      _transport_percentage_affect *= 100;
+      if (_totalCarbonEmissionThisMonth > 0) {
+        _transport_percentage_affect =
+            _transport_this_month / _totalCarbonEmissionThisMonth;
+        _transport_percentage_affect *= 100;
+      } else {
+        _transport_percentage_affect = 0.0;
+      }
     });
   }
 
@@ -87,11 +95,20 @@ class _StatisticsState extends State<Statistics> {
       _lpg_this_month = doc['totalCarbonEmissionThisMonth'].toDouble();
 
       _lpg_percentage_change = _lpg_this_month - _lpg_previous_month;
-      _lpg_percentage_change /= _lpg_previous_month;
-      _lpg_percentage_change *= 100;
+      if (_lpg_previous_month > 0) {
+        _lpg_percentage_change /= _lpg_previous_month;
+        _lpg_percentage_change *= 100;
+      } else {
+        _lpg_percentage_change = 0.0;
+      }
 
-      _lpg_percentage_affect = _lpg_this_month / _totalCarbonEmissionThisMonth;
-      _lpg_percentage_affect *= 100;
+      if (_totalCarbonEmissionThisMonth > 0) {
+        _lpg_percentage_affect =
+            _lpg_this_month / _totalCarbonEmissionThisMonth;
+        _lpg_percentage_affect *= 100;
+      } else {
+        _lpg_percentage_affect = 0.0;
+      }
     });
   }
 
@@ -110,12 +127,21 @@ class _StatisticsState extends State<Statistics> {
 
       _electricity_percentage_change =
           _electricity_this_month - _electricity_previous_month;
-      _electricity_percentage_change /= _electricity_previous_month;
-      _electricity_percentage_change *= 100;
 
-      _electricity_percentage_affect =
-          _electricity_this_month / _totalCarbonEmissionThisMonth;
-      _electricity_percentage_affect *= 100;
+      if (_electricity_previous_month > 0) {
+        _electricity_percentage_change /= _electricity_previous_month;
+        _electricity_percentage_change *= 100;
+      } else {
+        _electricity_percentage_change = 0.0;
+      }
+
+      if (_totalCarbonEmissionThisMonth > 0) {
+        _electricity_percentage_affect =
+            _electricity_this_month / _totalCarbonEmissionThisMonth;
+        _electricity_percentage_affect *= 100;
+      } else {
+        _electricity_percentage_affect = 0.0;
+      }
     });
   }
 
@@ -133,12 +159,19 @@ class _StatisticsState extends State<Statistics> {
 
       _homeApp_percentage_change =
           _homeApp_this_month - _homeApp_previous_month;
-      _homeApp_percentage_change /= _homeApp_previous_month;
-      _homeApp_percentage_change *= 100;
-
-      _homeApp_percentage_affect =
-          _homeApp_this_month / _totalCarbonEmissionThisMonth;
-      _homeApp_percentage_affect *= 100;
+      if (_homeApp_previous_month > 0) {
+        _homeApp_percentage_change /= _homeApp_previous_month;
+        _homeApp_percentage_change *= 100;
+      } else {
+        _homeApp_percentage_change = 0.0;
+      }
+      if (_totalCarbonEmissionThisMonth > 0) {
+        _homeApp_percentage_affect =
+            _homeApp_this_month / _totalCarbonEmissionThisMonth;
+        _homeApp_percentage_affect *= 100;
+      } else {
+        _homeApp_percentage_affect = 0.0;
+      }
     });
   }
 
@@ -154,12 +187,19 @@ class _StatisticsState extends State<Statistics> {
     _waste_this_month = doc['totalCarbonEmissionThisMonth'].toDouble();
 
     _waste_percentage_change = _waste_this_month - _waste_previous_month;
-    _waste_percentage_change /= _waste_previous_month;
-    _waste_percentage_change *= 100;
-
-    _waste_percentage_affect =
-        _waste_this_month / _totalCarbonEmissionThisMonth;
-    _waste_percentage_affect *= 100;
+    if (_waste_previous_month > 0) {
+      _waste_percentage_change /= _waste_previous_month;
+      _waste_percentage_change *= 100;
+    } else {
+      _waste_percentage_change = 0.0;
+    }
+    if (_totalCarbonEmissionThisMonth > 0) {
+      _waste_percentage_affect =
+          _waste_this_month / _totalCarbonEmissionThisMonth;
+      _waste_percentage_affect *= 100;
+    } else {
+      _waste_percentage_affect = 0.0;
+    }
   }
 
   Future<void> _updateTelevision() async {
@@ -174,13 +214,23 @@ class _StatisticsState extends State<Statistics> {
       _television_previous_month =
           doc['totalCarbonEmissionLastMonth'].toDouble();
       _television_this_month = doc['totalCarbonEmissionThisMonth'].toDouble();
-      _television_percentage_change =
-          (_television_this_month - _television_previous_month);
-      _television_percentage_change /= _television_previous_month;
-      _television_percentage_change *= 100;
-      _television_percentage_affect =
-          _television_this_month / _totalCarbonEmissionThisMonth;
-      _television_percentage_affect *= 100;
+
+      if (_television_previous_month > 0) {
+        _television_percentage_change =
+            (_television_this_month - _television_previous_month);
+        _television_percentage_change /= _television_previous_month;
+        _television_percentage_change *= 100;
+      } else {
+        _television_percentage_change = 0.0;
+      }
+
+      if (_totalCarbonEmissionThisMonth > 0) {
+        _television_percentage_affect =
+            _television_this_month / _totalCarbonEmissionThisMonth;
+        _television_percentage_affect *= 100;
+      } else {
+        _television_percentage_affect = 0.0;
+      }
     });
   }
 
@@ -202,8 +252,12 @@ class _StatisticsState extends State<Statistics> {
     _totalCarbonEmissionLastMonth = user.total_carbon_emission_last_month;
     _totalCarbonEmissionChange =
         (_totalCarbonEmissionThisMonth - _totalCarbonEmissionLastMonth);
-    _totalCarbonEmissionChange /= _totalCarbonEmissionLastMonth;
-    _totalCarbonEmissionChange *= 100;
+    if (_totalCarbonEmissionLastMonth > 0) {
+      _totalCarbonEmissionChange /= _totalCarbonEmissionLastMonth;
+      _totalCarbonEmissionChange *= 100;
+    } else {
+      _totalCarbonEmissionChange = 0.0;
+    }
 
     userName = user.name;
     if (userName == null) {

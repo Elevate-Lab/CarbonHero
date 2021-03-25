@@ -76,6 +76,7 @@ class Auth {
     await _handleContact(_currentUser);
 
     var data = Provider.of<User>(context, listen: false);
+
     await databaseReference
         .collection("users")
         .document(_currentUser.email)
@@ -95,6 +96,9 @@ class Auth {
       'lastCheckedAt': DateTime.now(),
     });
 
+    var ranking = await databaseReference.collection("ranking").document("rank").get();
+    var rank = ranking["rank"];
+
     await databaseReference
         .collection("LeaderBoard")
         .document(_currentUser.email)
@@ -102,8 +106,12 @@ class Auth {
       'username': _currentUser.displayName,
       'imgUrl': _currentUser.photoUrl,
       'userPoints': 10,
-      'leaderBoardRank': 0,
+      'leaderBoardRank': rank,
       'email': _currentUser.email,
+    });
+
+    await databaseReference.collection("ranking").document("rank").updateData({
+      "rank": rank+1,
     });
 
     await databaseReference

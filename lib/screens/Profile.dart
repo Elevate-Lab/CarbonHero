@@ -4,6 +4,7 @@ import 'package:carbon_emission/screens/splashScreen1.dart';
 import 'package:carbon_emission/services/auth.dart';
 import 'package:carbon_emission/widget/cirdular_progress_indicator.dart';
 import 'package:carbon_emission/widget/leaderBoardCard.dart';
+import 'package:carbon_emission/widget/restart_app.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -278,8 +279,7 @@ class _ProfileState extends State<Profile> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           auth.handleSignOut(_googleSignIn);
-          while (Navigator.canPop(context)) Navigator.pop(context);
-          Navigator.pushNamed(context, SplashScreen1.routeName);
+          RestartWidget.restartApp(context);
         },
         child: Icon(Icons.logout),
       ),

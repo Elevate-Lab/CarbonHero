@@ -12,6 +12,7 @@ import 'package:carbon_emission/screens/splashScreen2.dart';
 import 'package:carbon_emission/screens/splashScreen1.dart';
 import 'package:carbon_emission/screens/televisionScreen.dart';
 import 'package:carbon_emission/screens/transportScreen.dart';
+import 'package:carbon_emission/widget/restart_app.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +28,7 @@ import 'screens/chooseNewActivity.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(MyApp());
+  runApp(RestartWidget(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

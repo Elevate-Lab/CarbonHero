@@ -15,7 +15,7 @@ class _TransportState extends State<Transport> {
   final databaseReference = Firestore.instance;
   var numVehicles = 0.00;
   var totalDistance = 0.00;
-  var avgMileage = 0.00;
+  var avgMileage = 1.00;
   var user;
   double val = 0.0;
 
@@ -63,6 +63,8 @@ class _TransportState extends State<Transport> {
       if (date.month != last.month) {
         activityPrevMonth = activityThisMonth;
         activityThisMonth = 0.0;
+        activityYesterday = activityToday;
+        activityToday = 0.0;
       }
       if (date.day != last.day) {
         activityYesterday = activityToday;
@@ -88,6 +90,8 @@ class _TransportState extends State<Transport> {
         user.total_carbon_emission_last_month =
             user.total_carbon_emission_this_month;
         user.total_carbon_emission_this_month = 0.0;
+        user.total_carbon_emission_yesterday = user.total_carbon_emission_today;
+        user.total_carbon_emission_today = 0.0;
       }
       if (user.date.day != last.day) {
         user.total_carbon_emission_yesterday = user.total_carbon_emission_today;
@@ -392,7 +396,7 @@ class _TransportState extends State<Transport> {
                         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                         child: Row(children: [
                           Text(
-                            "0",
+                            "1",
                             style: TextStyle(color: Colors.white),
                           ),
                           Expanded(
@@ -421,8 +425,8 @@ class _TransportState extends State<Transport> {
                               child: Slider(
                                 label: "$avgMileage",
                                 value: avgMileage,
-                                min: 0,
-                                max: 50,
+                                min: 1,
+                                max: 51,
                                 divisions: 10,
                                 activeColor: const Color(0xffFEBB46),
                                 onChanged: (double value) {
@@ -434,7 +438,7 @@ class _TransportState extends State<Transport> {
                             ),
                           ),
                           Text(
-                            "50",
+                            "51",
                             style: TextStyle(color: Colors.white),
                           ),
                         ]),

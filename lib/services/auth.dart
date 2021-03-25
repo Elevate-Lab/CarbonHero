@@ -207,6 +207,7 @@ class Auth {
     data.total_carbon_emission_yesterday = 0.0;
     data.points_earned = 10;
     data.user_friends = [];
+    data.date = DateTime.now();
     Navigator.pop(context);
     Navigator.pushNamed(context, MainScreen.routeName);
   }

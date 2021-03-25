@@ -64,6 +64,8 @@ class _ElectricityState extends State<Electricity> {
       if (date.month != last.month) {
         activityPrevMonth = activityThisMonth;
         activityThisMonth = 0.0;
+        activityYesterday = activityToday;
+        activityToday = 0.0;
       }
       if (date.day != last.day) {
         activityYesterday = activityToday;
@@ -87,6 +89,8 @@ class _ElectricityState extends State<Electricity> {
         user.total_carbon_emission_last_month =
             user.total_carbon_emission_this_month;
         user.total_carbon_emission_this_month = 0.0;
+        user.total_carbon_emission_yesterday = user.total_carbon_emission_today;
+        user.total_carbon_emission_today = 0.0;
       }
       if (user.date.day != last.day) {
         user.total_carbon_emission_yesterday = user.total_carbon_emission_today;
@@ -318,7 +322,7 @@ class _ElectricityState extends State<Electricity> {
                         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                         child: Row(children: [
                           Text(
-                            "0",
+                            "1",
                             style: TextStyle(color: Colors.white),
                           ),
                           Expanded(

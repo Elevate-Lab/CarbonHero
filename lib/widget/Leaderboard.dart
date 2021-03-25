@@ -260,7 +260,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                 bottom: height * 0.57,
                 left: width * 0.08,
                 child: Text(
-                  secondOffset + friendsRanking[1].username,
+                  (secondOffset + second[0]),
                   style: TextStyle(color: Colors.white, fontSize: width * 0.03),
                 ),
               ),
@@ -281,7 +281,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
               ),
               Positioned(
                 bottom: height * 0.66,
-                right: width * 0.084,
+                right: width * 0.08,
                 child: CircleAvatar(
                     radius: width * 0.025,
                     backgroundColor: const Color(0xffA48FD1),
@@ -295,9 +295,9 @@ class _LeaderBoardState extends State<LeaderBoard> {
 
               Positioned(
                 bottom: height * 0.57,
-                left: width * 0.7,
+                left: width * 0.75,
                 child: Text(
-                  thirdOffset + friendsRanking[2].username,
+                  thirdOffset + third[0],
 
                   // off+ "$third",
                   style: TextStyle(color: Colors.white, fontSize: width * 0.03),

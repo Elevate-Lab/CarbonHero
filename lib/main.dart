@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
           primaryColor: const Color(0xff281627),
           accentColor: const Color(0xffFEBB46),
         ),
-        initialRoute: chooseNewActivity.routeName,
+        initialRoute: SplashScreen1.routeName,
         routes: {
           HomeScreen.routeName: (ctx) => HomeScreen(),
           SplashScreen1.routeName: (ctx) => SplashScreen1(),

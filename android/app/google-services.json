@@ -7,12 +7,57 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:784158497484:android:9ce5df691c146e2ca04069",
+        "android_client_info": {
+          "package_name": "com.dsciiita.carbonhero"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784158497484-qpohup924k8f935sug0hmnt4dq5jhd3o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6Mh5K_JyZL3-9CgE0iOz-K4fGv0-Zmg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784158497484-qpohup924k8f935sug0hmnt4dq5jhd3o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:784158497484:android:e213c2f4814d23dfa04069",
         "android_client_info": {
           "package_name": "com.example.carbon_emission"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "784158497484-04rpqj1jmunsh93q4170ste7r7q7q98r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.carbon_emission",
+            "certificate_hash": "785132c782d77325380b5507863ec1baaa98c4bc"
+          }
+        },
+        {
+          "client_id": "784158497484-fsst0f6jrmvqctmk7di6p99j0a7atr10.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.carbon_emission",
+            "certificate_hash": "94ca8c2d46b1fb0f3a42fb321d5f596a8c5774ca"
+          }
+        },
         {
           "client_id": "784158497484-p50ki1va5ej4akd9b9jqea4l52o1ilmn.apps.googleusercontent.com",
           "client_type": 1,

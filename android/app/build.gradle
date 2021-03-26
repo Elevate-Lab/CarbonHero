@@ -44,7 +44,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.carbon_emission"
+        applicationId "com.dsciiita.carbonhero"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()

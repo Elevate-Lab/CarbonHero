@@ -1,4 +1,4 @@
-package com.example.carbon_emission
+package com.dsciiita.carbonhero
 
 import io.flutter.embedding.android.FlutterActivity
 

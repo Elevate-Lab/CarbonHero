@@ -1,21 +1,17 @@
-<<<<<<< HEAD
-# carbon_emission
+# Carbon Hero :
 
-A new Flutter application.
+This is a flutter application that one can use for tracking his/her carbon footprints and check where he stands globally in terms of reduced carbon emission. Application invloves 6 activities that as a human we feel are common to all and have a impact on the carbon introduced by humans on daily basis. 
 
-## Getting Started
+# Ranking criteria :
+Ranking in this application is based on the points that a user has earned currently. The points are earned/lost is based on the fact that the emission of this person is less/more than the average.
 
-This project is a starting point for a Flutter application.
+# Google Signin :
+Application uses google Signin to authenticate the user and askes for the details of his google contacts. Google contacts are mearly used to show the friend list of this user, so that he can compare his emission with respect to his friends. Any personal detials of the users are not accessible nor sharable to anyother user, so the application is safe in terms of privacy of users.
 
-A few resources to get you started if this is your first Flutter project:
+# Future Prospects :
+Application once starts having good users and active users then there are some futue prospects we feel we can add to this application.
+    1. Monthly Carbon Challenges - Monthly Challenges for users to keep emission below this value
+    2. Top 5 users will earn masvie prices.
+    3. Users can earn coupons and digital cash pricies if they reach certain goals.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# Carbon_Emission
-
->>>>>>> e936b3063074556f4c03dd64ccb679ffa30475ed
+Application idea is mainly webbed around the fact that the users can be stipulated to reduce carbon emission by complelling them to compete with one another and getting rewards at the end of it.

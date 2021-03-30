@@ -7,9 +7,9 @@ double vehicle = 10484 * poundToKg / 52;
 double waste = 692 * poundToKg / 12;
 double electricity = 5455 * poundToKg / 12;
 double lpg = 2243 * poundToKg / 12;
-var tele = 189;
-var geyser = 1260;
-var ac = 490;
+var tele = 189/365;
+var geyser = 1260/365;
+var ac = 490/365;
 
 // -------  WASTE --------
 double wasteCalc(var waste, var paper, var plastic, var glass, var metal) {

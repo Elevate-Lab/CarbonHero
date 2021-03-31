@@ -16,11 +16,13 @@ Application once starts having good users and active users then there are some f
 
 Application idea is mainly webbed around the fact that the users can be stipulated to reduce carbon emission by complelling them to compete with one another and getting rewards at the end of it.
 
+<div>
 <span>
 <img src="images/IMG_20210331_084224.jpg" width="250" align="left" >
 <p align="center"><img src="images/IMG_20210331_084352.jpg" width="250" ></p>
 <img src="images/Screenshot_2021-03-30-23-15-27-07_10c3fb83ac27ce01371a40592e537077.jpg" width="250" align="right" >
 </span>
+</div>
 <span>
 <img src="images/Screenshot_2021-03-30-23-16-13-16_10c3fb83ac27ce01371a40592e537077.jpg" width="250" align="left" >
 <p align="center"><img src="images/Screenshot_2021-03-30-23-16-22-19_10c3fb83ac27ce01371a40592e537077.jpg" width="250" ></p>

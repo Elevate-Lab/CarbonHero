@@ -18,11 +18,11 @@ Application idea is mainly webbed around the fact that the users can be stipulat
 
 <span>
 <img src="images/IMG_20210331_084224.jpg" width="250" align="left" >
-<img src="images/IMG_20210331_084352.jpg" width="250" >
+<p align="center"><img src="images/IMG_20210331_084352.jpg" width="250" ></p>
 <img src="images/Screenshot_2021-03-30-23-15-27-07_10c3fb83ac27ce01371a40592e537077.jpg" width="250" align="right" >
 </span>
 <span>
 <img src="images/Screenshot_2021-03-30-23-16-13-16_10c3fb83ac27ce01371a40592e537077.jpg" width="250" align="left" >
-<img src="images/Screenshot_2021-03-30-23-16-22-19_10c3fb83ac27ce01371a40592e537077.jpg" width="250" >
+<p align="center"><img src="images/Screenshot_2021-03-30-23-16-22-19_10c3fb83ac27ce01371a40592e537077.jpg" width="250" ></p>
 <img src="images/Screenshot_2021-03-30-23-16-24-42_10c3fb83ac27ce01371a40592e537077.jpg" width="250" align="right" >
 </span>

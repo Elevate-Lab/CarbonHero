@@ -24,6 +24,6 @@ Application idea is mainly webbed around the fact that the users can be stipulat
     
 <span>
 <img src="images/Screenshot_2021-03-30-23-16-13-16_10c3fb83ac27ce01371a40592e537077.jpg" width="250" height="500" align="left" >
-<img src="images/Screenshot_2021-03-30-23-16-22-19_10c3fb83ac27ce01371a40592e537077.jpg" width="250" height="500" >
+<div style="text-align:center"><img src="images/Screenshot_2021-03-30-23-16-22-19_10c3fb83ac27ce01371a40592e537077.jpg" width="250" height="500" ></div>
 <img src="images/Screenshot_2021-03-30-23-16-24-42_10c3fb83ac27ce01371a40592e537077.jpg" width="250" height="500" align="right" >
 </span>

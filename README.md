@@ -15,3 +15,5 @@ Application once starts having good users and active users then there are some f
     3. Users can earn coupons and digital cash pricies if they reach certain goals.
 
 Application idea is mainly webbed around the fact that the users can be stipulated to reduce carbon emission by complelling them to compete with one another and getting rewards at the end of it.
+
+<img src="images/IMG_20210331_084224.jpg" >

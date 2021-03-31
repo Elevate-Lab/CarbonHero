@@ -18,7 +18,6 @@ Application idea is mainly webbed around the fact that the users can be stipulat
 
 <span>
 <img src="images/IMG_20210331_084224.jpg" width="250" >
-<img src="images/IMG_20210331_084303.jpg" width="250" >
 <img src="images/IMG_20210331_084352.jpg" width="250" >
 <img src="images/Screenshot_2021-03-30-23-15-27-07_10c3fb83ac27ce01371a40592e537077.jpg" width="250" >
 <img src="images/Screenshot_2021-03-30-23-16-13-16_10c3fb83ac27ce01371a40592e537077.jpg" width="250" >

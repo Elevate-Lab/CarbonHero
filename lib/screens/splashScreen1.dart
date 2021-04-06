@@ -23,6 +23,7 @@ class SplashScreen1 extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(context);
                     Navigator.of(context).pushNamed(LogIn.routeName);
+                   
                   },
                   child: Text(
                     "Skip",

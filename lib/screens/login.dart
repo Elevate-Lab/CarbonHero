@@ -3,6 +3,7 @@ import 'package:carbon_emission/services/auth.dart';
 import 'package:carbon_emission/widget/cirdular_progress_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 // import 'package:http/http.dart' as http;
 // import 'dart:convert' as JSON;
@@ -35,12 +36,21 @@ class _LogInState extends State<LogIn> {
   // bool _newUser = true; //data.user_friends = doc['userFriends'];
   Auth auth = new Auth();
   var doc;
+  saveUser (String name) async
+  {
+     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setString("logInName", name);
+    
+  }
+
   Future<void> getDetails() async {
     var databaseReference2 = databaseReference;
     doc = await databaseReference2
         .collection("users")
         .document(_currentUser.email)
         .get();
+
+        saveUser(doc['userName']);
     data.name = doc['userName'];
     data.email_id = doc['emailId'];
     data.total_carbon_emission_this_month =
@@ -64,11 +74,13 @@ class _LogInState extends State<LogIn> {
   @override
   Future<void> initState() {
     super.initState();
+    
     _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount account) {
       setState(() {
         _currentUser = account;
         auth.createUser(_currentUser, context);
         if (_currentUser != null) {
+
           getDetails();
         }
       });
@@ -131,7 +143,8 @@ class _LogInState extends State<LogIn> {
               child: InkWell(
                 splashColor: Colors.purple[100],
                 onTap: () {
-                  auth.handleSignIn(_googleSignIn);
+                 auth.handleSignIn(_googleSignIn);
+               // getUserName();
                 },
                 child: Container(
                   padding: EdgeInsets.all(width * 0.02),

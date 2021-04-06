@@ -55,21 +55,7 @@ class _LPG extends State<LPG> {
 
       double activityToday = doc['totalCarbonEmissionToday'];
       double activityThisMonth = doc['totalCarbonEmissionThisMonth'];
-      double activityYesterday = doc['totalCarbonEmissionYesterday'];
-      double activityPrevMonth = doc['totalCarbonEmissionLastMonth'];
-      var date = DateTime.fromMicrosecondsSinceEpoch(
-          doc['lastCheckedAt'].microsecondsSinceEpoch);
-      var last = DateTime.now();
-      if (date.month != last.month) {
-        activityPrevMonth = activityThisMonth;
-        activityThisMonth = 0.0;
-        activityYesterday = activityToday;
-        activityToday = 0.0;
-      }
-      if (date.day != last.day) {
-        activityYesterday = activityToday;
-        activityToday = 0.0;
-      }
+
 
       await databaseReference
           .collection("users")
@@ -77,26 +63,10 @@ class _LPG extends State<LPG> {
           .collection("activities")
           .document("Natural Gas")
           .updateData({
-        'totalCarbonEmissionToday':
-            doc['totalCarbonEmissionToday'] + carbonEmitted,
-        'totalCarbonEmissionThisMonth':
-            doc['totalCarbonEmissionThisMonth'] + carbonEmitted,
-        'totalCarbonEmissionYesterday': activityYesterday,
-        'totalCarbonEmissionLastMonth': activityPrevMonth,
+        'totalCarbonEmissionToday': activityToday + carbonEmitted,
+        'totalCarbonEmissionThisMonth': activityThisMonth + carbonEmitted,
         'lastCheckedAt': DateTime.now(),
       });
-
-      if (user.date.month != last.month) {
-        user.total_carbon_emission_last_month =
-            user.total_carbon_emission_this_month;
-        user.total_carbon_emission_this_month = 0.0;
-        user.total_carbon_emission_yesterday = user.total_carbon_emission_today;
-        user.total_carbon_emission_today = 0.0;
-      }
-      if (user.date.day != last.day) {
-        user.total_carbon_emission_yesterday = user.total_carbon_emission_today;
-        user.total_carbon_emission_today = 0.0;
-      }
 
       await databaseReference
           .collection("users")
@@ -106,8 +76,6 @@ class _LPG extends State<LPG> {
             user.total_carbon_emission_today + carbonEmitted,
         'totalCarbonEmissionThisMonth':
             user.total_carbon_emission_this_month + carbonEmitted,
-        'totalCarbonEmissionLastMonth': user.total_carbon_emission_last_month,
-        'totalCarbonEmissionYesterday': user.total_carbon_emission_yesterday,
         'lastCheckedAt': DateTime.now(),
         'pointsEarned': user.points_earned,
       });

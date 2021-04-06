@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 GoogleSignIn _googleSignIn = GoogleSignIn(
   scopes: <String>[
     'email',
@@ -46,6 +46,12 @@ class _ProfileState extends State<Profile> {
     }
   }
 
+removeUser() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  //Remove String
+  prefs.setString("logInName", "logOut");
+ 
+}
   Future<void> _getFriendsList() async {
     doc2 = await database.collection('users').document(user.email_id).get();
 
@@ -298,6 +304,8 @@ class _ProfileState extends State<Profile> {
               }).then((value) {
             if (value == null) return;
             if (value) {
+
+              removeUser();
               auth.handleSignOut(_googleSignIn);
               SystemNavigator.pop();
             } else

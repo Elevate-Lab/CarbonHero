@@ -18,40 +18,8 @@ class _MainScreenState extends State<MainScreen> {
   final databaseReference = Firestore.instance;
   var user;
   Future<void> _checkMonth() async {
-    var doc = await databaseReference
-        .collection("users")
-        .document(user.email_id)
-        .collection("activities")
-        .document("Natural Gas")
-        .get();
+
     DateTime today = DateTime.now();
-    double activityToday = doc['totalCarbonEmissionToday'].toDouble();
-    double activityThisMonth = doc['totalCarbonEmissionThisMonth'].toDouble();
-    double activityYesterday = doc['totalCarbonEmissionYesterday'].toDouble();
-    double activityPrevMonth = doc['totalCarbonEmissionLastMonth'].toDouble();
-    var lastDate = DateTime.fromMicrosecondsSinceEpoch(
-        doc['lastCheckedAt'].microsecondsSinceEpoch);
-    if (today.month != lastDate.month) {
-      activityPrevMonth = activityThisMonth;
-      activityThisMonth = 0.0;
-      activityYesterday = activityToday;
-      activityToday = 0.0;
-    } else if (today.day != lastDate.day) {
-      activityYesterday = activityToday;
-      activityToday = 0.0;
-    }
-    await databaseReference
-        .collection("users")
-        .document(user.email_id)
-        .collection("activities")
-        .document("Natural Gas")
-        .updateData({
-      'totalCarbonEmissionToday': activityToday,
-      'totalCarbonEmissionThisMonth': activityThisMonth,
-      'totalCarbonEmissionYesterday': activityYesterday,
-      'totalCarbonEmissionLastMonth': activityPrevMonth,
-      'lastCheckedAt': DateTime.now(),
-    });
     if (user.date.month != today.month) {
       user.total_carbon_emission_last_month =
           user.total_carbon_emission_this_month;
@@ -74,6 +42,39 @@ class _MainScreenState extends State<MainScreen> {
       'lastCheckedAt': DateTime.now(),
     });
 
+    var doc = await databaseReference
+        .collection("users")
+        .document(user.email_id)
+        .collection("activities")
+        .document("Natural Gas")
+        .get();
+    double activityToday = doc['totalCarbonEmissionToday'].toDouble();
+    double activityThisMonth = doc['totalCarbonEmissionThisMonth'].toDouble();
+    double activityYesterday = doc['totalCarbonEmissionYesterday'].toDouble();
+    double activityPrevMonth = doc['totalCarbonEmissionLastMonth'].toDouble();
+
+    if (today.month != user.date.month) {
+      activityPrevMonth = activityThisMonth;
+      activityThisMonth = 0.0;
+      activityYesterday = activityToday;
+      activityToday = 0.0;
+    } else if (today.day != user.date.day) {
+      activityYesterday = activityToday;
+      activityToday = 0.0;
+    }
+    await databaseReference
+        .collection("users")
+        .document(user.email_id)
+        .collection("activities")
+        .document("Natural Gas")
+        .updateData({
+      'totalCarbonEmissionToday': activityToday,
+      'totalCarbonEmissionThisMonth': activityThisMonth,
+      'totalCarbonEmissionYesterday': activityYesterday,
+      'totalCarbonEmissionLastMonth': activityPrevMonth,
+      'lastCheckedAt': DateTime.now(),
+    });
+
     doc = await databaseReference
         .collection("users")
         .document(user.email_id)
@@ -84,14 +85,13 @@ class _MainScreenState extends State<MainScreen> {
     activityThisMonth = doc['totalCarbonEmissionThisMonth'].toDouble();
     activityYesterday = doc['totalCarbonEmissionYesterday'].toDouble();
     activityPrevMonth = doc['totalCarbonEmissionLastMonth'].toDouble();
-    lastDate = DateTime.fromMicrosecondsSinceEpoch(
-        doc['lastCheckedAt'].microsecondsSinceEpoch);
-    if (today.month != lastDate.month) {
+
+    if (today.month != user.date.month) {
       activityPrevMonth = activityThisMonth;
       activityThisMonth = 0.0;
       activityYesterday = activityToday;
       activityToday = 0.0;
-    } else if (today.day != lastDate.day) {
+    } else if (today.day != user.date.day) {
       activityYesterday = activityToday;
       activityToday = 0.0;
     }
@@ -118,14 +118,13 @@ class _MainScreenState extends State<MainScreen> {
     activityThisMonth = doc['totalCarbonEmissionThisMonth'].toDouble();
     activityYesterday = doc['totalCarbonEmissionYesterday'].toDouble();
     activityPrevMonth = doc['totalCarbonEmissionLastMonth'].toDouble();
-    lastDate = DateTime.fromMicrosecondsSinceEpoch(
-        doc['lastCheckedAt'].microsecondsSinceEpoch);
-    if (today.month != lastDate.month) {
+
+    if (today.month != user.date.month) {
       activityPrevMonth = activityThisMonth;
       activityThisMonth = 0.0;
       activityYesterday = activityToday;
       activityToday = 0.0;
-    } else if (today.day != lastDate.day) {
+    } else if (today.day != user.date.day) {
       activityYesterday = activityToday;
       activityToday = 0.0;
     }
@@ -152,14 +151,13 @@ class _MainScreenState extends State<MainScreen> {
     activityThisMonth = doc['totalCarbonEmissionThisMonth'].toDouble();
     activityYesterday = doc['totalCarbonEmissionYesterday'].toDouble();
     activityPrevMonth = doc['totalCarbonEmissionLastMonth'].toDouble();
-    lastDate = DateTime.fromMicrosecondsSinceEpoch(
-        doc['lastCheckedAt'].microsecondsSinceEpoch);
-    if (today.month != lastDate.month) {
+
+    if (today.month != user.date.month) {
       activityPrevMonth = activityThisMonth;
       activityThisMonth = 0.0;
       activityYesterday = activityToday;
       activityToday = 0.0;
-    } else if (today.day != lastDate.day) {
+    } else if (today.day != user.date.day) {
       activityYesterday = activityToday;
       activityToday = 0.0;
     }
@@ -186,14 +184,13 @@ class _MainScreenState extends State<MainScreen> {
     activityThisMonth = doc['totalCarbonEmissionThisMonth'].toDouble();
     activityYesterday = doc['totalCarbonEmissionYesterday'].toDouble();
     activityPrevMonth = doc['totalCarbonEmissionLastMonth'].toDouble();
-    lastDate = DateTime.fromMicrosecondsSinceEpoch(
-        doc['lastCheckedAt'].microsecondsSinceEpoch);
-    if (today.month != lastDate.month) {
+
+    if (today.month != user.date.month) {
       activityPrevMonth = activityThisMonth;
       activityThisMonth = 0.0;
       activityYesterday = activityToday;
       activityToday = 0.0;
-    } else if (today.day != lastDate.day) {
+    } else if (today.day != user.date.day) {
       activityYesterday = activityToday;
       activityToday = 0.0;
     }
@@ -220,17 +217,14 @@ class _MainScreenState extends State<MainScreen> {
     activityThisMonth = doc['totalCarbonEmissionThisMonth'].toDouble();
     activityYesterday = doc['totalCarbonEmissionYesterday'].toDouble();
     activityPrevMonth = doc['totalCarbonEmissionLastMonth'].toDouble();
-    lastDate = DateTime.fromMicrosecondsSinceEpoch(
-        doc['lastCheckedAt'].microsecondsSinceEpoch);
-    print(today.month);
-    print(lastDate.month);
-    if (today.month != lastDate.month) {
+
+    if (today.month != user.date.month) {
       print('Waste Month Changed');
       activityPrevMonth = activityThisMonth;
       activityThisMonth = 0.0;
       activityYesterday = activityToday;
       activityToday = 0.0;
-    } else if (today.day != lastDate.day) {
+    } else if (today.day != user.date.day) {
       activityYesterday = activityToday;
       activityToday = 0.0;
     }
@@ -246,6 +240,9 @@ class _MainScreenState extends State<MainScreen> {
       'totalCarbonEmissionLastMonth': activityPrevMonth,
       'lastCheckedAt': DateTime.now(),
     });
+
+    user.date = DateTime.now();
+
   }
 
   @override

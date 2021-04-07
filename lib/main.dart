@@ -29,9 +29,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 String loginStatus;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
- SharedPreferences prefs = await SharedPreferences.getInstance();
- loginStatus =  prefs.getString('logInName');
- //print(loginStatus);
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  loginStatus = prefs.getString('logInName');
+  //print(loginStatus);
   runApp(RestartWidget(child: MyApp()));
 }
 
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    
+
     print("here -> $loginStatus");
     return ChangeNotifierProvider(
       create: (context) => User(),
@@ -56,7 +56,9 @@ class MyApp extends StatelessWidget {
           primaryColor: const Color(0xff281627),
           accentColor: const Color(0xffFEBB46),
         ),
-        initialRoute: loginStatus=="logOut"? SplashScreen1.routeName:LogIn.routeName,
+        initialRoute: (loginStatus == "logOut" || loginStatus == null
+            ? SplashScreen1.routeName
+            : LogIn.routeName),
         routes: {
           HomeScreen.routeName: (ctx) => HomeScreen(),
           SplashScreen1.routeName: (ctx) => SplashScreen1(),

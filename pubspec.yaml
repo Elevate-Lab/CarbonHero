@@ -33,6 +33,7 @@ dependencies:
   material_design_icons_flutter: ^4.0.5855
   google_fonts: ^1.1.2
   provider: ^4.0.0
+  toast: ^0.1.5
   fl_chart: ^0.12.3
   shared_preferences: 
 

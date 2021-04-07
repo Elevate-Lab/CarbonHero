@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:carbon_emission/models/user.dart';
 import 'package:carbon_emission/screens/MainScreen.dart';
+import 'package:toast/toast.dart';
 
 class LPG extends StatefulWidget {
   @override
@@ -18,6 +19,7 @@ class _LPG extends State<LPG> {
 
   var user;
   double val = 0.0;
+  DateTime lastInputTimeStamp;
 
   Future<void> update() async {
     var doc = await databaseReference
@@ -26,6 +28,9 @@ class _LPG extends State<LPG> {
         .collection("activities")
         .document("Natural Gas")
         .get();
+
+    lastInputTimeStamp = DateTime.fromMicrosecondsSinceEpoch(
+        doc['lastCheckedAt'].microsecondsSinceEpoch);
     if (this.mounted) {
       setState(() {
         val = doc['totalCarbonEmissionThisMonth'];
@@ -55,7 +60,6 @@ class _LPG extends State<LPG> {
 
       double activityToday = doc['totalCarbonEmissionToday'];
       double activityThisMonth = doc['totalCarbonEmissionThisMonth'];
-
 
       await databaseReference
           .collection("users")
@@ -344,7 +348,44 @@ class _LPG extends State<LPG> {
                       padding: EdgeInsets.only(left: 40, right: 40),
                       child: RaisedButton(
                         onPressed: () {
-                          calculateCarbon_4();
+                          //calculateCarbon_4();
+                          final timeDiffernce = DateTime.now()
+                              .difference(lastInputTimeStamp)
+                              .inDays;
+
+                          if (timeDiffernce < 1) {
+                            Toast.show(
+                                "One Input Allowed Every Day :)\n        Comback Tomorrow",
+                                context,
+                                duration: Toast.LENGTH_LONG,
+                                gravity: Toast.BOTTOM);
+                          } else {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title:
+                                        Text('Are You Sure About The Inputs?'),
+                                    content: Text(
+                                        'You can add input only once a day so try to choose best time for this. Also please be honest with your input :)'),
+                                    actions: [
+                                      FlatButton(
+                                          onPressed: () =>
+                                              Navigator.pop(context, false),
+                                          child: Text('No')),
+                                      FlatButton(
+                                          onPressed: () =>
+                                              Navigator.pop(context, true),
+                                          child: Text('Yes'))
+                                    ],
+                                  );
+                                }).then((value) {
+                              if (value)
+                                calculateCarbon_4();
+                              else
+                                return;
+                            });
+                          }
                         },
                         color: Color(0xffA663C6),
                         shape: new RoundedRectangleBorder(

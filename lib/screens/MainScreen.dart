@@ -72,7 +72,6 @@ class _MainScreenState extends State<MainScreen> {
       'totalCarbonEmissionThisMonth': activityThisMonth,
       'totalCarbonEmissionYesterday': activityYesterday,
       'totalCarbonEmissionLastMonth': activityPrevMonth,
-      'lastCheckedAt': DateTime.now(),
     });
 
     doc = await databaseReference
@@ -105,7 +104,6 @@ class _MainScreenState extends State<MainScreen> {
       'totalCarbonEmissionThisMonth': activityThisMonth,
       'totalCarbonEmissionYesterday': activityYesterday,
       'totalCarbonEmissionLastMonth': activityPrevMonth,
-      'lastCheckedAt': DateTime.now(),
     });
 
     doc = await databaseReference
@@ -138,7 +136,6 @@ class _MainScreenState extends State<MainScreen> {
       'totalCarbonEmissionThisMonth': activityThisMonth,
       'totalCarbonEmissionYesterday': activityYesterday,
       'totalCarbonEmissionLastMonth': activityPrevMonth,
-      'lastCheckedAt': DateTime.now(),
     });
 
     doc = await databaseReference
@@ -171,7 +168,6 @@ class _MainScreenState extends State<MainScreen> {
       'totalCarbonEmissionThisMonth': activityThisMonth,
       'totalCarbonEmissionYesterday': activityYesterday,
       'totalCarbonEmissionLastMonth': activityPrevMonth,
-      'lastCheckedAt': DateTime.now(),
     });
 
     doc = await databaseReference
@@ -204,7 +200,6 @@ class _MainScreenState extends State<MainScreen> {
       'totalCarbonEmissionThisMonth': activityThisMonth,
       'totalCarbonEmissionYesterday': activityYesterday,
       'totalCarbonEmissionLastMonth': activityPrevMonth,
-      'lastCheckedAt': DateTime.now(),
     });
 
     doc = await databaseReference
@@ -238,7 +233,6 @@ class _MainScreenState extends State<MainScreen> {
       'totalCarbonEmissionThisMonth': activityThisMonth,
       'totalCarbonEmissionYesterday': activityYesterday,
       'totalCarbonEmissionLastMonth': activityPrevMonth,
-      'lastCheckedAt': DateTime.now(),
     });
 
     user.date = DateTime.now();

@@ -8,10 +8,17 @@ import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:carbon_emission/services/calculations.dart';
 
-class DashBoard extends StatelessWidget {
+class DashBoard extends StatefulWidget {
+  @override
+  _DashBoardState createState() => _DashBoardState();
+}
+
+class _DashBoardState extends State<DashBoard> {
+
   @override
   Widget build(BuildContext context) {
     var user = Provider.of<User>(context);
+
     double compareMonth = compareFromLastMonth(
         user.total_carbon_emission_this_month,
         user.total_carbon_emission_last_month);

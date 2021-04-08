@@ -1,5 +1,8 @@
 import 'package:carbon_emission/screens/login.dart';
+import 'package:carbon_emission/widget/transition.dart';
 import 'package:flutter/material.dart';
+
+import 'login.dart';
 
 class SplashScreen2 extends StatelessWidget {
   static const routeName = '/splashScreen2';
@@ -19,7 +22,7 @@ class SplashScreen2 extends StatelessWidget {
                 Spacer(),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
+                  //  Navigator.pop(context);
                     Navigator.of(context).pushNamed(LogIn.routeName);
                   },
                   child: Text(
@@ -96,8 +99,9 @@ environment''',
                 Spacer(),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
-                    Navigator.of(context).pushNamed(LogIn.routeName);
+                   // Navigator.pop(context);
+                 //   Navigator.of(context).pushNamed(LogIn.routeName);
+                    Navigator.push(context, NavSlideFromRight(page: LogIn()));
                   },
                   child: Text(
                     "Sign In",

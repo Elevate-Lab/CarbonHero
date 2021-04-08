@@ -1,3 +1,4 @@
+import 'package:carbon_emission/widget/transition.dart';
 import 'package:flutter/material.dart';
 import 'package:carbon_emission/screens/login.dart';
 
@@ -21,7 +22,7 @@ class SplashScreen1 extends StatelessWidget {
                 Spacer(),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
+                   // Navigator.pop(context);
                     Navigator.of(context).pushNamed(LogIn.routeName);
                    
                   },
@@ -98,8 +99,9 @@ easily and automatically with our simple tracker.''',
                 Spacer(),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
-                    Navigator.of(context).pushNamed(SplashScreen2.routeName);
+                 //  Navigator.pop(context);
+                  //  Navigator.of(context).pushNamed(SplashScreen2.routeName);
+                    Navigator.push(context, NavSlideFromRight(page: SplashScreen2()));
                   },
                   child: Text(
                     "Next",

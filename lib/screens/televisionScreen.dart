@@ -122,11 +122,7 @@ class _TelevisionState extends State<Television> {
                     size: 35,
                   ),
                 ),
-                Icon(
-                  Icons.account_circle_rounded,
-                  color: Colors.white,
-                  size: 35,
-                ),
+              
               ],
             ),
           ),

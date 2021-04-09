@@ -122,7 +122,7 @@ removeUser() async {
                     Container(
                       padding: EdgeInsets.all(15),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           GestureDetector(
                             onTap: () {
@@ -134,6 +134,8 @@ removeUser() async {
                               size: 25,
                             ),
                           ),
+                         
+                          SizedBox(width: _width*0.275,),
                           Text(
                             "My Profile",
                             style: TextStyle(
@@ -142,11 +144,7 @@ removeUser() async {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Icon(
-                            Icons.border_color,
-                            color: Colors.black,
-                            size: 25,
-                          ),
+                        
                         ],
                       ),
                     ),
